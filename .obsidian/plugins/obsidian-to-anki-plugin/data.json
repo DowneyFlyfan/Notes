@@ -1,0 +1,132 @@
+{
+  "settings": {
+    "CUSTOM_REGEXPS": {
+      "Basic": "",
+      "Cloze": "",
+      "KaTeX and Markdown Basic": "",
+      "KaTeX and Markdown Cloze": "",
+      "图片遮盖": "",
+      "填空题": "",
+      "问答题": "",
+      "问答题（同时生成翻转的卡片<可选>）": "",
+      "问答题（同时生成翻转的卡片）": "",
+      "问答题（输入答案）": ""
+    },
+    "FILE_LINK_FIELDS": {
+      "Basic": "Front",
+      "Cloze": "Text",
+      "KaTeX and Markdown Basic": "Front",
+      "KaTeX and Markdown Cloze": "Text",
+      "图片遮盖": "遮盖",
+      "填空题": "文字",
+      "问答题": "正面",
+      "问答题（同时生成翻转的卡片<可选>）": "正面",
+      "问答题（同时生成翻转的卡片）": "正面",
+      "问答题（输入答案）": "正面"
+    },
+    "CONTEXT_FIELDS": {},
+    "FOLDER_DECKS": {
+      "AI": "",
+      "Calculus & Linear Algebra": "",
+      "Others": "",
+      "Probability": "",
+      "Signal_Systems": "",
+      "Circuit Design": "",
+      "AI/media": "",
+      "Calculus & Linear Algebra/media": "",
+      "Signal_Systems/media": "",
+      "Circuit Design/media": ""
+    },
+    "FOLDER_TAGS": {
+      "AI": "",
+      "Calculus & Linear Algebra": "",
+      "Others": "",
+      "Probability": "",
+      "Signal_Systems": "",
+      "Circuit Design": "",
+      "AI/media": "",
+      "Calculus & Linear Algebra/media": "",
+      "Signal_Systems/media": "",
+      "Circuit Design/media": ""
+    },
+    "Syntax": {
+      "Begin Note": "START",
+      "End Note": "END",
+      "Begin Inline Note": "STARTI",
+      "End Inline Note": "ENDI",
+      "Target Deck Line": "TARGET DECK",
+      "File Tags Line": "FILE TAGS",
+      "Delete Note Line": "DELETE",
+      "Frozen Fields Line": "FROZEN"
+    },
+    "Defaults": {
+      "Scan Directory": "",
+      "Tag": "Obsidian_to_Anki",
+      "Deck": "Default",
+      "Scheduling Interval": 0,
+      "Add File Link": false,
+      "Add Context": false,
+      "CurlyCloze": false,
+      "CurlyCloze - Highlights to Clozes": false,
+      "ID Comments": true,
+      "Add Obsidian Tags": false
+    },
+    "IGNORED_FILE_GLOBS": [
+      "**/*.excalidraw.md"
+    ]
+  },
+  "Added Media": [],
+  "File Hashes": {},
+  "fields_dict": {
+    "Basic": [
+      "Front",
+      "Back",
+      "ConfigureMathJaxMacros",
+      "Page Number",
+      "Theorem"
+    ],
+    "Cloze": [
+      "Text",
+      "Extra",
+      "ConfigureMathJaxMacros",
+      "Page Number",
+      "Theorem"
+    ],
+    "KaTeX and Markdown Basic": [
+      "Front",
+      "Back"
+    ],
+    "KaTeX and Markdown Cloze": [
+      "Text",
+      "Back Extra"
+    ],
+    "图片遮盖": [
+      "遮盖",
+      "图片",
+      "标题",
+      "背面额外",
+      "注释"
+    ],
+    "填空题": [
+      "文字",
+      "背面额外"
+    ],
+    "问答题": [
+      "正面",
+      "背面"
+    ],
+    "问答题（同时生成翻转的卡片<可选>）": [
+      "正面",
+      "背面",
+      "增加翻转的卡片"
+    ],
+    "问答题（同时生成翻转的卡片）": [
+      "正面",
+      "背面"
+    ],
+    "问答题（输入答案）": [
+      "正面",
+      "背面"
+    ]
+  }
+}
