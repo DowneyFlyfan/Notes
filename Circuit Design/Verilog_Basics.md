@@ -66,6 +66,7 @@ tags: []
 | 有符号数显式补位                     | 有符号数赋值给另一个高位有符号数要显式补位 `adder_tree_data <= signed'(din[(adder+1)*IN_WIDTH-1-:IN_WIDTH]);` |
 | 变量声明 | 必须位于`always` 或 `initial` 的开头 |
 
+- 从`X`到`0`或`1`也被视为上升沿或下降沿
 
 ## SV和Verilog的区别
 
