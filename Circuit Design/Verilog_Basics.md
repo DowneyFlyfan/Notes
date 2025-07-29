@@ -13,7 +13,7 @@ tags: []
 | xDC                        | eXtensible Device Description                                                                                                            |
 | RTL                        | Register-Transfer Level                                                                                                                  |
 | 低电平复位                 | 是常用的做法，因为**上拉电阻**处于高电平状态(下拉电阻没电了没法接收信号!), 另外VCC没有GND抗噪声                                           |
-| High Impedance($Z$)        | 是为了防止多个设备同时和总线通讯                                                                                                         |
+| High Impedance($Z$)        | 表示该信号没有被其他信号驱动，是为了防止多个设备同时和总线通讯                                                                                                         |
 | Unknown(Don't Care)($X$)   | 在`!==`中可以被视为第3、4种逻辑状态；Unknown会导致调试时难以区分是否正确；Don't Care会使得在综合时可以综合出效率更高的电路；多个设备同时写一根线时发生矛盾 |
 
 ## 不同编码
@@ -24,6 +24,10 @@ tags: []
 | **缺点** | 触发器（FF）占用较多                 | 组合逻辑复杂、速度较慢、可能存在竞争冒险 |
 
 - DUT: Device Under Test
+
+- SystemC: C++的扩展版，主要用于EDA
+
+- XML: eXtensible Markup Language, 描述网格和列表的标签语言
 
 # 组合逻辑与时序逻辑
 
@@ -65,8 +69,13 @@ tags: []
 | `localparam`                         | 只能在当前的 `begin - end` 之内使用                                                                     |
 | 有符号数显式补位                     | 有符号数赋值给另一个高位有符号数要显式补位 `adder_tree_data <= signed'(din[(adder+1)*IN_WIDTH-1-:IN_WIDTH]);` |
 | 变量声明 | 必须位于`always` 或 `initial` 的开头 |
+|`parameter`|必须在`#()`中定义好，不能放到`localparam`里定义|
 
 - 从`X`到`0`或`1`也被视为上升沿或下降沿
+
+- 同一个`initial`块内的语句是串行执行的，多个`initial`块之间是并行执行的
+
+- `generate`块不能连太多的电路，否则无法综合
 
 ## SV和Verilog的区别
 
@@ -97,20 +106,8 @@ tags: []
 | BRAM 类型          |                                    |                                             |                                       | 简单双端口 | 2个      | 1个只读，1个只写           | 可以同时进行一次读和一次写           |
 | BRAM 类型          |                                    |                                             |                                       | **真双端口** | **2个**  | **每个端口都能独立进行读写** | **极高的灵活性和并行性，是数据交互的利器** |
 
-# 接口
+# 其他
 
-## Problem
+- `.core`文件是用类似`yaml`的格式描述其当前核的依赖、目标、目标参数等的文件
 
-- 连接Orin
-
-- xdma - x86: 有没有ARM版? (IP核)
-
-PCIeXn(Peripheral Component Interconnect express)：计算机内部的高速数据传输总线。$n$表示带宽
-
-M.2：计算机内部的一种紧凑型物理接口，常用于连接SSD，并利用PCIe总线传输数据。
-
-XDMA(Xilinx Direct Memory Access)：Xilinx FPGA 利用 PCIe 实现高速数据传输的 DMA 解决方案（包含硬件IP核和软件驱动）。
-
-- 光纤转PCIe核
-
-## Solution
+- `.s`是汇编文件
