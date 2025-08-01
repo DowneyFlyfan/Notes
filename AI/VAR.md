@@ -1,3 +1,9 @@
+---
+id: VAR
+aliases: []
+tags: []
+---
+
 # 基本结构 + 训练策略
 
 ## Train
@@ -21,7 +27,7 @@
 
 ### VAR
 
-- 将VQVAE encoder输出的latent images $(b,c,h_e, w_e)$ 逐个累加
+- 将VQVAE encoder输出的latent images $(b,c,h_e, w_e)$ 做个拼接$(token, pos_emb, lvl_emb)$, 然后取token index
 输出的token index拼一起 $(b,l)$ 作为GT
 
 - 对每一层的累加和(即中间的累加和)进行area下采样至next scale $(b,l_i,c)$
