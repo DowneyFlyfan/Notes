@@ -1,3 +1,9 @@
+---
+id: Least_Sqaure_Estimators
+aliases: []
+tags: []
+---
+
 # Ordinary Least Squares Estimators
 
 $$
@@ -18,10 +24,9 @@ The objective is to minimize the sum of squared residuals $S(\beta)$:
 $$
 \begin{equation}
 \begin{aligned}
-S(\beta) &= \sum_{i=1}^n (y_i - \mathbf{x}_i^T \beta)^2 = (\mathbf{y} - \mathbf{X}\beta)^T (\mathbf{y} - \mathbf{X}\beta) \
-&= (\mathbf{y}^T - (\mathbf{X}\beta)^T) (\mathbf{y} - \mathbf{X}\beta) \
-&= (\mathbf{y}^T - \beta^T \mathbf{X}^T) (\mathbf{y} - \mathbf{X}\beta) \
-&= \mathbf{y}^T \mathbf{y} - \mathbf{y}^T \mathbf{X}\beta - \beta^T \mathbf{X}^T \mathbf{y} + \beta^T \mathbf{X}^T \mathbf{X}\beta \
+S(\beta) &= \sum_{i=1}^n (y_i - \mathbf{x}_i^T \beta)^2 = (\mathbf{y} - \mathbf{X}\beta)^T (\mathbf{y} - \mathbf{X}\beta) \\
+&= (\mathbf{y}^T - \beta^T \mathbf{X}^T) (\mathbf{y} - \mathbf{X}\beta) \\
+&= \mathbf{y}^T \mathbf{y} - \mathbf{y}^T \mathbf{X}\beta - \beta^T \mathbf{X}^T \mathbf{y} + \beta^T \mathbf{X}^T \mathbf{X}\beta
 \end{aligned}
 \end{equation}
 $$
@@ -30,8 +35,8 @@ Since $\mathbf{y}^T \mathbf{X}\beta$ and $\beta^T \mathbf{X}^T \mathbf{y}$ are s
 
 $$
 \begin{aligned}
-\mathbf{y}^T \mathbf{X}\beta &= \beta^T \mathbf{X}^T \mathbf{y} \
-S(\beta) &= \mathbf{y}^T \mathbf{y} - 2\beta^T \mathbf{X}^T \mathbf{y} + \beta^T \mathbf{X}^T \mathbf{X}\beta \
+\mathbf{y}^T \mathbf{X}\beta &= \beta^T \mathbf{X}^T \mathbf{y} \\
+S(\beta) &= \mathbf{y}^T \mathbf{y} - 2\beta^T \mathbf{X}^T \mathbf{y} + \beta^T \mathbf{X}^T \mathbf{X}\beta
 \end{aligned}
 $$
 
@@ -40,21 +45,14 @@ To find the $\beta$ that minimizes $S(\beta)$, we take the partial derivative wi
 $$
 \begin{equation}
 \begin{aligned}
-\frac{\partial S(\beta)}{\partial \beta} &= \frac{\partial}{\partial \beta} (\mathbf{y}^T \mathbf{y} - 2\beta^T \mathbf{X}^T \mathbf{y} + \beta^T \mathbf{X}^T \mathbf{X}\beta) \
-&= 0 - 2\mathbf{X}^T \mathbf{y} + 2\mathbf{X}^T \mathbf{X}\beta \
-&= -2\mathbf{X}^T \mathbf{y} + 2\mathbf{X}^T \mathbf{X}\beta \
+\frac{\partial S(\beta)}{\partial \beta} &= \frac{\partial}{\partial \beta} (\mathbf{y}^T \mathbf{y} - 2\beta^T \mathbf{X}^T \mathbf{y} + \beta^T \mathbf{X}^T \mathbf{X}\beta) \\
+&= 0 - 2\mathbf{X}^T \mathbf{y} + 2\mathbf{X}^T \mathbf{X}\beta \\
+&= -2\mathbf{X}^T \mathbf{y} + 2\mathbf{X}^T \mathbf{X}\beta \\
+-2\mathbf{X}^T \mathbf{y} + 2\mathbf{X}^T \mathbf{X}\beta &= 0 \\
+2\mathbf{X}^T \mathbf{X}\beta &= 2\mathbf{X}^T \mathbf{y} \\
+\mathbf{X}^T \mathbf{X}\beta &= \mathbf{X}^T \mathbf{y}
 \end{aligned}
 \end{equation}
-$$
-
-Setting the derivative equal to the zero vector:
-
-$$
-\begin{aligned}
--2\mathbf{X}^T \mathbf{y} + 2\mathbf{X}^T \mathbf{X}\beta &= 0 \
-2\mathbf{X}^T \mathbf{X}\beta &= 2\mathbf{X}^T \mathbf{y} \
-\mathbf{X}^T \mathbf{X}\beta &= \mathbf{X}^T \mathbf{y} \
-\end{aligned}
 $$
 
 If $(\mathbf{X}^T \mathbf{X})$ is invertible, we can solve for $\beta$:
@@ -62,9 +60,7 @@ If $(\mathbf{X}^T \mathbf{X})$ is invertible, we can solve for $\beta$:
 $$
 \begin{equation}
 \begin{aligned}
-\hat{\beta} = (\mathbf{X}^T \mathbf{X})^{-1} \mathbf{X}^T \mathbf{y}
+\hat{\beta} &= (\mathbf{X}^T \mathbf{X})^{-1} \mathbf{X}^T \mathbf{y}
 \end{aligned}
 \end{equation}
 $$
-
-This $\hat{\beta}$ is the least squares estimator, which minimizes the sum of squared residuals.

@@ -261,6 +261,7 @@ where $A_i$ is the matrix $A$ with its $i$-th column replaced by $\vec{\pmb{b}}$
 | **Symmetric Matrix** | A square matrix $A$ is symmetric if $A = A^T$.                             | - $A = A^T$                                                                            |
 | **Orthogonal Matrix** | A square matrix $A$ is orthogonal if its columns (and rows) are orthonormal vectors. | - $A^T A = A A^T = I$- $A^{-1} = A^T$, 正交矩阵表示rotation或者reflection|
 | **Diagonal Matrix**  | 非对角元素都为0的方阵 | $A_{ij} = 0$ for $i \neq j$.                                                     |
+|**Augmented Matrix**| $Ax = B \xRightarrow{}, [A|B]$ 就是增广矩阵| $rank(A) < rank(A|B)$, 方程无解; $rank(A) = rank(A|B) = n$, 方程有1个解; $rank(A) = rank(A|B) > n$, 方程有无穷解  |
 
 ## Similar Matrices
 
@@ -286,27 +287,32 @@ $$
 
 # Matrix Decompositions
 
-## Spectral Decomposition
+## Spectral Decomposition (Eigen Decomposition)
 
-For a real symmetric matrix $A \in \mathcal{R}^{n \times n}$:
-$A$ can be decomposed as:
+- 对于**diagonalizable**($rank = n$)的方阵$A \in \mathcal{R}^{n \times n}$:
+
 $$
 \begin{equation}
 \begin{aligned}
-A = P \Lambda P^T
+A x_i &= \lambda_i x_i \\
+P &= [x_1, ... x_n] \\
+D &= [ \lambda_1, ... \lambda_n] \\
+AP &= [ \lambda_0 x_0, \lambda_1 x_1, ... \lambda_n x_n ] \\
+&= PD \\
+A &= PDP^{-1}
 \end{aligned}
 \end{equation}
 $$
-where $P$ is an orthogonal matrix whose columns are orthonormal eigenvectors of $A$, and $\Lambda$ is a diagonal matrix whose diagonal entries are the corresponding eigenvalues.
-This can also be written as a sum of outer products:
+
+- 当$A$是实对称矩阵的时候
+
 $$
 \begin{equation}
 \begin{aligned}
-A = \sum_{i=1}^n \lambda_i \vec{\pmb{p}}_i \vec{\pmb{p}}_i^T
+A &= PDP^T
 \end{aligned}
 \end{equation}
 $$
-where $\lambda_i$ are eigenvalues and $\vec{\pmb{p}}_i$ are the corresponding orthonormal eigenvectors.
 
 ## Singular Value Decomposition (SVD)
 

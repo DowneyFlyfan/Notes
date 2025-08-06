@@ -1,12 +1,10 @@
 ---
-id: GroundBreaking
+id: Wild-ideas
 aliases: []
 tags: []
 ---
 
-# GroundBreaking
-
-## No Prop (25.3)
+# No Prop (25.3)
 
 1. 模型结构  
 ![](imgs/paste-2cb8c509668fc91c6424f94566ee3c2c3a0bf2da.png)  
@@ -30,7 +28,7 @@ tags: []
     暂时只能作用于分类任务，如果换成生成任务，标签怎么搞呢  
     可以用特征提取器来提取做标签, 但这样会大大增加训练时间，还不如不用NoProps  
 
-## Hyper-Connection (24.9)
+# Hyper-Connection (24.9)
 
 1. 结构  
 ![](imgs/paste-5d560769bdf325e0bb96c3027c7b2c305ef71c2d.jpg)  

@@ -1,3 +1,9 @@
+---
+id: Python_Basics
+aliases: []
+tags: []
+---
+
 # python 迭代器的 特点、用法
 *   **迭代器类** 的 方法  
     __iter__() 方法: 返回迭代器自身，方便继续迭代  
@@ -54,3 +60,28 @@
     numbers = \[None,2,3,4, 5]  
     x = filter(lambda x: x % 2 == 0, numbers)  
     print(list(x))
+
+*   Experience
+
+1.  重写一个类的时候，**不要重写属性**
+2.  点乘会自动广播  
+3.  常见的inplace操作**(可能导致不可导): 直接修改张量中的元素**
+
+*   Tricks
+
+# 元组 和 集合
+1.  元组的创建  
+    a = (1,)\*3  
+    b = (3,)  
+      
+    
+2.  元组组合  
+    print(b + a)  
+    \# Result: (3,1,1,1)  
+      
+    
+3.  集合(元素唯一、无序)  
+    my_set = set(\[1, 2, 3, 2, 1])  
+    print(my_set)  # 输出：{1, 2, 3}
+
+
