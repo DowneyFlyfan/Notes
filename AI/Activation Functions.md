@@ -1,7 +1,8 @@
 ---
 id: Activation Functions
-aliases: []
-tags: []
+aliases: 
+tags:
+  - AI
 ---
 
 

@@ -1,7 +1,8 @@
 ---
 id: Wild-ideas
 aliases: []
-tags: []
+tags:
+  - AI
 ---
 
 # No Prop (25.3)

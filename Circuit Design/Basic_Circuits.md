@@ -1,7 +1,8 @@
 ---
 id: Basic_Circuits
-aliases: []
-tags: []
+aliases: 
+tags:
+  - Circuit
 ---
 
 # Combinational Logic Circuits
@@ -29,56 +30,6 @@ tags: []
 ![](./imgs/Combinational_Logic/mux-tristate-buffer.png)
 
 # Latch & Flip-Flops
-
-## Latches
-
-### Inverter Latch
-
-- 只有输出，没有输入, 实用性比较差
-
-![](./imgs/Sequential_Logic/Inverter-Latch.png)
-
-### SR-Latch
-
-- 能正常锁存，但是当**Set**和**Reset**都为1的时候输出全是0(**不合理了**)
-
-![](./imgs/Sequential_Logic/SR-Latch-Circuit.png)
-
-![](./imgs/Sequential_Logic/SR-Latch-TruthTable.png)
-
-### D-Latch
-
-- 在时钟正周期，只要数据改变，输出就立刻改变
-
-![](./imgs/Sequential_Logic/D-Latch.png)
-
-## Flip-Flops(FF)
-
-### D-FFs
-
-- 通过在时钟**负周期存数据，正周期传数据**，实现了**只在时钟上升沿改变数据**
-
-![](./imgs/Sequential_Logic/D-Flip-Flops.png)
-
-### Register
-
-- 多个**D-Flip-Flops**共享一个**Clock**
-
-![](./imgs/Sequential_Logic/Register.png)
-
-### Enabled-FFs
-
-- 最好不用*Scematic (b)*, 因为**时钟一般不与门相连**
-
-![](./imgs/Sequential_Logic/Enable-FF.png)
-
-### Resettable FFs
-
-- 这是一个时钟同步的**FF**
-
-- 异步的**D**与**Q**同步变化
-
-![](./imgs/Sequential_Logic/Resettable-FF.png)
 
 # Adder
 

@@ -1,7 +1,8 @@
 ---
 id: ISA
-aliases: []
-tags: []
+aliases: 
+tags:
+  - Circuit
 ---
 # ISA
 

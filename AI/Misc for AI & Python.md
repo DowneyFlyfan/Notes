@@ -1,3 +1,10 @@
+---
+id: Misc for AI & Python
+aliases: []
+tags:
+  - AI
+---
+
 # Misc for AI & Python
 1.  torch.nn算出来的Loss是一个Dictionary  
       

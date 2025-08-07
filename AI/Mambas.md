@@ -1,3 +1,10 @@
+---
+id: Mambas
+aliases: []
+tags: []
+---
+
+
 # Mamba及其变体
 1.  原版Mamba结构  
     ![](paste-ee8b3b2b13207b7d719bea29b7fe3dde85c1f9d8.jpg)  

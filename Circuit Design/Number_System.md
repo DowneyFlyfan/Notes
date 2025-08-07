@@ -1,7 +1,8 @@
 ---
 id: Number_System
-aliases: []
-tags: []
+aliases: 
+tags:
+  - Circuit
 ---
 
 # Number System

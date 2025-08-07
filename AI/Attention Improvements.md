@@ -1,7 +1,15 @@
+---
+id: Attention Improvements
+aliases: []
+tags: []
+---
+
 # Native Sparse Attention (NSA)
 
 1.  结构(全部采用**Causal掩码**)  
+
     ![](paste-8ea079dfd6130880f415795dd0dac5d2f9333b5f.png)    
+
 2.  一种可能的细节实现方式  
     **Compression**  
     compression 可以通过 **平均池化** 和 **MLP** 来实现

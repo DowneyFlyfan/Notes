@@ -1,7 +1,8 @@
 ---
 id: VAR
 aliases: []
-tags: []
+tags:
+  - AI
 ---
 
 # 基本结构 + 训练策略
@@ -45,11 +46,3 @@ tags: []
 # Insights
 
 - VQVAE-2作为image generator可能不够好，但训练出来的encoder和codebook作为特征提取器是非常好的
-
-$$
-\begin{equation}
-\begin{aligned}
-
-\end{aligned}
-\end{equation}
-$$

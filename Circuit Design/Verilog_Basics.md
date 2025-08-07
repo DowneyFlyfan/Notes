@@ -1,7 +1,8 @@
 ---
 id: Verilog_Basics
-aliases: []
-tags: []
+aliases: 
+tags:
+  - Circuit
 ---
 
 # 概念
