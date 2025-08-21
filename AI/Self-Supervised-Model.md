@@ -1,7 +1,8 @@
 ---
-id: Self-Supervised Model Summary & Comparison
+id: Self-Supervised-Model
 aliases: []
-tags: []
+tags:
+  - AI
 ---
 
 # Self-Supervised Model Summary & Comparison
@@ -10,7 +11,7 @@ tags: []
     
 1.  BYOL  
 
-![](imgs/paste-72b814edbc6ead9e36f52fb9568e8c3725d3c439.jpg)  
+![](./imgs/BYOL.png)
 
 $$
 \begin{equation}
@@ -22,7 +23,7 @@ $$
 
 2.  SimCLR  
 
-![](imgs/paste-9cf65f2e2f775610876cfc83525e0bca7dce8732.jpg)  
+![](./imgs/SimCLR.png)
 
 $$
 \begin{equation}
@@ -37,7 +38,8 @@ Loss &= \sum l_{i,j}
 $$
 
 3.  MoCo (v3)  
-    ![](imgs/paste-906db50f0cb28bd96a49fae5f2f7099096ac07fa.png)  
+
+![](./imgs/MoCov3-Algorithm.png)
     
 4.  SimSiam  
 
@@ -52,28 +54,35 @@ Loss &= \frac{L(p_1, z_2) + L(p_2, z_1)}{2} \\ L(x,y) &= -\frac{\pmb{x} \cdot \p
 \end{equation}
 $$
     
-5.  DiNo  
-    ![](imgs/paste-61290979ad96afc4f1a43fd2e7f74474214d53b8.png)  
-    Student只学习**Multi-Crop后的Image**  
-    Teacher学习**全局Image  
+5. DiNo  
+
+![](./imgs/Dino-Algorithm.png)
+
+- Student只学习**Multi-Crop后的Image**  
+
+- Teacher学习**全局Image  
       
-6.  **DiNoV2** 工程上做了优化  
-    采用了新的Loss
-
-*   Comparison  
-    ![](imgs/paste-d127e2b8ce7148ae00587f8fddf969172a2767df.jpg)  
+6. **DiNoV2** 工程上做了优化  
     
-*   **结论**
+- 采用了新的Loss
 
-1.  组合使用数据增强比单独使用要好得多     
-    ![](imgs/paste-7639fc38a2a924be3652dfbff52e22dd0b86df95.jpg)  
-    并且，如图，Crop + Color Distortion 的效果是最好的  
+7. Comparison
+
+![](./imgs/Self-Supervise-Comparison.png)
+    
+# 结论
+
+1. 组合使用数据增强比单独使用要好得多     
+
+![](./imgs/SimCLR-Data-Augmentation.png)
+
+- 并且，如图，Crop + Color Distortion 的效果是最好的  
     
 2.  Random Color Distortion 对Unsupervised Learning 有很大好处，但对 Supervised Learning 无益甚至有害  
-     ![](imgs/paste-3cde06464f3f40c00dc108495597f2c506bcdc44.jpg)  
       
 3.  不使用 **Projection Head** 的情况下，分类任务的准确率要高一些  
-    ![](imgs/paste-e6e9f7519f0d780765f8ed696adf92862ce77875.jpg)
+
+![](./imgs/SimCLR-Head-Ablation.png)
 
 *   **思考**
 

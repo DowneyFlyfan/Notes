@@ -8,7 +8,7 @@ tags:
 # No Prop (25.3)
 
 1. 模型结构  
-![](imgs/paste-2cb8c509668fc91c6424f94566ee3c2c3a0bf2da.png)  
+![](./imgs/No_Prop.png)  
 
 - 左边是Discrete-Time, 右边是Continuous-Time  
 
@@ -29,13 +29,40 @@ tags:
     暂时只能作用于分类任务，如果换成生成任务，标签怎么搞呢  
     可以用特征提取器来提取做标签, 但这样会大大增加训练时间，还不如不用NoProps  
 
+# Perception Encoder (25.3)
+
+1. Architecture  
+
+![](./imgs/Perception-Encoder-Arch.png)
+      
+2. 改进
+
+- 加了**LAMB**(Layer-Wise Moments Optimizer for Large Batch Training): **每层学习率都有缩放** 
+
+- 加了**RoPE**  
+
+- 加了**数据增强和Masked Regularization**(每个batch取一部分打码，然后丢进去把输出的特征靠齐)  
+
+- 多分辨率训练  
+
+- 统一图形模型和视频模型  
+
+3.  Insights  
+
+- 特征学习的中间层是比输出层更好的特征表示  
+
+![](./imgs/Perception-Encoder-Result.png)
+
 # Hyper-Connection (24.9)
 
 1. 结构  
-![](imgs/paste-5d560769bdf325e0bb96c3027c7b2c305ef71c2d.jpg)  
+
+![](./imgs/Hyper-Connection.png)
     
 2. Dynamic Update
-![](imgs/paste-ef6f473f7ce5726ae33844f56ea7f986bec274f0.jpg)  
+
+![](./imgs/Hyper-Connect-Formula.png)
     
 3. 流程 $h^0 \in R^{B \times N \times d}$, ($N$: Number of patches / Length of a sentence, $dC \times P^2 / Word \ Dim$
-![](imgs/paste-c4068e7b238cdc090a5506f9a384ee4b1a8dc9ce.jpg)
+
+![](./imgs/Hyper-Connect-Algorithm.png)

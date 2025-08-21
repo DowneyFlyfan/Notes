@@ -24,7 +24,6 @@ tags: []
 |expression|返回值|
 | `super::` |调用父级条目|
 
-
 # Ownership
 
 | Concept           | Description                                                                                             |
@@ -38,7 +37,7 @@ tags: []
 |`.clone()`|必须**显示**调用，在**Heap**上进行，成本高|
 |HashMap|没有`copy` trait的变量, 使用其他变量作为key或value时会直接将所有权拿过来|
 
-# Struct \& Enum
+# Struct, Enum
 
 | Concept  | Description                                |
 | :------- | :----------------------------------------- |
@@ -96,3 +95,11 @@ fn add(self, s: &str) -> String{...}
 |`Result<T(ok), E(Err)>`| 使用`unwrap`方法解包可以获得其值，若结果为`Err`, 则程序立刻`panic`|
 |`.expect()`|与`unwrap`相同， 多一个**在`()`中加上报错信息**的功能|
 |`?` 运算符|拥有控制流能力, `Err`时会立即终止函数，并返回`Err(io_error.into())`,即转换为当前函数所返回的错误类型|
+
+# Generic Types, Trait, Lifetime
+
+| Concept          | Description                                                                 |
+| :--------------- | :-------------------------------------------------------------------------- |
+|`PartialOrd` trait bound|表示该类型必须实现部分元素可比较, 是`Ord`的超集|
+|`Ord`|表示该类型必须实现所有元素可比较|
+|`Turbofish`语法|在编译器无法推断`Generic Type`的情况下主动告诉编译器当前类型`::<>`|

@@ -6,4 +6,4 @@ tags: []
 
 # Introduction
 
-- This is a repo for my Notes.
+- This is a repo for my **Notes**.

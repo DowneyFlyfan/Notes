@@ -1,5 +1,5 @@
 ---
-id: 图论算法
+id: Graph
 aliases: []
 tags: []
 ---

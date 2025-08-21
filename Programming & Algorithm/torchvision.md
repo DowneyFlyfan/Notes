@@ -1,10 +1,21 @@
+---
+id: torchvision
+aliases: []
+tags: []
+---
+
 # torchvision中常用的转换方法
-1.  **注意  
-    **# 以下转换不适用于Uint16类型数据  
-    \# 只能用于PIL 或者 torchvision.Image  
+
+1.  **注意**
+
+- 以下转换不适用于Uint16类型数据  
+    
+- 只能用于PIL 或者 torchvision.Image  
       
     ****
-2.  **torchvision.transfroms 中的函数**  
+2. **torchvision.transfroms 中的函数**  
+
+```py
     from torchvision.transforms import (  
         **RandomResizedCrop,  
         RandomHorizontalFlip,  
@@ -21,7 +32,7 @@
         RandomSolarize  
     )  
       
-    \# 将灰度图扩张成3通道图像  
+    # 将灰度图扩张成3通道图像  
     def expand_greyscale(t):  
         return t.expand(3, -1, -1)  
       
@@ -43,12 +54,11 @@
     '''  
     对于 uint8 类型的图像数据（如 PIL 图像或 uint8 numpy 数组），将数据从 \[0, 255] 缩放到 \[0, 1]。
     
-    将图像维度从 \[H, W, C] 转换为 \[C, H, W]。
+    将图像维度从 [H, W, C] 转换为 [C, H, W]。
     
     将图像数据转换为 torch.float32 的 PyTorch 张量.  
     '''
     
-      
     transform9 = Resize(255) # 短边裁成255  
     transform10 = CenterCrop(224) # 从中心裁出224\*224的区域  
       
@@ -57,10 +67,13 @@
     transform12 = Lambda(expand_greyscale) # Lambda 使用你自己定义的函数进行数据增强  
       
     transform13 = RandomSolarize(p = 0.5, threshold = 128) # 随机反转亮度 (高于128的 改成255 - x, 其他的不变)**
-3.  **torchvision.transforms.functional  
+```
+
+3. functional 
+
+```py
+import torchvision.transforms.functional  
     get_image_size(img: PIL.Image or Tensor) -> tuple # 返回H和W (不返回C)  
-      
     five_crop(img: PIL.Image or Tensor, size: tuple or int) -> tuple # 返回5个size(2个元素的tuple)大小的元组  
-      
     crop(img: PIL.Image or Tensor, top: int, left: int, height: int, width: int) -> PIL.Image or Tensor # 输出和输入类型相同  
-    **
+```

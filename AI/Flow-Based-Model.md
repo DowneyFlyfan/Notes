@@ -1,5 +1,5 @@
 ---
-id: Flow-Based Model
+id: Flow-Based-Model
 aliases: []
 tags:
   - AI

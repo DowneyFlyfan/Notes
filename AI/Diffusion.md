@@ -1,3 +1,11 @@
+---
+id: Diffusion
+aliases: []
+tags:
+  - AI
+---
+
+
 
 1.  **Forward (Add Noise)**  
     (\begin{aligned} x_t &\sim \mathcal N(\sqrt{1 - \beta_t} x_{t-1}, \beta_t \pmb I) = \mathcal N(\sqrt\alpha_t, (1 - \alpha_t) \pmb I ) \\\ x_t &= \sqrt{1 - \beta_t} x_{t-1} + \sqrt{\beta_t} \epsilon; \epsilon \sim \mathcal N(0, I) \\\ &= \sqrt{1 - \beta_t} ( \sqrt{1 - \beta_{t-1}} x_{t-2} + \sqrt{\beta_{t-1}} \epsilon) + \sqrt{\beta_{t}} \epsilon \\\ &= ... \\\ &= \sqrt{\bar{\alpha_t}} x_0 + \sqrt{1 - \bar{\alpha_t}} \epsilon \\\ \alpha_t &= 1 - \beta_t \\\ \bar{\alpha_t} &= \sum_{i = 0}^T \alpha_t \\\ x_T &\sim N(0, I) \end{aligned}$  
