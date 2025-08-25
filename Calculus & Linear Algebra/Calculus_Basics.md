@@ -1,7 +1,8 @@
 ---
-id: Basics for Calculus
+id: Calculus_Basics
 aliases: []
-tags: []
+tags:
+  - Calculus
 ---
 
 # Derivatives \& Limits
@@ -132,4 +133,3 @@ c_n &= \frac{f^{(n)}(a)}{n!} \\
 \end{aligned}
 \end{equation}
 $$
-

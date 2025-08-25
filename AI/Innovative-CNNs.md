@@ -4,15 +4,13 @@ aliases: []
 tags: []
 ---
 
-# Convolution With Weights  
-    
-## Dynamic Convolution: Attention over Convolution Kernels  
+# Dynamic Convolution: Attention over Convolution Kernels  
 
 ![](./imgs/Dynamic_Conv.png)  
 
 - 通过一个小的**attention**模块，针对不同的输入给卷积核加权  
       
-2. Deformable Convolution  
+# Deformable Convolution  
 
 ![](./imgs/Deformable_Conv.png)  
 
@@ -24,7 +22,7 @@ tags: []
       
 - 但是**偏移量纯靠网络学习显然是不靠谱的**  
 
-3. Dynamic Filter Network  
+# Dynamic Filter Network  
 
 ![](./imgs/Dynamic-Filter-Network.png)
 
@@ -32,7 +30,7 @@ tags: []
 
 - 在**全局或局部**上给B加一个条件  
     
-4.  CANConv (Content Adaptive Convolution)  
+# CANConv (Content Adaptive Convolution)  
     
 ![](./imgs/CANConv.png)
 
@@ -51,7 +49,11 @@ $$
 | impermute | permute的逆操作 |
 | nc | number of clusters, 一个图分多少组 |
       
-5. ConvNeXt-V2  
+# ConvNeXt
+
+- **V1**没有**GRN** 和 $\beta$
+
+- V2适用于无监督学习，通过对通道加权，减少冗余通道影响，缓解了特征坍缩的问题
 
 $$
 \begin{equation}
@@ -59,7 +61,8 @@ $$
 x(b,c,h,w) &\rightarrow 7\times 7 Group \ Conv(dim \rightarrow dim) \rightarrow LayerNorm \\ 
 &\rightarrow 1 \times 1 Conv(dim \rightarrow 4\times dim) \rightarrow GeLu() \rightarrow GRN() \\ 
 &\rightarrow 1 \times 1 Conv(4\times dim \rightarrow dim) \\ 
-GRN(x) &= \gamma (\frac{xG_x}{\dfrac{1}{C}\sum_{i=1}^C G_x} ) + \beta + x \\ G_x &= \frac{x}{\sqrt{\sum_{i=1}^{HW}||x_i||^2}}
+GRN(x) &= \gamma (\frac{xG_x}{\dfrac{1}{C}\sum_{i=1}^C G_x} ) + \beta + x \\ 
+G_x &= \sqrt{\sum_{i=1}^{HW}||x_i||^2}
 \end{aligned}
 \end{equation}
 $$

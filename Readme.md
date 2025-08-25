@@ -1,7 +1,8 @@
 ---
 id: Readme
 aliases: []
-tags: []
+tags:
+  - AI
 ---
 
 # Introduction

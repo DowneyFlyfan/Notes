@@ -5,7 +5,6 @@ tags:
   - AI
 ---
 
-
 # 各类激活函数及其适用范围
 
 | 激活函数     | 适用范围                                                                                                                              |
@@ -41,4 +40,3 @@ APTx(x) &= (\alpha + \tanh ( \beta x))\cdot \gamma x
 \end{aligned}
 \end{equation}
 $$
-
