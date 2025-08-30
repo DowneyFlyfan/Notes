@@ -4,9 +4,9 @@ aliases: []
 tags: []
 ---
 
-# Pansharpening Summary
+# Traditional Methods
 
-##  MRA (Multi-Resolution Analysis)  
+## MRA (Multi-Resolution Analysis)  
 
 $$
 \begin{equation}
@@ -31,7 +31,7 @@ $$
 
 - 然后把$g_{new}$上采样后放到网络里学习可以得到不错的初始化，收敛迅速
     
-##  MTF  
+## MTF  
     
 1. 模糊核**不一定是高斯形状**的
 
@@ -70,7 +70,9 @@ $$
 
 ![[CV Basics.md#去模糊]]
 
-## 指标和损失函数  
+## SR-D 方法
+
+# Indications \& Loss Functions
 
 | Variable | Description |
 |---|---|
