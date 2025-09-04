@@ -121,9 +121,10 @@ fn add(self, s: &str) -> String{...}
 |`Closure`参数和返回值类型|一般可以不指定，让编译器自动推断；但是**闭包第一次使用后，类型就被确定不能更改**|
 |列表的`sort_by_key`方法|使用闭包`|param| 排序变量`进行排序(默认从小到大)|
 |`Closure` trait之`FnOnce`|只能`call`一次的闭包，比如把主函数中的某个变量`push`到一个`Vec`里，其Ownership就交给了`Vec`, 第二次`Call`主函数的该变量就失效了|
+|`iterator`|一种用`next()`方法对元素进行**Lazy load**的**trait**|
 |不同的`iterator`|`.iter()`, `.into_iter()`, `mut_iter()`|
-|**consuming adpater**|`.sum()`等使用`next()`方法的方法被称作**consuming adpater**, 因为他们会用尽`iterator`中的元素|
-|**iterator adpater**|和**ietrator**一样都是**lazy**的，因此后面必须接`collect`方法把处理后的新**iterator**收集起来|
+|**consuming adapter**|`.sum()`等使用`next()`方法的方法被称作**consuming adpater**, 因为他们会用尽`iterator`中的元素|
+|**iterator adapter**|和**iterator**一样都是**lazy**的, 生成新的iterator|
 |`map`, `filter` 方法|都接受迭代器元素作为参数，返回一个参数(`map`)或`Booll`值(`filter`)|
 
 # Smart Pointers
@@ -139,7 +140,7 @@ fn add(self, s: &str) -> String{...}
 | `std::mem::drop`方法 | 可以主动`call`，用于在变量离开作用域之前显式地释放其持有的资源。 |
 | `Rc<T>`, (Reference-Counted)类型 | 通过创建对同一数据的多个不可变引用，实现**共享所有权**。`Rc::strong_count()`记录引用计数。当引用计数为0时，数据才会被清理。**只支持单线程**。`Rc::clone`只会在栈上复制|
 | `RefCell<T>`类型 | 通过**interior mutability**，允许对不可变引用中的数据进行修改(主要是在`&self`方法中修改结构体字段)。使用`borrow()`借用不可变变量，`borrow_mut()`借用可变变量。 **只支持单线程**。|
-| static dispatch | 在编译时确定调用的具体方法。通常通过在结构体字段中使用泛型和`trait bound` (`field: T where T: Trait`) 来实现。 |
+| static dispatch(分发) | 在编译时确定调用的具体方法。通常在结构体字段中使用泛型和 `trait bound` (`field: T where T: Trait`) 来实现。 |
 | dynamic dispatch | 在运行时确定调用的具体方法。通常通过**胖指针** `Box<dyn Trait>` 来实现，胖指针包含数据指针和虚函数表指针。 |
 
 ## Circular References
@@ -160,15 +161,33 @@ struct Node {
 
 ```
 
-# Concurrency
+# Asynchronous Programming
 
-| 概念               | 描述                                                                                                   |
-| :----------------- | :----------------------------------------------------------------------------------------------------- |
-| 线程并发常见问题   | 数据竞争（Data Races）、死锁（Deadlocks，线程互相等待对方完成）。                                      |
-| 主线程与子线程关系 | 当主线程终止时，所有子线程也会随之关闭。                                                               |
-| 线程输出顺序       | 线程的执行和输出顺序由操作系统调度，不确定。                                                           |
-| `recv` 与 `try_recv` | `recv` 方法会阻塞当前线程直到接收到消息；`try_recv` 方法会尝试立即接收消息，如果无消息则返回错误，不会阻塞线程。 |
-| `mpsc::channel`    | `mpsc::channel()` 是 Rust 中最常用的多生产者单消费者（multi-producer, single-consumer）线程间通信方式。其中 `tx.send(val)` 会将 `val` 的所有权转移给接收端。 |
-| `Mutex<T>`         | `Mutex<T>`（互斥锁）允许多个线程共享一个值，但确保在任何给定时间只有一个线程能访问该值。通过调用 `.lock().unwrap()` 方法获取 `MutexGuard<T>` 智能指针（一个可变引用），从而实现独占访问。 |
-| `Send` trait       | `Send` trait 标记的类型可以在线程间安全地**转移所有权**。几乎所有基本类型都实现了 `Send`。             |
-| `Sync` trait       | `Sync` trait 标记的类型可以在线程间安全地**共享引用**（即通过 `&` 引用在多线程间访问）。如果 `T` 是 `Sync`，那么 `&T` 可以安全地在线程间发送。 |
+## 总结
+
+| Concept | Description |
+| :--------------- | :-------------------------------------------------------------------------- |
+| `.await` | 一定是后缀, 并且只能对具有`Future` trait的变量使用 |
+| Runtime (without `await`) | 不使用`await`的**runtime**大概率会按顺序执行 |
+| `async` on function | 放在函数前，函数会被编成**非异步函数**，函数主体会被编译成**异步块** |
+| `async fn main()` | 一般地, **主函数不可以async**, 但某些特定库重写了`async fn main()` |
+| `async` on block | 放在**block(一种表达式)**前，**block**会被编译成返回带`Future`trait的匿名数据类型`Future<Output = ()>`(每个`async`块单独创建一个`enum`类型) |
+| `task` vs `thread` | `task`实现并发，多`thread`实现并行 |
+| `trpl::race` | 按顺序执行传入的`Future` |
+| `std::time::Duration` | 中的时间在**没有指明的情况系都是整数** |
+| `ext` suffix | 指将两个`trait`拼在(**extend**)一起的方法 |
+| `trpl::channel()` | 在2个并发执行单元之间传递信息 |
+| `Pin` | 保证了数据结构在**内存中的位置不变**, 从而安全创建**自引用结构体**(内部字段引用自己的其他字段) 或者**poll** |
+
+## 重点
+
+- `async`是一种编写**可以随时停止和继续执行**代码的特性; 
+
+- `runtime`是一类库, **轮询(poll)**每一个`async`返回的`Future`
+
+```rs
+enum Either<A, B> {
+    Left(A),
+    Right(B),
+}
+```
