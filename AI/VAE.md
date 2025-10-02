@@ -1,7 +1,8 @@
 ---
 id: VAE
 aliases: []
-tags: []
+tags:
+  - AI
 ---
 
 

@@ -1,5 +1,5 @@
 ---
-id: Positional Encodings
+id: Positional-Encodings
 aliases: []
 tags:
   - AI

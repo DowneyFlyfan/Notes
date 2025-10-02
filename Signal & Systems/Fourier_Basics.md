@@ -1,7 +1,8 @@
 ---
 id: Fourier_Basics
 aliases: []
-tags: []
+tags:
+  - Math
 ---
 
 # Fourier Series & Fourier Transform
@@ -125,5 +126,3 @@ y(t) &= IFFT \Big\{ Y(j \omega) \Big\}
 $$
 
 - 把一个长度为$N$(最好是2的倍数)的序列**按二分法一直拆到长度为2**为止, 每个部分分别进行**DFT**, 得到$X(j \omega)$和$H(j \omega)$
-
-

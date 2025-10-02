@@ -1,10 +1,13 @@
 ---
 id: Least_Sqaure_Estimators
 aliases: []
-tags: []
+tags:
+  - Math
 ---
 
 # Ordinary Least Squares Estimators
+
+## Definition
 
 $$
 \begin{equation}
@@ -19,7 +22,9 @@ $$
 - $\beta \in \mathbb{R}^{p \times 1}$ is the parameter vector to be estimated
 - $\epsilon \in \mathbb{R}^{n \times 1}$ is the error vector
 
-The objective is to minimize the sum of squared residuals $S(\beta)$:
+## Objective
+
+- Minimize the sum of squared residuals $S(\beta)$:
 
 $$
 \begin{equation}
@@ -55,12 +60,24 @@ $$
 \end{equation}
 $$
 
-If $(\mathbf{X}^T \mathbf{X})$ is invertible, we can solve for $\beta$:
+## Result
+
+- If $(\mathbf{X}^T \mathbf{X})$ is invertible, we can solve for $\beta$:
 
 $$
 \begin{equation}
 \begin{aligned}
 \hat{\beta} &= (\mathbf{X}^T \mathbf{X})^{-1} \mathbf{X}^T \mathbf{y}
+\end{aligned}
+\end{equation}
+$$
+
+- Truned out to be exactly the same as
+
+$$
+\begin{equation}
+\begin{aligned}
+(\mathbf{X}^T \mathbf{X}) \hat{\beta} &= \mathbf{X}^T \mathbf{y}
 \end{aligned}
 \end{equation}
 $$

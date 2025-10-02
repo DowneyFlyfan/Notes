@@ -1,7 +1,8 @@
 ---
 id: Pansharpening
 aliases: []
-tags: []
+tags:
+  - CV
 ---
 
 # Traditional Methods

@@ -5,6 +5,18 @@ tags:
   - Circuit
 ---
 
+# Gate Circuits
+
+## NAND
+
+![](./imgs/Gate_Circuits/NAND.png)
+
+- Made of **Pull-up** and **Pull-Down** Circuits
+
+## NOR
+
+![](./imgs/Gate_Circuits/NOR.png)
+
 # Combinational Logic Circuits
 
 ## TriState Buffer

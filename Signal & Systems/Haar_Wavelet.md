@@ -1,7 +1,8 @@
 ---
 id: Haar_Wavelet
 aliases: []
-tags: []
+tags:
+  - Math
 ---
 
 # Haar Wavelet

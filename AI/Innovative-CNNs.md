@@ -1,7 +1,8 @@
 ---
 id: Innovative-CNNs
 aliases: []
-tags: []
+tags:
+  - AI
 ---
 
 # Dynamic Convolution: Attention over Convolution Kernels  

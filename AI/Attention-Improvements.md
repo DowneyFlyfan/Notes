@@ -3,6 +3,9 @@ id: Attention-Improvements
 aliases: []
 tags:
   - AI
+sr-due: 2025-09-09
+sr-interval: 4
+sr-ease: 270
 ---
 
 # Native Sparse Attention (NSA)

@@ -1,7 +1,8 @@
 ---
 id: Visualized Explanation
 aliases: []
-tags: []
+tags:
+  - AI
 ---
 
 # Visualized Explanation

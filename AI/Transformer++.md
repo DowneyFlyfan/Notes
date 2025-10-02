@@ -1,7 +1,8 @@
 ---
 id: Transformer++
 aliases: []
-tags: []
+tags:
+  - AI
 ---
 
 # Original Transformer

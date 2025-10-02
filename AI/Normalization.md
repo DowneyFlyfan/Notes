@@ -18,10 +18,12 @@ tags:
 | Tanh Norm                     | $tanh(x) = \frac{e^x - e^{-x}}{e^x + e^{-x}}$                                                              |                                                                             |
 | Softmax Norm                  | $softmax(x) = \frac{e^x}{\sum_{i=1}^n e^{x_i}}$                                                            | For Multi-Class Classification Problem, Attention                           |
 | Dynamic Tanh                  | $y = \gamma \tanh(\alpha x) + \beta$                                                                      | 三个系数的形状都是((c,)                                                     |
-| LayerNorm / BatchNorm / GroupNorm | $\begin{equation} \begin{aligned} \mathcal{X}_N &= \frac{x - \mu }{ \sigma + \epsilon } \cdot \gamma + \beta \\ \widehat{x} _{t+1} &= (1-m) \widehat{x} _t + mx_{new}, \mathbf{BN} \end{aligned} \end{equation}$ | Statistics的 $\mu$ 和 $\sigma$ 用第二个公式更新 (针对 BN) |
-| RMSNorm                       | $\begin{equation} \begin{aligned}\mathcal{X}_{N} &= \frac{x}{\sqrt{\dfrac{1}{N}\sum_i^n x_i^2} + \epsilon} \end{aligned} \end{equation}$ | 省去了中心偏移，计算效率更高                                                |
-      
-    
+| LayerNorm / BatchNorm / GroupNorm | $\mathcal{X}_N = \frac{x - \mu }{ \sigma + \epsilon } \cdot \gamma + \beta$ <br/> $\widehat{x} _{t+1} = (1-m) \widehat{x} _t + mx_{new}, \mathbf{BN}$ | Statistics的 $\mu$ 和 $\sigma$ 用第二个公式更新 (针对 BN) |
+| RMSNorm                       | $\mathcal{X}_{N} = \frac{x}{\sqrt{\dfrac{1}{N}\sum_i^n x_i^2} + \epsilon}$ | 省去了中心偏移，计算效率更高                                                |
+|缩放系数可学习的**RMSNorm**| $\mathcal{X}_{N} = \frac{x}{\sqrt{\dfrac{1}{N}\sum_i^n x_i^2} + \epsilon} \cdot \text{dim}^{0.5} \cdot g$ | 可学习的缩放系数 $g$ 和固定缩放 $dim^{0.5}$ |
+
 # Insights
 
 - RMSNorm 省去了中心偏移，计算效率更高
+
+- Transformer 一般都使用 **PreNorm**, CNN一般使用**Post-Norm**, 但是ConvNext等新架构不太一样

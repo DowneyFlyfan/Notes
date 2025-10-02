@@ -1,7 +1,8 @@
 ---
 id: Board
 aliases: []
-tags: []
+tags:
+  - Circuit
 ---
 
 # Concepts

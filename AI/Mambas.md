@@ -1,7 +1,8 @@
 ---
 id: Mambas
 aliases: []
-tags: []
+tags:
+  - AI
 ---
 
 # Mamba, Mamba Variants

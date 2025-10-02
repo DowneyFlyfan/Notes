@@ -1,8 +1,11 @@
 ---
-id: LOP
+id: Incremental_Learning
 aliases: []
-tags: []
+tags:
+  - AI
 ---
+
+# Loss of Plasticity (LOP)
 
 * 对于每一个输入 $x_t$，执行 ：
     * **前向传播**: 将 $x_t$ 输入网络，得到预测值 $\hat{y}_t$ 。

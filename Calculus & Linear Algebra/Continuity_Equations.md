@@ -1,12 +1,20 @@
 ---
 id: Continuity Equations
 aliases: []
-tags: []
+tags:
+  - Math
 ---
 
 # Continuity Equations
 
-- t: 时间, x: (高维)空间
+## 变量和解释
+
+| Variable | Description         |
+| -------- | ------------------- |
+| t        | 时间        |
+| x        | (高维)空间  |
+
+- 单位时间单位面积内的变化量 = -密度关于时间的变化率
 
 ## Euler Form
 

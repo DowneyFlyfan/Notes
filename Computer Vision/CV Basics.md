@@ -1,7 +1,8 @@
 ---
 id: CV_Basics
 aliases: []
-tags: []
+tags:
+  - CV
 ---
 
 # 表示方法

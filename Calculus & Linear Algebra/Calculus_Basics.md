@@ -2,7 +2,7 @@
 id: Calculus_Basics
 aliases: []
 tags:
-  - Calculus
+  - Math
 ---
 
 # Derivatives \& Limits
@@ -133,3 +133,7 @@ c_n &= \frac{f^{(n)}(a)}{n!} \\
 \end{aligned}
 \end{equation}
 $$
+
+## ODE \& SDE
+
+

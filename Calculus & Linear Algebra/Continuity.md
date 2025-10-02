@@ -2,7 +2,7 @@
 id: Continuity
 aliases: []
 tags:
-  - Calculus
+  - Math
 ---
 
 # Continuity

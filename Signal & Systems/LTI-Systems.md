@@ -1,7 +1,8 @@
 ---
 id: LTI-Systems
 aliases: []
-tags: []
+tags:
+  - Math
 ---
 
 # Properties
@@ -56,8 +57,6 @@ $$
 ### Causal LTI 系统 ...
 
 ### Singularity Functions
-
-
 
 # Convolution
 

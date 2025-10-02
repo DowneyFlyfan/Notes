@@ -2,7 +2,7 @@
 id: Advanced_Linear_Algebra
 aliases: []
 tags:
-  - Linear_Algebra
+  - Math
 ---
 
 # Hutchinson Trace Estimator

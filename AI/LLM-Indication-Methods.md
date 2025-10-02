@@ -1,7 +1,8 @@
 ---
 id: LLM-Indications-Methods
 aliases: []
-tags: []
+tags:
+  - AI
 ---
 
 # 指标
