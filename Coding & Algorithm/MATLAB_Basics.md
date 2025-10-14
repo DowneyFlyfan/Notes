@@ -5,10 +5,11 @@ tags:
   - Coding
 ---
 
-# 乘法
+# operators
 
-- `'`表示转置
-
-- `*`表示矩阵乘法
-
-- `.`后缀表示元素级操作
+| Operator | Description              |
+| -------- | ------------------------ |
+| `'`      | Transpose                |
+| `*`      | Matrix multiplication    |
+| `.`      | Element-wise operation   |
+| `\`      | Least squares method     |

@@ -1,47 +1,72 @@
 ---
 id: Basic_Concepts
 aliases: []
-tags: []
+tags:
+  - Math
 ---
 
-# Don't Know
+# Probability Space
 
-1. Probability in the Space
+## Probability in the Space
 
-$$
-\begin{equation}
-\begin{aligned}
-P(E) &= \frac{|E|}{|\Omega| } 
-\end{aligned}
-\end{equation}
-$$
-
-2. Conditional Probability & General Probability
-
-$$
-\begin{equation}
-\begin{aligned}
-P(F | E) &\stackrel{?}{=} P(F)
-\end{aligned}
-\end{equation}
-$$
-
-3. 概率空间分类
+1. Definition1 - Space
 
 | Category | Description |
 |---|---|
 | Multiple Events | General Space |
 | Equiprobable Space | Uniform Space |
 
+
 $$
 \begin{equation}
 \begin{aligned}
-E \perp \! \! \! \perp F
+P(E) &= \begin{cases}
+\sum_{x \in \Omega }^{} p(x) & General \\
+\dfrac{|E|}{|\Omega| } & Uniform
+\end{cases}
 \end{aligned}
 \end{equation}
 $$
 
-4. Total Probability & Bayes Rules
+2. Definition2 - map:
+
+- For instance, $\mathcal{R} \xrightarrow{} [0,1]$
+
+- For multiple events, $\mathcal{R} \times \mathcal{R} \xrightarrow{}  [0,1]$
+
+## Conditionals
+
+$$
+\begin{equation}
+\begin{aligned}
+P(F|E) &= \frac{P(EF)}{P(E)} , P(E) \neq 0
+\end{aligned}
+\end{equation}
+$$
+
+- Conditional Probability is asymmetric
+
+
+| Condition           | Implication         | Relationship       |
+|---------------------|---------------------|--------------------|
+| $P(F \| E) = P(F)$   | $E \perp \! \! \! \perp F$ | Independent        |
+| $P(F \| E) > P(F)$   |                     | Positive Correlated |
+| $P(F \| E) < P(F)$   |                     | Negative Correlated |
+
+## Marginals
+
+$$
+\begin{equation}
+\begin{aligned}
+P(X = x) &= \sum_{y}^{} p(x,y) \\
+P(Y = y) &= \sum_{x}^{} p(x,y)
+\end{aligned}
+\end{equation}
+$$
+
+## Total Probability & Bayes Rules
+
+### Definitions
 
 $$
 \begin{equation}
@@ -59,7 +84,7 @@ P(A|B) &= \frac{P(B|A)P(A)}{P(B)}
 \end{equation}
 $$
 
-Alternatively, using the law of total probability, if $E_1, E_2, \dots, E_n$ are a partition of the sample space $\Omega$ and $P(E_i) > 0$ for all $i$, then for any event $A$ such that $P(A) > 0$:
+### Applications
 
 $$
 \begin{equation}
@@ -68,3 +93,116 @@ P(E_i|A) &= \frac{P(A|E_i)P(E_i)}{\sum_{j=1}^{n} P(A|E_j)P(E_j)}
 \end{aligned}
 \end{equation}
 $$
+
+### Conditioanl Expectation
+
+$$
+\begin{equation}
+\begin{aligned}
+E(A) &= \sum_{i=1}^{n} E(A | E_i) P(E_i)
+\end{aligned}
+\end{equation}
+$$
+
+# Random Variables
+
+## Distribution of Probabilities
+
+$$
+\begin{equation}
+\begin{aligned}
+P(Y = y) &= P(X = g^{-1}(Y))
+\end{aligned}
+\end{equation}
+$$
+
+- Constant $g$
+
+$$
+\begin{equation}
+\begin{aligned}
+P(Y = a) &= P(X = g^{-1}(a)) = P(X \in \Omega) = 1
+\end{aligned}
+\end{equation}
+$$
+
+## CDF, Right CDF, PDF, PMF
+
+- interval , disjoint probabilities
+
+## LOTUS
+
+- Law of the Unconcious Statistians: Getting $E(Y)$ directly using $E(X)$
+
+## Properties
+
+### Min, Max
+
+$$
+\begin{equation}
+\begin{aligned}
+x_{min} &= \min \lbrace x \in \Omega , p(x) \ge 0  \rbrace \\
+x_{max} &= \max \lbrace x \in \Omega , p(x) \ge 0  \rbrace \\
+\end{aligned}
+\end{equation}
+$$
+
+### Expectation
+
+1. Definitions for **General Space and Samples**
+
+$$
+\begin{equation}
+\begin{aligned}
+E(X) &= \sum_{i}^{} p(x_i) x_i , Formula\\
+&= \sum_{i}^{} \Big[ \frac{p(x_i) n}{n} \Big] x_i, Samples
+\end{aligned}
+\end{equation}
+$$
+
+2. Linearity
+
+$$
+\begin{equation}
+\begin{aligned}
+E(aX + b) &= aE(x) + b \\
+E(X + Y) &= E(X) + E(Y)
+\end{aligned}
+\end{equation}
+$$
+
+### Variations, Standard Deviations
+
+1. Definitions
+
+$$
+\begin{equation}
+\begin{aligned}
+V(X) &= \sum_{i}^{} \big[ x_i - E(x_i) \big]^2 \\
+&= E(X^2) - E^2(X) \\
+\sigma_x &= \sqrt{V(X)}
+\end{aligned}
+\end{equation}
+$$
+
+2. Properties
+
+$$
+\begin{equation}
+\begin{aligned}
+V(aX +b) &= a^2 V(X) \\
+\sigma(aX+b) &= |a| \sigma_x
+\end{aligned}
+\end{equation}
+$$
+
+# Important Distributions and Their Properties
+
+| Distribution Name | Type | Parameters | Formula | Expectation | Variance |
+|---|---|---|---|---|---|
+| Bernoulli | Discrete | $p$ | $P(X=k) = p^k (1-p)^{1-k}$ for $k \in \{0, 1\}$ | $p$ | $p(1-p)$ |
+| Binomial | Discrete | $n, p$ | $P(X=k) = \binom{n}{k} p^k (1-p)^{n-k}$ for $k \in \{0, 1, \dots, n\}$ | $np$ | $np(1-p)$ |
+| Poisson | Discrete | $\lambda$ | $P(X=k) = \frac{e^{-\lambda} \lambda^k}{k!}$ for $k \in \{0, 1, 2, \dots\}$ | $\lambda$ | $\lambda$ |
+| Uniform | Continuous | $a, b$ | $f(x) = \frac{1}{b-a}$ for $a \le x \le b$, and $0$ otherwise | $\frac{a+b}{2}$ | $\frac{(b-a)^2}{12}$ |
+| Exponential | Continuous | $\lambda$ | $f(x) = \lambda e^{-\lambda x}$ for $x \ge 0$, and $0$ otherwise | $\frac{1}{\lambda}$ | $\frac{1}{\lambda^2}$ |
+| Normal (Gaussian) | Continuous | $\mu, \sigma^2$ | $f(x) = \frac{1}{\sqrt{2\pi\sigma^2}} e^{-\frac{(x-\mu)^2}{2\sigma^2}}$ | $\mu$ | $\sigma^2$ |

@@ -9,17 +9,32 @@ tags:
 
 ## MRA (Multi-Resolution Analysis)  
 
+1. 加法
+
 $$
 \begin{equation}
 \begin{aligned}
-GT &= LMS + g (P^{repeat} - P_{low-pass}) \\ 
-g &= \frac{LMS}{P_{low-pass}}
+I_E &= I_{LMS} + g (P_{match} - P_{match}^{lp}) 
 \end{aligned}
 \end{equation}
 $$
 
-- 但是这个方法不够准  
+- 然后在$g$上下功夫
       
+2. 乘法
+
+$$
+\begin{equation}
+\begin{aligned}
+I_E &= I_{LMS} \times \frac{P_{match}}{P_{match}^{lp}} 
+\end{aligned}
+\end{equation}
+$$
+
+3. 能不能融合一下???
+
+- **TODO**
+
 ## LRTCF (Low-Rank Tensor Completion-Based Framework)  
 
 $$
@@ -32,7 +47,9 @@ $$
 
 - 然后把$g_{new}$上采样后放到网络里学习可以得到不错的初始化，收敛迅速
     
-## MTF  
+## MTF
+
+### 经验
     
 1. 模糊核**不一定是高斯形状**的
 
@@ -40,9 +57,35 @@ $$
 
 3. 传感器老化以后**Nyquist Gain**就变了  
 
-### 模糊核估计
+### Multi-Band Filter Estimation (MBFE)
 
-1. 使用Nyquist Gain获得MTF模糊核($Gau \beta$)
+1. 估计模糊核
+
+$$
+\begin{equation}
+\begin{aligned}
+\mathbf{p}_e = \widetilde{\mathbf{M}}^T \boldsymbol{\alpha}' \\
+\underset{\mathbf{h}, \boldsymbol{\alpha}}{\text{minimize}} & \{ \| \mathbf{p}_e - \mathbf{P}_C \mathbf{h} \|^2 + \lambda \| \mathbf{h} \|^2 + \mu (\| \mathbf{D}_v \mathbf{h} \|^2 + \| \mathbf{D}_h \mathbf{h} \|^2) \} \\
+\text{subject to} & \ \mathbf{h}^T \mathbf{1} = 1, \mathbf{h} \in \mathcal{H}
+\end{aligned}
+\end{equation}
+$$
+
+- 第二个公式解答后改成傅里叶变换会更快
+
+2. 按比例注入细节
+
+$$
+\begin{equation}
+\begin{aligned}
+I_{E} &= I_{LMS} \times \frac{P_{match}}{P_{match}^{lp}} 
+\end{aligned}
+\end{equation}
+$$
+
+### $Gau \beta$
+
+- 使用Nyquist Gain获得MTF模糊核
 
 | Variable | Description |
 |---|---|
@@ -59,19 +102,13 @@ $$
 \sigma &= \sqrt{-\frac{(N-1)^2}{8r^2 \ln G}} \\ 
 h &= e^{-\dfrac{x^2 + y^2}{2\sigma^2}} \rightarrow h = \frac{h}{\sum_{i=1}^{HW} h } \rightarrow h = \frac{h}{\max(h)} \\ 
 k &= \frac{I_0(\beta \sqrt{1 - \dfrac{4 n^2}{(N-1)^2}})}{I_0(\beta)}, -\frac{N-1}{2} \le n \le \frac{N-1}{2} \\ 
-H_t &= h \rightarrow rotate \ 90^0 \rightarrow FS \rightarrow rotate \ 90^0 \rightarrow IFFT \rightarrow FS \rightarrow rotate \ 90^0 \\ 
+H_t &= h \rightarrow rotate \ 180^0 \rightarrow FS \rightarrow rotate \ 180^0 \rightarrow IFFT \rightarrow FS \rightarrow rotate \ 180^0 \\ 
 & \rightarrow h \times k \rightarrow clip(0, max) \rightarrow \frac{H_t}{\sum_{i=1}^{HW} H_t}.real 
 \end{aligned}
 \end{equation}
 $$
 
-2. Multi-Band Filter Estimation (MBFE)
-
-- 一种近似**最小二乘法**的方式
-
-![[CV Basics.md#去模糊]]
-
-## SR-D 方法
+## OMP(Orthogonal Match Pursuits)
 
 # Indications \& Loss Functions
 
@@ -97,10 +134,23 @@ SSIM &= \frac{4(I_1 \otimes k)(I_2 \otimes k)[I_1I_2 \otimes k - (I_1 \otimes k)
 
 CC &= \frac{1}{BC} \sum_{i=1}^{BC}\frac{\sum_{i=1}^{HW} ab - \sum_{i=1}^{HW} a \sum_{i=1}^{HW} b}{\sqrt{ \Big[\sum_{i=1}^{HW} b^2- \dfrac{1}{HW}(\sum_{1}^{HW}b)^2\Big] \Big[\sum_{i=1}^{HW} a^2- \dfrac{1}{HW}(\sum_{1}^{HW}a)^2\Big]}} \\ 
 
-Q2n &= \sqrt{ \sum_{\text{blocks}} \left( \frac{2 \cdot \text{cov}(\mathbf{B}_{\text{gt}}, \mathbf{B}_{\text{pred}}) \cdot \gamma}{\sigma_{\text{gt}}^2 + \sigma_{\text{pred}}^2} \right)^2 }, \gamma = \frac{2 \cdot |\mu_{\text{gt}}| \cdot |\mu_{\text{pred}}|}{|\mu_{\text{gt}}|^2 + |\mu_{\text{pred}}|^2}
+D_s &= \underbrace{\frac{2\bar{x}\bar{y}}{(\bar{x}^2 + \bar{y}^2)}}_{\text{Luminance } L(x, y)} \cdot \underbrace{\frac{2\sigma_x \sigma_y}{(\sigma_x^2 + \sigma_y^2)}}_{\text{Contrast } C(x, y)} \cdot \underbrace{\frac{\sigma_{xy}}{\sigma_x \sigma_y}}_{\text{Structure } S(x, y)} \\
+&= \frac{4\sigma_{xy}\bar{x}\bar{y}}{(\sigma_x^2 + \sigma_y^2)(\bar{x}^2 + \bar{y}^2)}
 \end{aligned}
 \end{equation}
 $$
+
+1. 其中, $D_s$ 会逐patch计算取平均值
+
+2. $D_{\lambda}^k$用了超复数模计算，全部算均值，没有方差
+
+3. **HQNR**
+
+- $I_{fuse} \otimes k$跟$LMS$比$D_{\lambda}^k$
+
+- $I_{fuse} \otimes k$跟$LMS$比Q Index; $PAN$下采样再上采样，跟$LMS$比Q Index
+
+- 两个Q Index相差取绝对值就是$D_s$
 
 ### Loss Functions
 
