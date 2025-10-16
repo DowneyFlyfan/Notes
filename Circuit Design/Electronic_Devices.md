@@ -9,6 +9,20 @@ tags:
 
 ## CMOS (Metal-Oxide-Semiconductor)
 
+1. Diffusion Capacitance & Elmore Delay
+
+- PUN / PDN (Pull-Up/Down Network) is modeled as RC Ladder to **greatly simplify** the circuit analysis
+
+$$
+\begin{equation}
+\begin{aligned}
+C_d &= \frac{dQ}{dV} \\
+&\approx \tau \frac{dI}{dV} \\
+&= \tau g_d
+\end{aligned}
+\end{equation}
+$$
+
 ### Structure
 
 ![](./imgs/Devices/NMOS.png)
@@ -77,56 +91,18 @@ NMOS (N-type Metal-Oxide-Semiconductor) transistors have higher conductivity com
 
 # Diodes
 
-## Shockley Equation
-
-The Shockley diode equation is a fundamental model that describes the current-voltage relationship in p-n junction diodes, crucial for understanding their behavior in electronic circuits.
-
-The Shockley diode equation is a fundamental model that describes the current-voltage relationship in p-n junction diodes, crucial for understanding their behavior in electronic circuits.
-
-**Definition:** The Shockley diode equation models the current-voltage (I-V) characteristic of an ideal p-n junction diode in either forward or reverse bias.
-
-**Formula:** The Shockley diode equation is given by:
+## Shockley Diode
 
 $$
-I = I_S \left( e^{\frac{V_D}{n V_T}} - 1 \right)
+\begin{equation}
+\begin{aligned}
+I = I_S (e^{\dfrac{V_D}{nV_T}} - 1)
+\end{aligned}
+\end{equation}
 $$
 
-Where:
-*   $I$: Diode current
-*   $I_S$: Reverse saturation current (or scale current), constant for a given temperature and diode.
-*   $V_D$: Voltage across the diode (positive for forward bias, negative for reverse bias).
-*   $n$: Ideality factor (or quality factor), typically ranging from 1 to 2, depending on the fabrication process and material.
-*   $V_T$: Thermal voltage.
-
-**Thermal Voltage ($V_T$):**
-
-$$
-V_T = \frac{kT}{q}
-$$
-
-Where:
-*   $k$: Boltzmann's constant ($1.38 \times 10^{-23}$ J/K)
-*   $T$: Absolute temperature in Kelvin
-*   $q$: Magnitude of the elementary charge ($1.602 \times 10^{-19}$ C)
-
-### Induction (Simplified)
-
-The Shockley diode equation can be derived by considering the movement of charge carriers (electrons and holes) across the p-n junction under different biasing conditions:
-
-1.  **Carrier Movement:** In a p-n junction, current is due to both drift (movement under electric field) and diffusion (movement from high to low concentration) of charge carriers.
-
-2.  **Equilibrium (No Bias, $V_D = 0$):** At thermal equilibrium, the diffusion current of majority carriers (e.g., holes from p-side to n-side) is exactly balanced by the drift current of minority carriers (e.g., thermally generated holes in the n-side drifting to the p-side). The net current is zero.
-
-3.  **Forward Bias ($V_D > 0$):**
-    *   An applied forward voltage reduces the potential barrier across the depletion region.
-    *   This reduction allows a significant increase in the diffusion of majority carriers across the junction.
-    *   The diffusion current increases exponentially with the forward voltage.
-    *   The drift current (reverse saturation current) remains relatively constant, as it primarily depends on thermal generation, which is less affected by the applied voltage.
-    *   The net current is dominated by this increased diffusion current.
-
-4.  **Reverse Bias ($V_D < 0$):**
-    *   An applied reverse voltage increases the potential barrier.
-    *   This almost completely stops the diffusion of majority carriers.
-    *   The only significant current is the small, constant reverse saturation current, which is due to the drift of thermally generated minority carriers across the junction.
-
-5.  **Mathematical Basis:** The exponential term in the Shockley equation arises from the exponential relationship between the applied voltage and the excess minority carrier concentration at the edges of the depletion region. By integrating the diffusion current equations and summing the contributions from both electron and hole currents, the Shockley equation can be derived. The "-1" term accounts for the reverse saturation current, ensuring that when no voltage is applied ($V_D = 0$), the net current is zero.
+| Symbol | Description |
+|---|---|
+| $n$ | Quality factor: 1 (ideal) - 2 |
+| $V_T$ | Thermal Voltage ($V_T = \dfrac{kT}{q}$) |
+| $V_D$ | Diode voltage |

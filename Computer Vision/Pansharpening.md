@@ -128,7 +128,7 @@ PSNR &= 10 \frac{1}{BC}\sum_{i=1}^{BC} \lg \frac{1}{\dfrac{1}{HW}\sum_{j=1}^{HW}
 
 SAM &= \sum_{i=1}^{BHW} \cos^{-1}\Big[ \frac{\sum_{i=1}^C a \times b}{\sqrt{\sum_{i=1}^C a^2 \times \sum_{i=1}^C b^2}} \Big] \\ 
 
-ERGAS &= \frac{1}{B} \sum_{i=1}^B 100 \times ratio\times \sqrt{\sum_{j=1}^C\frac{\sum_{m=1}^{HW}(a-b)^2} {(\sum_{i=1}^{HW}a)^2} / channel} \\
+ERGAS &= \frac{1}{B} \sum_{i=1}^B \frac{100}{ratio} \times \sqrt{\sum_{j=1}^C\frac{\sum_{m=1}^{HW}(a-b)^2} {(\sum_{i=1}^{HW}a)^2} / channel} \\
 
 SSIM &= \frac{4(I_1 \otimes k)(I_2 \otimes k)[I_1I_2 \otimes k - (I_1 \otimes k)(I_2 \otimes k)]}{[(I_1 \otimes k)^2 + (I_2 \otimes k)^2] [I_1^2 \otimes k + I_2^2 \otimes k -(I_1 \otimes k)^2 - (I_2 \otimes k)^2]} \\ 
 
@@ -159,8 +159,8 @@ $$
 $$
 \begin{equation}
 \begin{aligned}
-QSE &= \sum_{i=1}^C\sqrt{\sum_{i=1}^{Bhw} \sqrt{\sum_{i=1}^{p^2} (patch_a-patch_b)^2}} \\ 
-PW-SAM &= \sum_{i=1}^{Bhw} \cos^{-1}\Big[ \sum_{i=1}^{p^2} \frac{\sum_{i=1}^C a \times b}{\sqrt{\sum_{i=1}^C a^2 \times \sum_{i=1}^C b^2}} \Big]
+QSE &= \sum_{i=1}^C\sqrt{\sum_{i=1}^{BHW} \sqrt{\sum_{i=1}^{p^2} (patch_a-patch_b)^2}} \\ 
+PW-SAM &= \sum_{i=1}^{BHW} \cos^{-1}\Big[  \frac{1}{p^2} \sum_{i=1}^{p^2} \frac{\sum_{i=1}^C a \times b}{\sqrt{\sum_{i=1}^C a^2 \times \sum_{i=1}^C b^2}} \Big]
 \end{aligned}
 \end{equation}
 $$

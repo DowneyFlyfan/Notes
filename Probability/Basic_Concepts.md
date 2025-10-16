@@ -132,7 +132,31 @@ $$
 
 ## LOTUS
 
+1. Definition 
+
 - Law of the Unconcious Statistians: Getting $E(Y)$ directly using $E(X)$
+
+2. Example
+
+- Taking 2 balls from (2 RED, 3 BLUE) with / without replacement
+
+- **Expectations are the same**
+
+- When without replacement, 2 positions that you pick up the balls are **symmetric**
+
+## Indicators
+
+$$
+\begin{equation}
+\begin{aligned}
+I_i &= \begin{cases}
+1 & Events \ Occurred \\
+0 & Otherwise
+\end{cases} \\
+E(X) &= E(\sum_{i}^{} I_i)
+\end{aligned}
+\end{equation}
+$$
 
 ## Properties
 
@@ -171,7 +195,17 @@ E(X + Y) &= E(X) + E(Y)
 \end{equation}
 $$
 
-### Variations, Standard Deviations
+3. Independence
+
+$$
+\begin{equation}
+\begin{aligned}
+X \perp \! \! \! \perp Y \xLeftrightarrow{} E(X)E(Y) = E(XY)
+\end{aligned}
+\end{equation}
+$$
+
+### Variations, Standard Deviations, Covariance
 
 1. Definitions
 
@@ -180,7 +214,8 @@ $$
 \begin{aligned}
 V(X) &= \sum_{i}^{} \big[ x_i - E(x_i) \big]^2 \\
 &= E(X^2) - E^2(X) \\
-\sigma_x &= \sqrt{V(X)}
+\sigma_x &= \sqrt{V(X)} \\
+Cov(X,Y) &= E(XY) - E(X) E(Y)
 \end{aligned}
 \end{equation}
 $$
@@ -191,7 +226,8 @@ $$
 \begin{equation}
 \begin{aligned}
 V(aX +b) &= a^2 V(X) \\
-\sigma(aX+b) &= |a| \sigma_x
+\sigma(aX+b) &= |a| \sigma_x \\
+X \perp \! \! \! \perp Y &\xLeftrightarrow{} V(X + Y) = V(X) + V(Y)
 \end{aligned}
 \end{equation}
 $$

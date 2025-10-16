@@ -17,6 +17,47 @@ tags:
 
 ![](./imgs/Gate_Circuits/NOR.png)
 
+# RLC Circuits
+
+1. Capacitance
+
+$$
+\begin{equation}
+\begin{aligned}
+C &= \frac{Q}{V} = I \frac{dV}{dt} \\
+&= \frac{\epsilon A}{d} \\
+X_c &= \frac{1}{\omega C}
+\end{aligned}
+\end{equation}
+$$
+
+2. Inductors
+
+$$
+\begin{equation}
+\begin{aligned}
+L &= \frac{N\Phi}{I} = -V \frac{dt}{dI} \\
+&= \frac{\mu N^2 A}{l} \\
+X_L &= \omega L
+\end{aligned}
+\end{equation}
+$$
+
+3. Resistance of Transistors
+
+$$
+\begin{equation}
+\begin{aligned}
+R &= \frac{V}{I} \\
+&= \frac{\rho L}{A} \\
+&= \frac{1}{k_n (V_{GS} - V_{th})} \\
+k_n &= \mu_n C_{ox} \frac{W}{L} 
+\end{aligned}
+\end{equation}
+$$
+
+- It sometimes is also refered as **electrical resistivity** $\rho(\Omega \cdot m)$ or **Resistance per ..** $\Omega / m$
+
 # Combinational Logic Circuits
 
 ## TriState Buffer
