@@ -34,18 +34,20 @@ $$
 | Location | Gate sidewall | In deep trenches on silicon substrate | Between or above polysilicon layers |
 | Process Key | Anisotropic etching | Trenching, filling, CMP | Oxidation or deposition |
 
+### Formulas
 
-### Why does NMOS has higher conductivity compared with PMOS
-
-NMOS (N-type Metal-Oxide-Semiconductor) transistors have higher conductivity compared to PMOS (P-type Metal-Oxide-Semiconductor) transistors primarily due to the difference in carrier mobility.
-
-- **Carrier Type**: NMOS transistors use electrons as charge carriers, while PMOS transistors use holes.
-
-- **Carrier Mobility**: Electrons in silicon have higher mobility than holes.
-
-- **Impact on Current**: Since current is directly proportional to carrier mobility (I = nqµEA, where n is carrier concentration, q is charge, µ is mobility, E is electric field, and A is cross-sectional area), higher electron mobility in NMOS devices leads to a larger current for a given applied voltage and device geometry. This translates to higher conductivity.
-
-2. Source and Drain are **identical**
+$$
+\begin{equation}
+\begin{aligned}
+I_{ds}=
+\begin{cases}
+0 & V_{gs}<V_t \quad \text{Cutoff} \\
+I_{dsat}\dfrac{V_{ds}}{V_{dsat}} = \beta(V_{GT} - \dfrac{V_{ds}}{2}) V_{ds} & V_{ds}<V_{dsat} \quad \text{Linear} \\
+I_{dsat} = \dfrac{\beta}{2} V_{GT}^2  & V_{ds}>V_{dsat} \quad \text{Saturation}
+\end{cases}
+\end{aligned}
+\end{equation}
+$$
 
 ## FinFET
 

@@ -158,22 +158,25 @@ E(X) &= E(\sum_{i}^{} I_i)
 \end{equation}
 $$
 
-## Properties
+# Properties of Random Variables
 
-### Min, Max
+## Min, Max, Median, Mode
 
 $$
 \begin{equation}
 \begin{aligned}
 x_{min} &= \min \lbrace x \in \Omega , p(x) \ge 0  \rbrace \\
 x_{max} &= \max \lbrace x \in \Omega , p(x) \ge 0  \rbrace \\
+P(x \ge x_{median}) &\ge \frac{1}{2}  \\
+P(x \le x_{median}) &\ge \frac{1}{2}  \\
+x_{mode} &= x: \big\{ \arg \max p(x) \big\}
 \end{aligned}
 \end{equation}
 $$
 
-### Expectation
+## Expectations
 
-1. Definitions for **General Space and Samples**
+### Definitions for General Space and Samples
 
 $$
 \begin{equation}
@@ -184,7 +187,7 @@ E(X) &= \sum_{i}^{} p(x_i) x_i , Formula\\
 \end{equation}
 $$
 
-2. Linearity
+### Linearity
 
 $$
 \begin{equation}
@@ -195,7 +198,7 @@ E(X + Y) &= E(X) + E(Y)
 \end{equation}
 $$
 
-3. Independence
+### Independence
 
 $$
 \begin{equation}
@@ -205,29 +208,53 @@ X \perp \! \! \! \perp Y \xLeftrightarrow{} E(X)E(Y) = E(XY)
 \end{equation}
 $$
 
-### Variations, Standard Deviations, Covariance
+## Variations, Standard Deviations
 
-1. Definitions
+### Definitions
 
 $$
 \begin{equation}
 \begin{aligned}
 V(X) &= \sum_{i}^{} \big[ x_i - E(x_i) \big]^2 \\
 &= E(X^2) - E^2(X) \\
-\sigma_x &= \sqrt{V(X)} \\
-Cov(X,Y) &= E(XY) - E(X) E(Y)
+\sigma_x &= \sqrt{V(X)}
 \end{aligned}
 \end{equation}
 $$
 
-2. Properties
+### Properties
 
 $$
 \begin{equation}
 \begin{aligned}
 V(aX +b) &= a^2 V(X) \\
 \sigma(aX+b) &= |a| \sigma_x \\
-X \perp \! \! \! \perp Y &\xLeftrightarrow{} V(X + Y) = V(X) + V(Y)
+X \perp \! \! \! \perp Y &\xLeftrightarrow{} V(X + Y) = V(X) + V(Y) \\
+\end{aligned}
+\end{equation}
+$$
+
+## Covaraiance, Correlation Coefficient
+
+### Definition
+
+$$
+\begin{equation}
+\begin{aligned}
+Cov(X,Y) &= E(XY) - E(X) E(Y) \\
+\rho_{X,Y} &= \frac{Cov(X,Y)}{\sigma_X \sigma_Y} 
+\end{aligned}
+\end{equation}
+$$
+
+### Properties
+
+$$
+\begin{equation}
+\begin{aligned}
+Cov(X, Y + Z) &= Cov(X, Y) + Cov(X, Z) \\
+V(X + Y) &= V(X) + V(Y) + 2Cov(X,Y) \\
+\rho(aX+b,cY+d) &= sign(ac) \rho_{X,Y}
 \end{aligned}
 \end{equation}
 $$
