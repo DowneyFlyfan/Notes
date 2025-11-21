@@ -85,8 +85,6 @@ $$
 
 ### $Gau \beta$
 
-- 使用Nyquist Gain获得MTF模糊核
-
 | Variable | Description |
 |---|---|
 | $r$ | ratio |
@@ -96,19 +94,42 @@ $$
 | $H_t$ | Time Response |
 | $FS$ | Frequency Shift |
 
+- For **Each Channel**
+
 $$
 \begin{equation}
 \begin{aligned} 
-\sigma &= \sqrt{-\frac{(N-1)^2}{8r^2 \ln G}} \\ 
+\sigma &= \sqrt{-\frac{(N-1)^2}{8r^2 \ln G}} = \frac{N-1}{2r} \sqrt{-\dfrac{1}{2 ln G} }   \\ 
 h &= e^{-\dfrac{x^2 + y^2}{2\sigma^2}} \rightarrow h = \frac{h}{\sum_{i=1}^{HW} h } \rightarrow h = \frac{h}{\max(h)} \\ 
 k &= \frac{I_0(\beta \sqrt{1 - \dfrac{4 n^2}{(N-1)^2}})}{I_0(\beta)}, -\frac{N-1}{2} \le n \le \frac{N-1}{2} \\ 
 H_t &= h \rightarrow rotate \ 180^0 \rightarrow FS \rightarrow rotate \ 180^0 \rightarrow IFFT \rightarrow FS \rightarrow rotate \ 180^0 \\ 
-& \rightarrow h \times k \rightarrow clip(0, max) \rightarrow \frac{H_t}{\sum_{i=1}^{HW} H_t}.real 
+& \rightarrow h \times k \rightarrow relu(h) \rightarrow \frac{H_t}{\sum_{i=1}^{HW} H_t}.real 
 \end{aligned}
 \end{equation}
 $$
 
 ## OMP(Orthogonal Match Pursuits)
+
+| Variable | Description |
+|---|---|
+| $y = y - MTF(y)$ | LRMS Detail |
+| $\widehat{P}$ | PAN histogram matched to LMS |
+| $D_h$ | $\widehat{P} - MTF(\widehat{P})$ |
+| $D_l$ | $MTF(D_h) ,4 \times \downarrow$ |
+| $X$ | HRMS |
+
+- Then $y, D_l, D_h$ are **patchified** with $stride=7 \times  ratio,overlap=4 \times ratio$
+
+```py
+for i in range(10):
+    res = y
+    D_li = min dist(res, D_l)
+    # get alpha by lstsq(D_l, y)[0]
+    # y (nc, hw) = D_l (nc, hw, i) alpha (nc, i) \\
+    res = y - D_l alpha
+```
+
+- Then, $X = D_h \alpha$
 
 # Indications \& Loss Functions
 

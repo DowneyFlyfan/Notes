@@ -1,5 +1,5 @@
 ---
-id: Basic_Circuits
+id: Combinational_Logic
 aliases: []
 tags:
   - Circuit

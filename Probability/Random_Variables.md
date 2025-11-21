@@ -1,5 +1,5 @@
 ---
-id: Basic_Concepts
+id: Random_Variables
 aliases: []
 tags:
   - Math
@@ -34,12 +34,13 @@ $$
 
 - For multiple events, $\mathcal{R} \times \mathcal{R} \xrightarrow{}  [0,1]$
 
-## Conditionals
+## Conditionals & Independence
 
 $$
 \begin{equation}
 \begin{aligned}
-P(F|E) &= \frac{P(EF)}{P(E)} , P(E) \neq 0
+P(F|E) &= \frac{P(EF)}{P(E)} , P(E) \neq 0 \\
+P(X) P(Y) &= P(XY) \xrightarrow{} X \perp \! \! \! \perp Y
 \end{aligned}
 \end{equation}
 $$
@@ -182,7 +183,9 @@ $$
 \begin{equation}
 \begin{aligned}
 E(X) &= \sum_{i}^{} p(x_i) x_i , Formula\\
-&= \sum_{i}^{} \Big[ \frac{p(x_i) n}{n} \Big] x_i, Samples
+&= \sum_{i}^{} \Big[ \frac{p(x_i) n}{n} \Big] x_i, Samples \\
+&= \
+HKsum_{i=1}^{\infty} P(X \ge i)
 \end{aligned}
 \end{equation}
 $$
@@ -258,14 +261,3 @@ V(X + Y) &= V(X) + V(Y) + 2Cov(X,Y) \\
 \end{aligned}
 \end{equation}
 $$
-
-# Important Distributions and Their Properties
-
-| Distribution Name | Type | Parameters | Formula | Expectation | Variance |
-|---|---|---|---|---|---|
-| Bernoulli | Discrete | $p$ | $P(X=k) = p^k (1-p)^{1-k}$ for $k \in \{0, 1\}$ | $p$ | $p(1-p)$ |
-| Binomial | Discrete | $n, p$ | $P(X=k) = \binom{n}{k} p^k (1-p)^{n-k}$ for $k \in \{0, 1, \dots, n\}$ | $np$ | $np(1-p)$ |
-| Poisson | Discrete | $\lambda$ | $P(X=k) = \frac{e^{-\lambda} \lambda^k}{k!}$ for $k \in \{0, 1, 2, \dots\}$ | $\lambda$ | $\lambda$ |
-| Uniform | Continuous | $a, b$ | $f(x) = \frac{1}{b-a}$ for $a \le x \le b$, and $0$ otherwise | $\frac{a+b}{2}$ | $\frac{(b-a)^2}{12}$ |
-| Exponential | Continuous | $\lambda$ | $f(x) = \lambda e^{-\lambda x}$ for $x \ge 0$, and $0$ otherwise | $\frac{1}{\lambda}$ | $\frac{1}{\lambda^2}$ |
-| Normal (Gaussian) | Continuous | $\mu, \sigma^2$ | $f(x) = \frac{1}{\sqrt{2\pi\sigma^2}} e^{-\frac{(x-\mu)^2}{2\sigma^2}}$ | $\mu$ | $\sigma^2$ |

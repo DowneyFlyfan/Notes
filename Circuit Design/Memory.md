@@ -4,186 +4,183 @@ aliases: []
 tags:
   - Circuit
 ---
-# 内存
 
-## 内存层级结构
+# Memory Hierarchy
 
-| 概念 | 定义 | 目的/作用 |
-| :------- | :----------------------------------------------------------- | :--------------------------------------------------------- |
-| **内存层次结构** | 由多种存储器组成的多级系统。 | 弥补处理器与主内存之间的速度差距，提高整体系统性能。 |
-| **缓存 (Cache)** | 位于处理器和主内存之间的小容量、高速存储器。 | 存储频繁访问的数据，加速数据获取。 |
-| **块 (Block/Line)** | 缓存与下一级存储器之间数据传输的最小单位（一组字）。 | 利用**空间局部性**，提高数据传输效率。 |
-| **标签 (Tag)** | 缓存块中用于标识其对应主内存地址的部分。 | 确定缓存块是否包含所需数据。 |
+## Memory Hierarchy for Devices
 
-## 内存寻址 (Memory Addressing)
+| Device | Memory Hierarchy |
+|---|---|
+| Phones | L1-L2-Disk |
+| PC | L1-L2-L3-Disk |
+| Server | L1-L2-L3-Disk/Flash |
 
-### 解释
+- As caches get bigger, their **staic power** and **dynamic power** are huge!!
 
-| 概念     | 描述                                                           | 注意事项                                                              |
-| :------- | :------------------------------------------------------------- | :-------------------------------------------------------------------- |
-| **字节寻址 (Byte Addressing)** | 所有指令集都支持，提供对字节 (8 bits)、半字 (16 bits)、字 (32 bits) 和双字 (64 bits) 的访问。 | -                                                                     |
-| **字节序 (Byte Order)** | **小端序 (Little Endian)**：低位字节存储在低地址。<br>**大端序 (Big Endian)**：高位字节存储在低地址。 | 在不同字节序的计算机之间交换数据时会成为问题。                      |
-| **对齐 (Alignment)** | 访问大于字节的对象通常需要对齐（`A mod s = 0`，其中 `A` 是地址，`s` 是对象大小）。 | 对齐访问通常比非对齐访问更快，非对齐可能需要多次内存引用。          |
+## Hierarchy Within Memories
+ 
+- Word -> Blocks(Labelled by **tag**) -> Set -> Set Associative -> Cache
 
-### 寻址模式 (Addressing Modes)
+- How do CPU index a word: Tag(For Set) -> Index (For Block) -> Block Offset (**Wrong!!!!**)
 
-| 寻址模式           | 描述                                                           | 典型用途                                     | 常见性/特点                                                      |
-| :----------------- | :------------------------------------------------------------- | :------------------------------------------- | :--------------------------------------------------------------- |
-| **寄存器寻址 (Register)** | 操作数的值已在寄存器中。                                       | 值在寄存器中的操作。                         | 非常常见。                                                       |
-| **立即数寻址 (Immediate)** | 操作数是一个常量值，直接包含在指令中。                         | 用于常量。                                   | 约四分之一的数据传输和 ALU 操作包含立即数。                     |
-| **位移寻址 (Displacement)** | 常量偏移量与基址寄存器 (base register) 内容相加形成有效地址。  | 访问局部变量。                               | 在程序中占主导地位；12-16 位位移字段常能覆盖 75%-99% 的位移。     |
-| **寄存器间接寻址 (Register Indirect)** | 寄存器中的内容是操作数的地址。                                 | 通过指针或计算出的地址访问。                 | 常见。                                                           |
-| **索引寻址 (Indexed)** | 基址寄存器内容与索引寄存器内容（可能乘以比例因子）相加形成地址。 | 用于数组寻址。                               | 常见。                                                           |
-| **直接或绝对寻址 (Direct or Absolute)** | 指令中包含操作数的完整内存地址。                             | 用于访问静态数据。                           | 地址常量可能需要很大。                                           |
-| **内存间接寻址 (Memory Indirect)** | 寄存器指向一个内存地址，该内存地址的内容是操作数的实际地址。     | 如果寄存器是指定指针 `p` 的地址，则该模式生成 `*p`。 | 相对不常见。                                                     |
-| **自增/自减寻址 (Autoincrement/Autodecrement)** | 访问操作数后，寄存器内容自动递增或递减。                       | 循环遍历数组，实现堆栈的 Push/Pop 操作。     | 某些架构支持，但在现代 RISC 架构中较少见（通常通过单独指令实现）。 |
-| **缩放寻址 (Scaled)** | 索引寄存器内容乘以一个比例因子（如数据项大小），然后与基址相加。 | 用于索引数组。                               | 常见于支持数组寻址的架构。                                       |
+|Concept | Definition|
+|---|---|
+|Fully Associative Set | 1 Set |
+|Direct-Mapped Cache | Each set has only 1 block |
+|n-way Associative Set | Each set has n blocks |
+|TLB(Translation Lookaside Buffer)| Tranlate between virtual and physical memory, a part of MMU(Memoery Management Unit)|
 
-## 缓存 (Bulk -> Set -> Block)
+## Efficiencies
 
-### 缓存块放置策略
+| Miss Rate Cause | Description |
+|---|---|
+| Compulsory | First time access must be missed (no data in cache) |
+| Capacity | Too many accesses, exceeding cache capacity |
+| Conflict |  |
 
-| 策略 | 描述 | 特点 | 优缺点 |
-| :----------- | :--------------------------------------------------------- | :--------------------------------------------------------- | :------------------------------------------------------- |
-| **直接映射 (Direct-Mapped)** | 每个主内存块只能映射到缓存中的一个固定位置。 | 每个组只包含一个块。映射规则简单，硬件实现容易。 | **优点**：命中判断和硬件实现简单。**缺点**：冲突缺失高。 |
-| **组相联 (Set Associative)** | 缓存分为多个组，每个主内存块映射到一个特定组，可在组内任意位置放置。 | 每个组包含 $n$ 个块（$n$ 路组相联）。平衡了直接映射和全相联。 | **优点**：降低冲突缺失，提高命中率。**缺点**：硬件复杂性增加，命中时间可能延长。 |
-| **全相联 (Fully Associative)** | 任何主内存块可以放置在缓存中的任意位置（整个缓存视为一个组）。 | 只有一个组，查找时需要并行比较所有标签。 | **优点**：冲突缺失最低，命中率最高。**缺点**：硬件复杂性极高，成本昂贵，只适用于小型缓存。 |
+$$
+\begin{equation}
+\begin{aligned}
+Access \ Time = Hit \ Time_{L1} \\
++ Miss \ Rate_{L1} (Miss \ Rate_{L2} * Miss \ Penalty_{L2} + Hit \ Time_{L2})
+\end{aligned}
+\end{equation}
+$$
 
----
+# Different Memories
 
-### 缓存写策略
+## DRAM
 
-| 策略 | 描述 | 数据一致性 | 性能影响 | 优缺点 |
-| :----------- | :----------------------------------------------------------- | :------------------------------------------------------------- | :----------------------------------------------------------- | :--------------------------------------------------------- |
-| **写直达 (Write-Through)** | 同时更新缓存和主内存中的数据。 | 实时保持缓存和主内存数据一致。 | 每次写入都需等待主内存操作完成，可能降低写入速度。 | **优点**：简单，数据一致性好。**缺点**：写入性能受限于主内存。 |
-| **写回 (Write-Back)** | 只更新缓存中的数据。当缓存块被替换时，才将其写回主内存。 | 缓存和主内存可能暂时不一致，需要额外的脏位（Dirty Bit）标记。 | 写入速度快，因为不需要每次都访问主内存。 | **优点**：写入性能高。**缺点**：数据一致性管理复杂，数据丢失风险（断电）。 |
-| **写缓冲 (Write Buffer)** | 介于缓存和内存之间的小型高速队列。 | 暂存写入操作，允许处理器更快继续执行，减少写操作的等待时间。 |
+### Operations and DRAM-Cell
 
----
+| Operation | Steps |
+|---|---|
+| Write | Activate **Word Line**, then write data using bitline |
+| Read | Charge Bitline to $V_{DD}/2$, then activate Word Line. **Sense Amplifier** amplifies the signal to determine **1** or **0**. Then write it back |
 
-### 缓存性能衡量指标
+![](./imgs/Memory/DRAM-Cell.png)
 
-| 指标 | 公式 | 描述|
-| :--------------- | :------------------------------------------------------- | :----------------------------------------------------------------------------------------------------------------------------- |
-| **缺失率 (Miss Rate)** | $\text{缺失率} = \dfrac{\text{缺失次数}}{\text{访问次数}}$ | 缓存访问中未命中数据的百分比。直观反映缓存的有效性，但未考虑缺失代价。 |
-| **每指令缺失数 (Misses Per Instruction)** | $\dfrac{\text{缺失数}}{\text{指令数}} = \text{缺失率} \times \dfrac{\text{内存访问数}}{\text{指令数}}$ | 每执行一条指令平均发生的缓存缺失次数。比缺失率更准确地反映缓存对程序执行时间的影响。 |
-| **平均内存访问时间 (AMAT)** | $\text{AMAT} = \text{命中时间} + \text{缺失率} \times \text{缺失代价}$ | 处理器平均每次访问内存所需的时间。最全面的缓存性能指标，直接影响程序执行时间。 |
-| **缺失代价/惩罚** (Missing Penalty) | $缺失代价 = 访问下一级内存延迟 + 数据传输时间$ | 若$L1$缓存缺失，L1就需要**访问L2**, 然后**取L2中的数据**, 以此类推 |
+### Other DRAMs
 
-### 缺失(3C + RW)
+| Concept | Description |
+|---|---|
+| DDR | Double Data Rate |
+| Multiple banks | Used to increase data rate |
+| RAS/CAS | Row/Column Access Strobe |
+| SDRAM | All reads are controlled by clock |
+| DIMM | Dual Inline Memory Modules |
+| PC3200 | 200MHz x 2 x 8bytes |
+| GDDR | Wider interface and higher clock frequency |
+| HBM | Embedded with processor |
 
-| 缺失类型/概念 | 描述 |
-| :------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **冲突缺失 (Conflict Miss)** | 由于缓存中不同数据块映射到同一个组（set）而导致的缺失 |
-| **容量缺失 (Capacity Miss)** | 当工作集（程序活动数据的大小）大于缓存的总容量时，即使是全相联缓存也会发生缺失。 |
-| **强制缺失 (Compulsory Miss) / 冷启动缺失 (Cold Start Miss)** | 首次访问某个数据块时发生的缺失。|
-| **读缺失 (Read Miss)** | 尝试从缓存中读取数据但数据不在缓存中时发生的缺失。 |
-| **写缺失 (Write Miss)** | 尝试向缓存中写入数据但数据不在缓存中时发生的缺失。(写是对已存在的数据进行更改)|
+## Flash
 
-### 缓存优化策略
+| Concept | Description |
+|---|---|
+| Cost/Speed | SRAM >> Flash > Disk |
+| Reading | Sequential, Slow! |
+| Volatility | Nonvolatile! No Power to save info!!! |
+| Overwriting | Must be erased before overwrite!! |
+| Wear Leveling | Write Leveling to use each block more fair!! (Each block can only be used 100,000 times) |
 
-| 策略 | 描述 | 优点 | 缺点/权衡 |
-| :----------------- | :----------------------------------------------------------- | :----------------------------------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **增大块大小** | 增加每次从主内存加载到缓存的数据量。 | 减少强制缺失，利用空间局部性。 | 增加缺失代价，缓存利用率下降；尽管可以降低强制缺失，但也可能增加容量/冲突缺失。 |
-| **增大缓存容量** | 增加缓存的总大小。 | 减少容量缺失。 | 增加命中时间、成本和功耗；但能降低容量缺失。 |
-| **提高相联度** | 增加每个组中的块数。 | 减少冲突缺失。 | 增加命中时间，增加硬件复杂性和功耗；但能降低冲突缺失。 |
-| **多级缓存** | 在处理器和主内存之间设置多层缓存 (L1, L2, L3)。 | L1 快，L2/L3 大，有效平衡速度和容量，降低平均内存访问时间。 | 增加复杂性；但能有效降低平均内存访问时间及总功耗。 |
-| **读缺失优先于写** | 在写缓冲中，优先处理读请求而不是写请求。 | 减少读缺失的延迟。 | 可能引入读写依赖（RAWHazard），需要检查写缓冲内容；但能降低读缺失代价。 |
-| **索引缓存时避免地址转换** | 使用虚拟地址的页偏移部分直接索引L1缓存，避免TLB(Translation Lookaside Buffer)查找。 | 减少命中时间。 | 系统复杂性增加，对L1缓存大小和结构有限制；但能降低命中时间。 |
+# Optimize Caches
 
-## 内存技术和优化
+## Ways and Cache Size
 
-### 核心内存技术对比
+- These images may vary according to different technologies!
 
-| 特性 / 技术 | **SRAM (Static Random-Access Memory)** | **DRAM (Dynamic Random-Access Memory)** | **Flash Memory (NAND)** | **相变存储器 (PCM)** |
-| :---------- | :------------------------------------- | :-------------------------------------- | :---------------------- | :------------------- |
-| **存储原理** | 双稳态触发器（6个晶体管）              | 电容存储电荷（1晶体管+1电容），需刷新   | 浮栅晶体管存储电荷      | 材料相变（电阻变化）   |
-| **易失性** | **易失**（断电丢失）                   | **易失**（断电丢失）                    | **非易失**（断电保留）  | **非易失**（断电保留） |
-| **速度** | **最快**（存取和周期时间接近）         | 较快（周期时间 > 存取时间，需刷新）     | 较慢（读微秒级，写更慢）| 读写快于Flash，写耐久性高 |
-| **成本** | **最高** | 中等                                    | 中等偏低                | 初期略高于Flash，有望降低 |
-| **密度** | **最低** | 最高                                    | 较高                    | 有望更高              |
-| **典型用途** | CPU 缓存 (L1, L2, L3)                  | 主内存 (Main Memory)                    | SSDs, 移动设备存储      | 新型非易失性存储，SSD前景 |
+![](./imgs/Memory/Energy-Cache_Size-Ways.png)
 
----
+![](./imgs/Memory/Access-Time-Cache-Size-Ways.png)
 
-### DRAM 技术特性与发展*
+- Way Prediction: Not suitable for pipelined access, but reduces power consumption
 
-| 特性/技术 | 描述                                                         | 目的/影响                                                    |
-| :-------- | :----------------------------------------------------------- | :----------------------------------------------------------- |
-| **动态性** | 存储电荷会随时间泄漏，即使通电也需**周期性刷新**以保持数据。 | 提高了存储密度和降低成本，但引入了刷新开销。                 |
-| **破坏性读取** | 读取操作会耗尽电容电荷，数据被破坏。                       | 读出后必须立即**写回原位**以恢复数据，增加了周期时间。       |
-| **地址复用** | 地址线分两次发送（RAS 行地址，CAS 列地址）。               | 减少了引脚数量，降低了芯片封装成本。                         |
-| **DRAM Banks** | DRAM 内部划分出多个独立的存储体。                          | 允许**并行或重叠访问**不同 Bank，提高并发性和带宽。           |
-| **SDRAM (Synchronous DRAM)** | 引入**时钟信号**同步操作，减少开销。                     | 提高数据传输效率，是现代DRAM的基础。                         |
-| **突发传输模式 (Burst Transfer)** | 一次激活后，可连续传输多个数据块而无需重新发送地址。     | 大幅提升**连续数据传输带宽**，用于缓存行填充等场景。         |
-| **DDR (Double Data Rate)** | 在时钟的上升沿和下降沿都传输数据。                         | 使**峰值数据传输速率翻倍**，显著提升带宽。DDR1-DDR4持续降低电压、提高频率。 |
-| **GDRAMs (Graphics DRAMs)** | 专为 GPU 设计，接口更宽 (32位)，数据引脚时钟更高。   | 满足 GPU 对**极致高带宽**的需求。                            |
-| **HBM (High Bandwidth Memory)** | **2.5D/3D 封装创新**，DRAM 芯片堆叠或嵌入在处理器同一封装内。 | **显著降低存取延迟，大幅增加带宽** (高达 TB/s 级别)，主要用于高端计算。 |
+## Multiple Banks, Pipeline Caches 
 
----
+- Use more banks to increase throughput
 
-### Flash Memory 特性与写入管理
+![](./imgs/Memory/Sequential_Interleaving.png)
 
-| 特性         | 描述                                                         | 对存储系统的影响                                             |
-| :----------- | :----------------------------------------------------------- | :----------------------------------------------------------- |
-| **非易失性** | 断电后数据不丢失。                                           | 适用于长期存储，如固态硬盘替代机械硬盘。                     |
-| **写入单位** | 必须以**块 (Block)** 为单位擦除，以**页 (Page)** 为单位写入。 | 无法字节级写入，写入操作复杂且慢。                           |
-| **写入前擦除** | 写入新数据前，对应块必须先被擦除。                           | 写入延迟增加，需要复杂的管理来避免频繁擦写。                 |
-| **写入寿命** | 每个块的擦写次数有限（通常10万次以上）。                   | 限制了Flash设备的整体寿命。                                  |
-| **磨损均衡 (Wear Leveling)** | 由 Flash 控制器管理，确保所有存储块被**均匀擦写**。 | **延长 Flash 存储设备的整体寿命**，防止某些块过早失效。      |
-| **垃圾回收 (Garbage Collection)** | 在后台将分散在无效块中的有效数据合并，然后擦除旧块。 | 配合磨损均衡，释放空间并为新的写入提供干净的块。             |
+- Pipeline **increases miss penalty**, but **increases throughput**
 
----
+## Others
 
-### 内存系统可靠性增强**
+| Concept | Description |
+|---|---|
+| Nonblocking Cache | Continue to load instructions while data is missed. So there will be "hit under miss", "miss under miss". Miss Status Handling Register(MSHR) is used once there is a miss. |
+| Critical Word First | Put Critical word at the beginning of transfer queue. When it arrives, the processor starts next execution. |
+| Early Restart | When the word we need arrives, the processor starts next execution. |
+|Compiler Techniques| Blockify Matrix, Row frist access|
+|instruction & data prefetch| - |
+|HBM as additional cache| - |
 
-| 错误类型           | 描述                                                       | 解决方案                                                   | Chipkill 的优势                                              |
-| :----------------- | :--------------------------------------------------------- | :--------------------------------------------------------- | :----------------------------------------------------------- |
-| **硬错误 (Hard Errors)** | 电路永久性改变导致的错误（如制造缺陷，单元失效）。     | 预留**备用行**（在制造阶段重映射缺陷行）。                 | Chipkill 针对**整个芯片失效**，超越备用行的修复粒度。       |
-| **软错误 (Soft Errors)** | 单元内容瞬时改变，电路未损坏（如宇宙射线干扰）。         | **奇偶校验位 (Parity)**：检测单比特错误。**错误纠正码 (ECC)**：检测双比特错误，纠正单比特错误。 | **Chipkill**：结合强大的 ECC，将数据和 ECC 信息**跨芯片分布**，可纠正**整颗芯片失效**导致的多位错误。 |
-| **Chipkill 技术** | 将数据和 ECC 信息分散存储到不同内存芯片，使用强 ECC 算法。 | 即使**单颗内存芯片完全失效**，也能通过算法**重建丢失数据**。 | 对于大规模服务器和数据中心而言，极大地降低了不可恢复错误率，是**高可靠性系统**的关键。 |
+# Virtual Memory & Virtual Machine Monitor(VMM)
 
----
+## Virtual Memory Protection
 
-## 缓存性能优化技术
+| Concept | Description |
+|---|---|
+| Page Transfer | Transfers pages between memory and disk. |
+| Process Sharing | Manages two processes sharing a single physical address space. |
+| Operating Modes | Distinguishes between OS (Kernel) mode and User mode. |
+| Access Control | Users can read and execute, but typically cannot write to OS memory in certain cases. |
+| Mode Transitions | Kernel to User and User to Kernel transitions; the Program Counter (PC) stops during transition and resumes normally upon returning to the OS. |
+| Memory Access Limits | Restricts memory access; only the OS can write pages, and each page has Read, Write, and Execute permissions along with process information. A process cannot access pages it is not assigned to. |
 
-| 优化类别 | 技术名称 | 描述 | 影响 | 复杂度 |
-| :----------- | :----------- | :----------- | :----------- | :----------- |
-| **减少命中时间** | 小型简单的一级缓存 | 限制L1缓存大小和降低关联度（尤其是直接映射），通过重叠标签检查和数据传输来减少命中时间，同时降低功耗。 | 命中时间：$\downarrow$，功耗：$\downarrow$ | 0 |
-| | 路预测 | 在缓存中存储额外预测位，提前设置多路复用器并并行执行标签比较和数据读取。预测正确则快速命中，错误则在一个周期后检查其他路。 | 命中时间：$\downarrow$ | 1 |
-| **增加带宽** | 流水线缓存和多体缓存 | 流水线化缓存访问以提高时钟频率（增加延迟），或将缓存划分为多个独立体以允许并行访问。 | 带宽：$\uparrow$ | 1 |
-| | 非阻塞缓存 | 允许缓存在发生缺失时，继续处理命中请求（缺失下命中），甚至可以重叠处理多个缺失（多重缺失下命中），从而减少处理器停顿时间。 | 带宽：$\uparrow$，缺失惩罚：$\downarrow$ | 3 |
-| **减少缺失惩罚** | 关键数据块优先和早期重启 | 当发生缺失时，优先从内存中请求并发送处理器立即需要的数据字，并允许处理器在整个数据块加载完成之前恢复执行。 | 缺失惩罚：$\downarrow$ | 2 |
-| | 合并写入缓冲区 | 将对连续内存地址的多次写入合并到写入缓冲区中的一个条目中，提高写入效率，减少因缓冲区满而导致的停顿。 | 缺失惩罚：$\downarrow$ | 1 |
-| **减少缺失率** | 编译器优化：循环交换 | 通过改变嵌套循环的顺序，使数据访问模式与内存布局对齐（如行主序），从而提高**空间局部性**，减少缓存缺失。 | 缺失率：$\downarrow$ | 0 |
-| | 编译器优化：分块 | 将大问题（如矩阵运算）分解为小块，使每个小块的数据能够完全放入缓存中并被重复使用，从而提高**时间局部性**，减少容量缺失和冲突缺失。 | 缺失率：$\downarrow$ | 0 |
-| **通过并行减少缺失惩罚或缺失率** | 硬件预取 | 由硬件自动将数据（通常是请求的块和下一个连续的块）预取到缓存或专门的缓冲区，以期在处理器请求之前可用。 | 缺失惩罚：$\downarrow$ 或 缺失率：$\downarrow$ (取决于预取时机)，功耗：$\uparrow$/$\downarrow$ (取决于预取有效性) | 2/3 |
-| | 编译器控制预取 | 编译器在代码中插入预取指令，显式请求数据加载到缓存中。通常需要非阻塞缓存支持，以允许在预取数据时处理器继续执行。 | 缺失惩罚：$\downarrow$ 或 缺失率：$\downarrow$ (取决于预取时机) | 3 |
-| **扩展内存层次结构** | HBM作为额外缓存层 | 将高带宽内存（HBM）用作大容量L4缓存，以提供比传统DRAM更快的访问速度。 | 命中时间：$\uparrow$/$\downarrow$ (取决于方案)，带宽：$\downarrow$，缺失惩罚：$\uparrow$，缺失率：$\uparrow$ | 3 |
-| **非阻塞缓存 (Non-blocking Cache)** | 缓存的一种行为特性，允许其在发生缺失时，仍能响应处理器对其他已在缓存中数据的请求，从而减少处理器停顿时间。 |
-| **多体缓存 (Multibanked Cache)** | 将整个缓存物理或逻辑上划分为多个独立的“体”，每个体可以独立访问，从而提高缓存的并行访问能力和带宽。 |
-| **关键数据块优先 (Critical Word First)**  和 **早期重启 (Early Restart)** | 缓存缺失时，优先传输并向处理器提供数据块中导致缺失的那个数据字，允许处理器在整个数据块加载完成前恢复执行。 |
+## VM Protection
 
-# 虚拟机和虚拟内存
+| Concept | Description |
+|---|---|
+| Hardware Host | The underlying physical machine running the VMs. |
+| Guest VMs | Virtual machines running on the hardware host. |
+| Java VMs | Run their own Instruction Set Architectures (ISAs), allowing operation across different platforms. |
+| System VMs | Guest VMs that run the same ISA as the host. |
+| Direct Execution | Ideal scenario where VM instructions run directly on hardware without translation for efficiency. |
+| Software Compatibility | VMs run all software exactly as the host OS does. |
+| Server Utilization | VMs enable a single PC or server to run multiple virtual machines, optimizing resource usage. |
+| VMM Control | The Virtual Machine Monitor (VMM) controls all VMs (which operate in User Mode) and ensures their separation for security and stability. |
 
-## 虚拟内存
+## ISA Support, Virtual Memory in VMMs
 
-| 概念名称 (中文/英文) | 定义/作用 | 主要实现机制 |
-| :----------------- | :-------- | :----------- |
-| **虚拟内存 (Virtual Memory)** | 一种内存管理技术，使应用程序认为它拥有连续的、私有的地址空间，而无需关心物理内存的实际布局。它将物理内存视为二级存储的缓存。 | **页表 (Page Table)**：将虚拟地址映射到物理地址；**TLB (Translation Lookaside Buffer)**：缓存页表条目以加速地址转换；**页面 (Page)**：虚拟内存和物理内存之间数据传输的基本单位。 |
-| **进程 (Process)** | 运行中的程序，包括其代码、数据和执行状态（如寄存器值、程序计数器等）。 | 操作系统为每个进程维护独立的**虚拟地址空间 (Virtual Address Space)**和**页表**。 |
-| **进程分离 (Process Separation)** | 确保不同进程之间内存和资源相互隔离，互不干扰，即使它们共享同一物理内存。 | 独立的虚拟地址空间；**内存保护 (Memory Protection)**：页表中的权限位（读/写/执行）；**特权级别 (Privilege Levels)**：用户模式与内核模式。 |
-| **上下文切换 (Context Switch)** | 操作系统从一个正在运行的进程切换到另一个进程，保存当前进程状态并加载新进程状态的过程。 | 由操作系统和硬件协同完成，涉及到寄存器、页表等状态的保存和恢复。 |
-| **局部性原理 (Principle of Locality)** | 程序在执行时倾向于访问最近访问过的数据和指令，以及与这些数据和指令在地址上相邻的数据和指令。 | **时间局部性 (Temporal Locality)**：近期访问过的数据很快再次访问；**空间局部性 (Spatial Locality)**：访问一个数据后，其附近的数据很快也会被访问。 |
-| **页错误 (Page Fault)** | 应用程序访问的虚拟页面不在物理内存中时发生的事件。 | 操作系统介入，将所需的页面从二级存储加载到物理内存中。 |
+| Concept | Description |
+|---|---|
+| **Virtualizable ISAs** | Some Instruction Set Architectures (ISAs) inherently support virtualization, simplifying VMM operations. |
+| **VMM Challenges (without ISA support)** | When an ISA lacks native virtualization support, the Virtual Machine Monitor (VMM) faces significant challenges in handling page modification requests from VMs. |
+| **Virtual Memory Translation (TLB Path)** | The translation process follows: Virtual Memory -> VM's TLB (copied from VMM) -> Real Memory -> VMM's TLB -> Physical Memory. |
+| **Virtual Memory Translation (Shadow Page Table)** | An alternative translation mechanism where Virtual Memory maps to Physical Memory via a Shadow Page Table. |
 
-## 虚拟机
+## Design of Memory Hierarchy
 
-| 概念名称 (中文/英文) | 定义/作用 | 关键特征/优势 |
-| :----------------- | :-------- | :------------ |
-| **虚拟机 (Virtual Machine, VM)** | 物理机器的高效、隔离的软件复制品，能够运行一个完整的操作系统实例。 | **隔离性 (Isolation)**：VM 之间互不干扰；**封装性 (Encapsulation)**：VM 状态可被保存、迁移和恢复；**兼容性**：可运行不同甚至旧版操作系统。 |
-| **虚拟化管理程序 (Virtual Machine Monitor, VMM) / Hypervisor (hypervisor)** | 支持和管理虚拟机的软件，是虚拟机技术的核心。 | 负责将虚拟资源映射到物理资源；通常比通用操作系统代码量小，因此更安全。 |
-| **类型-1 VMM (Type-1 Hypervisor) / 裸机式 VMM (Bare-Metal Hypervisor)** | 直接安装在物理硬件上，不依赖于任何主机操作系统的 VMM。 | **高性能**、**高隔离性**、**小可信计算基 (Smaller TCB)**；常见于服务器和数据中心。 |
-| **类型-2 VMM (Type-2 Hypervisor) / 宿主式 VMM (Hosted Hypervisor)** | 作为应用程序运行在现有操作系统之上的 VMM。 | **易于安装和使用**；常见于个人电脑 (PC) 和开发测试环境。 |
-| **半虚拟化 (Paravirtualization)** | 允许对客户机操作系统进行少量修改，使其“感知”到自己运行在 VMM 之上，从而提高性能和效率。 | 减少虚拟化开销，提高性能；VMM 与客户机操作系统之间协同工作。 |
-| **嵌套页表 (Nested Page Tables) / 两级地址转换 (Two-Level Address Translation)** | 就类型1而言, Virtual Address (OS) -> Real Address (VMM) -> Physical Address | 解决了在 VM 环境中虚拟内存管理的复杂性；现代处理器通常有硬件辅助加速。 |
+| Concept | Description |
+|---|---|
+| Write-Through | Writes data to both the cache and main memory (DRAM) simultaneously. (**Almost Abadaoned**) |
+| Write-Back | Writes data only to the cache; Data is written back to main memory only when it is replaced. |
+| Virtualization Computation | Virtualization should require minimal computational overhead. |
+| Interrupt Handling (VM/VMM) | Ideally, interrupts should be avoided; if an interrupt occurs, it should be delivered to the Virtual Machine (VM) rather than the Virtual Machine Monitor (VMM). |
+| Speculation | Executes instructions before their necessity is confirmed (e.g., branch prediction); incorrect predictions lead to significant performance penalties. |
+| Coherency of Cached Data | For I/O operations, use a memory buffer instead of the cache to avoid processor interruptions. |
+| I/O Data in Cache | If I/O data resides in the cache, invalidate the stale data in the cache before proceeding. |
+
+# Overall Hierarchy
+
+## Access Path of ARM CortexA53
+
+- VIPT(Virtual Memory, Physical Tag)
+
+1. Data Access Path
+
+![](./imgs/Memory/Data-Access-Path.png)
+
+2. Instruction Access Path
+
+![](./imgs/Memory/Instruction-Access-Path.png)
+
+- off-chip cache: very rare nowadays
+
+- LRU(Least-Recently Used): strategy for blocks to be replaced, like Not (Most) Recently Used, it takes $n \log n$ bits to store LRU in a set with $n$ blocks
+
+- Bniary Tree??
+
+- 
+
+
