@@ -77,7 +77,7 @@ $$
 | FO-h inverter | $d = h + 1$ |
 | Elmore delay | used in RC Trees with no Loops, starting from voltage source to each branch and node |
 
-# Logical Efforts
+# Delay
 
 ## Linear Delay Model
 
@@ -85,7 +85,7 @@ $$
 \begin{equation}
 \begin{aligned}
 d &= f (\text{effort}) + p(\text{parasitic} ) \\
-&= g(\text{logical effort} ) h(\text{Electrical effort} ) + p
+&= g(\text{logical effort} ) h(\text{electrical effort} ) + p
 \end{aligned}
 \end{equation}
 $$
@@ -93,7 +93,7 @@ $$
 | Parameter | Description |
 |---|---|
 | $d$ | Normalized delay of a gate |
-| $g$ | $C_{in-gate} / C_{in-inverter}$, in which the circuit and the inverter **delivers the same current (This is very important !!!)**, it describes the **complexity of the logic** |
+| $g$ | $C_{in-gate} / C_{in-inverter}$, in which the circuit and the inverter **delivers the same current (This is very important !!!)**, it describes the **complexity of the logic** and always is the **worst case** |
 |$h$|$C_{out}/C_{in}$. It is fan-out when **driver and loads are of same type**|
 | $p$ | delay of the gate when it **drives zero load**, roughly estimated by $C_{out-diff}/C_{inv}$, in which the circuit and the inverter **delivers the same current**. Or by **Elmore Delay** to be more accurate|
 
