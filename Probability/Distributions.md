@@ -1,20 +1,21 @@
 ---
 id: Distributions
 aliases: []
-tags: []
+tags:
+  - Math
 ---
 
-# Important Distributions and Their Properties
+# Important Distributions
 
 ## Table
 
 | Distribution Name | Type | Parameters | Formula | Expectation | Variance | Notes |
 |---|---|---|---|---|---|---|
 | Uniform | Continuous | $a, b$ | $f(x) = \dfrac{1}{b-a}$ for $a \le x \le b$, and $0$ otherwise | $\dfrac{a+b}{2}$ | $\dfrac{(b-a)^2}{12}$ | |
-| Geometric | Discrete | $p$ | $P(X=k) = (1-p)^{k-1}p$ for $k \in \{1, 2, 3, \dots\}$ | $\dfrac{1}{p}$ | $\dfrac{1-p}{p^2}$ | Memoryless property |
-| Hypergeometric | Discrete | $N, K, n$ | $P(X=k) = \dfrac{\binom{K}{k} \binom{N-K}{n-k}}{\binom{N}{n}}$ | $n\dfrac{K}{N}$ | $n\dfrac{K}{N}\dfrac{N-K}{N}\dfrac{N-n}{N-1}$ | Sampling without replacement |
 | Bernoulli $B_n$ | Discrete | $p$ | $P(X=k) = p^k (1-p)^{1-k}$ for $k \in \{0, 1\}$ | $p$ | $p(1-p)$ | |
 | Binomial $b_{p,n}(k)$ | Discrete | $n, p$ | $P(X=k) = \binom{n}{k} p^k (1-p)^{n-k}$ for $k \in \{0, 1, \dots, n\}$ | $np$ | $np(1-p)$ | Mode $\widehat{k} = \arg \max b_{p,n}(k)$ |
+| Geometric | Discrete | $p$ | $P(X=k) = (1-p)^{k-1}p$ for $k \in \{1, 2, 3, \dots\}$ | $\dfrac{1}{p}$ | $\dfrac{1-p}{p^2}$ | Memoryless property |
+| Hypergeometric | Discrete | $N, K, n$ | $P(X=k) = \dfrac{\binom{K}{k} \binom{N-K}{n-k}}{\binom{N}{n}}$ | $n\dfrac{K}{N}$ | $n\dfrac{K}{N}\dfrac{N-K}{N}\dfrac{N-n}{N-1}$ | Sampling without replacement |
 | Poisson | Discrete | $\lambda$ | $P(X=k) = \dfrac{e^{-\lambda} \lambda^k}{k!}$ for $k \in \{0, 1, 2, \dots\}$ | $\lambda$ | $\lambda$ | $F(x) = P(X \le x) = 1 - p^n$ |
 | Exponential | Continuous | $\lambda$ | $f(x) = \lambda e^{-\lambda x}$ for $x \ge 0$, and $0$ otherwise | $\dfrac{1}{\lambda}$ | $\dfrac{1}{\lambda^2}$ | |
 | Normal (Gaussian) | Continuous | $\mu, \sigma^2$ | $f(x) = \dfrac{1}{\sqrt{2\pi\sigma^2}} e^{-\dfrac{(x-\mu)^2}{2\sigma^2}}$ | $\mu$ | $\sigma^2$ | |
@@ -51,7 +52,25 @@ $$
 
 - It is Memoryless
 
-# Memoryless
+## Exponential
+
+## Normal
+
+$$
+\begin{equation}
+\begin{aligned}
+\text{Continuous Correction Factor } CCF = \frac{\Delta x}{2} 
+\end{aligned}
+\end{equation}
+$$
+
+- $\Delta x$ 是离散变量的最小间隔
+
+- $3 \sigma$ for Gaussian Distribution: 68.27%, 95.45%, 99.73%
+
+# Important Properties
+
+## Memoryless
 
 1. Definition & Property
 
@@ -66,18 +85,17 @@ E(X | X > n) &= \sum_{i=n+1}^{\infty } i P(X = i | X > n) \\
 \end{equation}
 $$
 
-2. $3 \sigma$ for Gaussian Distribution: 68.27%, 95.45%, 99.73%
-
-# Exponential
-
-# Normal
+## Gaussian Integral
 
 $$
 \begin{equation}
 \begin{aligned}
-\text{Continuous Correction Factor} CCF = \frac{\Delta x}{2} 
+I &= \int_{0}^{\infty}  e^{-a x^2} dx \\
+I^2 &= \iint_{0}^{\infty}  e^{-a (x^2 + y^2)} dx dy \\
+&= \int_{0}^{2 \pi} \int_{0}^{\infty}  e^{-ar^2} r dr d \theta \\
+&= 2 \pi \big[ - \frac{1}{2a} e^{-a r^2}  \big]_0^{\infty } \\
+&= \frac{\pi}{a} \\
+\therefore I &= \sqrt{\dfrac{\pi}{a} }
 \end{aligned}
 \end{equation}
 $$
-
-- $Delta x$ 是离散变量的最小间隔

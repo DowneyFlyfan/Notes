@@ -5,7 +5,7 @@ tags:
   - Math
 ---
 
-# Probability Space
+#  Probability Space
 
 ## Probability in the Space
 
@@ -34,13 +34,12 @@ $$
 
 - For multiple events, $\mathcal{R} \times \mathcal{R} \xrightarrow{}  [0,1]$
 
-## Conditionals & Independence
+## Conditionals
 
 $$
 \begin{equation}
 \begin{aligned}
-P(F|E) &= \frac{P(EF)}{P(E)} , P(E) \neq 0 \\
-P(X) P(Y) &= P(XY) \xrightarrow{} X \perp \! \! \! \perp Y
+P(F|E) &= \frac{P(EF)}{P(E)} , P(E) \neq 0
 \end{aligned}
 \end{equation}
 $$
@@ -133,26 +132,36 @@ $$
 
 ## LOTUS
 
-1. Definition 
+### Definition 
 
-- Law of the Unconcious Statistians: Getting $E(Y)$ directly using $E(X)$
+> Law of the Unconcious Statistians: Getting $E(Y)$ directly using $E(X)$
 
-2. Example
+### Examples
 
-- Taking 2 balls from (2 RED, 3 BLUE) with / without replacement
+1. Taking 2 balls from (2 RED, 3 BLUE) with / without replacement
 
-- **Expectations are the same**
+- **Expectations are the same**, because 2 selected positions are **symmetric**
 
-- When without replacement, 2 positions that you pick up the balls are **symmetric**
+2. Take 2 numbers w/wo replacement from $1,3,6$ and from a **2-digit number** 
 
-## Indicators
+- **Expectations are the same**, it can also be explained by the **Linearity of Expectations** $R = 10X + Y \xRightarrow{} E(R) = 10 E(X) + E(Y) = 40.33$
+
+3. **Runs**: For $n$ bits run. Each bit obeys $B_p$.
+
+- 1st number is a run. Different bit from previous $p(1-p) + (1-p)p$ is a run
+
+- Add them, you get $E(R) = 1 + 2(n-1) p(1-p)$
+
+## Indicator Methods
+
+> Core: The Linearity of Expectation goes beyond its independence.
 
 $$
 \begin{equation}
 \begin{aligned}
 I_i &= \begin{cases}
-1 & Events \ Occurred \\
-0 & Otherwise
+1 & \text{A Occurs}   \\
+0 & \text{A doesn't occur} 
 \end{cases} \\
 E(X) &= E(\sum_{i}^{} I_i)
 \end{aligned}
@@ -161,21 +170,7 @@ $$
 
 # Properties of Random Variables
 
-## Min, Max, Median, Mode
-
-$$
-\begin{equation}
-\begin{aligned}
-x_{min} &= \min \lbrace x \in \Omega , p(x) \ge 0  \rbrace \\
-x_{max} &= \max \lbrace x \in \Omega , p(x) \ge 0  \rbrace \\
-P(x \ge x_{median}) &\ge \frac{1}{2}  \\
-P(x \le x_{median}) &\ge \frac{1}{2}  \\
-x_{mode} &= x: \big\{ \arg \max p(x) \big\}
-\end{aligned}
-\end{equation}
-$$
-
-## Expectations
+## Expectation
 
 ### Definitions for General Space and Samples
 
@@ -195,8 +190,20 @@ $$
 $$
 \begin{equation}
 \begin{aligned}
-E(aX + b) &= aE(x) + b \\
-E(X + Y) &= E(X) + E(Y)
+E(\sum_{i}^{} a_i X_i + b ) &= \sum_{i}^{} a_i E(X_i) + b
+\end{aligned}
+\end{equation}
+$$
+
+1. 3 cards are randomly inserted in a circle made of a deck
+
+- The expected number of cards between them are ?
+
+$$
+\begin{equation}
+\begin{aligned}
+E(L_1 + L_2 + L_3) &= 52 \\
+E(L_1) &= E(L_2) = E(L_3) = \frac{52}{3}
 \end{aligned}
 \end{equation}
 $$
@@ -211,53 +218,54 @@ X \perp \! \! \! \perp Y \xLeftrightarrow{} E(X)E(Y) = E(XY)
 \end{equation}
 $$
 
-## Variations, Standard Deviations
-
-### Definitions
+## Min, Max, Median, Mode
 
 $$
 \begin{equation}
 \begin{aligned}
-V(X) &= \sum_{i}^{} \big[ x_i - E(x_i) \big]^2 \\
-&= E(X^2) - E^2(X) \\
-\sigma_x &= \sqrt{V(X)}
+x_{min} &= \min \lbrace x \in \Omega , p(x) \ge 0  \rbrace \\
+x_{max} &= \max \lbrace x \in \Omega , p(x) \ge 0  \rbrace \\
+P(x \ge x_{median}) &\ge \frac{1}{2}  \\
+P(x \le x_{median}) &\ge \frac{1}{2}  \\
+x_{mode} &= x: \big\{ \arg \max p(x) \big\}
 \end{aligned}
 \end{equation}
 $$
 
-### Properties
+## Independence & Correlation
+
+1. Independence
 
 $$
 \begin{equation}
 \begin{aligned}
-V(aX +b) &= a^2 V(X) \\
-\sigma(aX+b) &= |a| \sigma_x \\
-X \perp \! \! \! \perp Y &\xLeftrightarrow{} V(X + Y) = V(X) + V(Y) \\
+P(X \cap Y) &= P(X) P(Y)
 \end{aligned}
 \end{equation}
 $$
 
-## Covaraiance, Correlation Coefficient
-
-### Definition
 
 $$
 \begin{equation}
 \begin{aligned}
-Cov(X,Y) &= E(XY) - E(X) E(Y) \\
-\rho_{X,Y} &= \frac{Cov(X,Y)}{\sigma_X \sigma_Y} 
+E(XY) &= E(X) E(Y) \\
+V(X+Y) &= V(X) + V(Y)
 \end{aligned}
 \end{equation}
 $$
 
-### Properties
+2. Independence and Correlation
 
-$$
-\begin{equation}
-\begin{aligned}
-Cov(X, Y + Z) &= Cov(X, Y) + Cov(X, Z) \\
-V(X + Y) &= V(X) + V(Y) + 2Cov(X,Y) \\
-\rho(aX+b,cY+d) &= sign(ac) \rho_{X,Y}
-\end{aligned}
-\end{equation}
-$$
+- $X \perp \! \! \! \perp Y \implies Cov(X,Y) = 0$, but $Cov(X,Y) = 0 \not\implies X \perp \! \! \! \perp Y$
+
+## Variance & Standard Deviation & Covariance & Correlation Coefficient
+
+| Concept | Definition(s) | Properties |
+|---|---|---|
+| **Variance** | $V(X) = \sum_{i}^{} \big[ x_i - E(x_i) \big]^2$ $V(X) = E(X^2) - E^2(X)$ | $V(aX +b) = a^2 V(X)$, $V(X + Y) = V(X) + V(Y) + 2Cov(X,Y)$ |
+| **Standard Deviation** | $\sigma_x = \sqrt{V(X)}$ | $\sigma(aX+b) = \|a\| \sigma_x$ |
+| **Covariance** | $Cov(X,Y) = E[ (X - E(X)) (Y - E(Y)) ]$ $Cov(X,Y) = E(XY) - E(X) E(Y)$ | $Cov(X, Y + Z) = Cov(X, Y) + Cov(X, Z)$  |
+| **Covariance Matrix** | $\sum = \begin{pmatrix} Var(X) & Cov(X,Y) \\ Cov(Y, X) & Var(Y) \end{pmatrix}$ | - |
+| **Correlation Coefficient** | $\rho_{X,Y} = \dfrac{Cov(X,Y)}{\sigma_X \sigma_Y}$ | $\rho(aX+b,cY+d) = sign(ac) \rho_{X,Y}$ |
+
+
