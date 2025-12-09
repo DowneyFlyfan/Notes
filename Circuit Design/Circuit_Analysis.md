@@ -114,8 +114,6 @@ $$
 | $H$ | Path Electrical Efforts | $H = \dfrac{C_{out-path}}{C_{in-path}}$ (Uncommon: $\sum_{i}^{} h_i$) |
 | $B$ | Path Branching Efforts | $B = \sum_{i}^{} b_i, b = \dfrac{C_{in-path}}{C_{in-path} + C_{off-path}}$ |
 
-### Path Effort Delay
-
 $$
 \begin{equation}
 \begin{aligned}
@@ -130,7 +128,7 @@ $$
 
 ### Minimum Delay
 
-- Delay is minimumed when **each stage bears same efforts**
+- Delay is minimized when **each stage bears same efforts**
 
 $$
 \begin{equation}

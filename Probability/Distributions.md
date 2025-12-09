@@ -15,7 +15,6 @@ tags:
 | Bernoulli $B_n$ | Discrete | $p$ | $P(X=k) = p^k (1-p)^{1-k}$ for $k \in \{0, 1\}$ | $p$ | $p(1-p)$ | |
 | Binomial $b_{p,n}(k)$ | Discrete | $n, p$ | $P(X=k) = \binom{n}{k} p^k (1-p)^{n-k}$ for $k \in \{0, 1, \dots, n\}$ | $np$ | $np(1-p)$ | Mode $\widehat{k} = \arg \max b_{p,n}(k)$ |
 | Geometric | Discrete | $p$ | $P(X=k) = (1-p)^{k-1}p$ for $k \in \{1, 2, 3, \dots\}$ | $\dfrac{1}{p}$ | $\dfrac{1-p}{p^2}$ | Memoryless property |
-| Hypergeometric | Discrete | $N, K, n$ | $P(X=k) = \dfrac{\binom{K}{k} \binom{N-K}{n-k}}{\binom{N}{n}}$ | $n\dfrac{K}{N}$ | $n\dfrac{K}{N}\dfrac{N-K}{N}\dfrac{N-n}{N-1}$ | Sampling without replacement |
 | Poisson | Discrete | $\lambda$ | $P(X=k) = \dfrac{e^{-\lambda} \lambda^k}{k!}$ for $k \in \{0, 1, 2, \dots\}$ | $\lambda$ | $\lambda$ | $F(x) = P(X \le x) = 1 - p^n$ |
 | Exponential | Continuous | $\lambda$ | $f(x) = \lambda e^{-\lambda x}$ for $x \ge 0$, and $0$ otherwise | $\dfrac{1}{\lambda}$ | $\dfrac{1}{\lambda^2}$ | |
 | Normal (Gaussian) | Continuous | $\mu, \sigma^2$ | $f(x) = \dfrac{1}{\sqrt{2\pi\sigma^2}} e^{-\dfrac{(x-\mu)^2}{2\sigma^2}}$ | $\mu$ | $\sigma^2$ | |
@@ -38,21 +37,69 @@ $$
 
 ## Geometric Distribution
 
-- 两人先后掷骰子，第一个掷出某个面的人赢. 不管骰子有多少面, 先手胜率都更大(奇数多一次)
+### Examples
+
+- Roll a Die
+
+> Two people take turns rolling a die; the first to roll a specific face wins. Regardless of the number of faces, the first player has a higher win rate.
 
 $$
 \begin{equation}
 \begin{aligned}
 P(odd) &= \sum_{i=1}^{\infty} P(X = 2i-1) \\
 &= p (1 + q^2 +...) \\ 
-&= \frac{1}{2-p} \gt p
+&= \frac{1}{2-p} \gt \frac{1}{2} 
 \end{aligned}
 \end{equation}
 $$
 
-- It is Memoryless
+- NASA Mishap
+
+> $p$ is the mishap probability for each launch. After 10 launches, what is the probability of a mishap
+
+$$
+\begin{equation}
+\begin{aligned}
+P(x=n) &= p(1-p)^{n-1} \\
+\frac{dP}{dp} &= (1-p)^{n-1} + p(n-1)(1-p)^{n-2} \\
+&= (1-np) (1-p)^{n-2} \\
+\therefore p &= \frac{1}{n}  \\
+\therefore \max(P(x=n)) &= \frac{(1 - 1/n)^n}{n-1} \lesssim \frac{1}{e(n-1)}
+\end{aligned}
+\end{equation}
+$$
+
+### Old & New Money
+
+- Old Dad funds $n$ companies
+
+$$
+\begin{equation}
+\begin{aligned}
+X &\sim G_{0.2} \\
+\therefore P(Success) &= P(X \le n) \\
+&= 1 - (0.8)^n \\
+E(X) &= 5
+\end{aligned}
+\end{equation}
+$$
+
+- New Dad funds **infinite** companies, keeps $2^X$ fraction of the company
+
+$$
+\begin{equation}
+\begin{aligned}
+X &\sim G_{0.2} \\
+P(Success) &= \sum_{i=0}^{\infty} P_i = 1 \\
+E(X) &= \sum_{i=0}^{\infty} r^i P(X=k) \\
+&= \frac{rp}{1 - (1-p)r} 
+\end{aligned}
+\end{equation}
+$$
 
 ## Exponential
+
+
 
 ## Normal
 
@@ -72,8 +119,6 @@ $$
 
 ## Memoryless
 
-1. Definition & Property
-
 $$
 \begin{equation}
 \begin{aligned}
@@ -84,6 +129,8 @@ E(X | X > n) &= \sum_{i=n+1}^{\infty } i P(X = i | X > n) \\
 \end{aligned}
 \end{equation}
 $$
+
+- Experiment Time has to be $\ge 1$
 
 ## Gaussian Integral
 

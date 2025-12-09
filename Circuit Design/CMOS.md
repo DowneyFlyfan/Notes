@@ -5,6 +5,47 @@ tags:
   - Circuit
 ---
 
+# RLC Circuits
+
+1. Capacitance
+
+$$
+\begin{equation}
+\begin{aligned}
+C &= \frac{Q}{V} = I \frac{dV}{dt} \\
+&= \frac{\epsilon A}{d} \\
+X_c &= \frac{1}{\omega C}
+\end{aligned}
+\end{equation}
+$$
+
+2. Inductors
+
+$$
+\begin{equation}
+\begin{aligned}
+L &= \frac{N\Phi}{I} = -V \frac{dt}{dI} \\
+&= \frac{\mu N^2 A}{l} \\
+X_L &= \omega L
+\end{aligned}
+\end{equation}
+$$
+
+3. Resistance of Transistors
+
+$$
+\begin{equation}
+\begin{aligned}
+R &= \frac{V}{I} \\
+&= \frac{\rho L}{A} \\
+&= \frac{1}{k_n (V_{GS} - V_{th})} \\
+k_n &= \mu_n C_{ox} \frac{W}{L} 
+\end{aligned}
+\end{equation}
+$$
+
+- It sometimes is also refered as **electrical resistivity** $\rho(\Omega \cdot m)$ or **Resistance per ..** $\Omega / m$
+
 # CMOS Structure, Long-Channel Model
 
 ## Structure
@@ -124,10 +165,12 @@ $$
 
 ## Mobility Degradation & Velocity Saturation
 
+### Explanation
+
 | Phenomenon             | Description                                                                                                                                                                                               |
 | :--------------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Mobility Degradation   | When fields are very large, more carriers collide with $SiO_2$ because of quantum mechanics, reducing mobility.                                                                                             |
-| Velocity Saturation    | When velocity is very high, more carriers hit silicon, reducing velocity.                                                                                                                                 |
+| Velocity Saturation    | When velocity is very high, more carriers hit **silicon atoms**, reducing velocity.                                                                                                                                 |
 
 ### Empirical Formula for **effective mobility**
 
@@ -140,7 +183,7 @@ $$
 \end{equation}
 $$
 
-### velocity formulas
+### Velocity formulas
 
 ![](./imgs/Devices/v-E.png)
 
@@ -161,8 +204,8 @@ $$
 $$
 \begin{equation}
 \begin{aligned}
-I_{ds} &= \begin{cases} \dfrac{\mu_{eff} \frac{W}{L} C_{ox} (V_{GT} - V_{ds}/2) V_{ds}}{1 + \dfrac{V_{ds}}{V_{sat}}} & V_{ds} < V_{sat} \quad \text{Linear} \\ 
-C_{ox} W (V_{GT} - V_{dsat}) V_{sat} & V_{ds} > V_{dsat} \quad \text{Saturation} \end{cases} \\
+I_{ds} &= \begin{cases} \dfrac{\mu_{eff} \frac{W}{L} C_{ox} (V_{GT} - V_{ds}/2) V_{ds}}{1 + \dfrac{V_{ds}}{V_{c}}} & V_{ds} < V_{sat} \quad \text{Linear} \\ 
+C_{ox} W (V_{GT} - V_{dsat}) v_{sat} & V_{ds} > V_{dsat} \quad \text{Saturation} \end{cases} \\
 I_{ds} &= \begin{cases} 0 & V_{gs} < V_t \quad \text{Cutoff} \\ I_{dsat} \frac{V_{ds}}{V_{dsat}} & V_{ds} < V_{dsat} \quad \text{Linear} \\ I_{dsat} & V_{ds} > V_{dsat} \quad \text{Saturation} \end{cases}
 \end{aligned}
 \end{equation}
@@ -268,3 +311,16 @@ $$
 - $I_{off}$ is the current when $V_{ds} = V_{DD}, V_{gs} = 0$
 
 ### To be continued...
+
+# Noise Margin
+
+![](./imgs/Devices/Noise_Margin_Definition.png)
+
+$$
+\begin{equation}
+\begin{aligned}
+NM_H &= V_{OH} - V_{IH} \\
+NM_L &= V_{OL} - V_{IL}
+\end{aligned}
+\end{equation}
+$$
