@@ -5,7 +5,7 @@ tags:
   - Math
 ---
 
-#  Probability Space
+# Probability Space
 
 ## Probability in the Space
 
@@ -106,35 +106,50 @@ $$
 
 # Random Variables
 
-## Distribution of Probabilities
+## Probability, PMF, PDF, CDF, Right CDF
+
+### CDF to PMF
 
 $$
 \begin{equation}
 \begin{aligned}
-P(Y = y) &= P(X = g^{-1}(Y))
+F(a \lt X \le b) &= F(b) - F(a)
 \end{aligned}
 \end{equation}
 $$
 
-- Constant $g$
+### PDF transformation
 
 $$
 \begin{equation}
 \begin{aligned}
-P(Y = a) &= P(X = g^{-1}(a)) = P(X \in \Omega) = 1
+P_Y(Y = y) &= \begin{cases}
+P_X(X = g^{-1}(Y)) & 1-1 \ map \\
+\sum_{x \in g^{-1}(y)}^{} P_X(x) & general
+\end{cases} \\
+f_Y(y) &= \frac{f_X(x)}{|g'(x)|} \Big|_{x = g^{-1}(y)}
 \end{aligned}
 \end{equation}
 $$
 
-## CDF, Right CDF, PDF, PMF
+### Square Mapping
 
-- interval , disjoint probabilities
+$$
+\begin{equation}
+\begin{aligned}
+f_X(x) &= \frac{1}{4}, -2 \le x \le 2 \\
+y &= g(x) = x^2 \\
+f_Y(y) &= \frac{\dfrac{1}{4} }{|2x| } \Big|_{x = \pm \sqrt{y} } \\
+&= \frac{4}{\sqrt{y}} 
+\end{aligned}
+\end{equation}
+$$
 
 ## LOTUS
 
 ### Definition 
 
-> Law of the Unconcious Statistians: Getting $E(Y)$ directly using $E(X)$
+> Law of The Unconcious Statistians: Getting $E(Y)$ directly using $E(X)$
 
 ### Examples
 
@@ -179,8 +194,7 @@ $$
 \begin{aligned}
 E(X) &= \sum_{i}^{} p(x_i) x_i , Formula\\
 &= \sum_{i}^{} \Big[ \frac{p(x_i) n}{n} \Big] x_i, Samples \\
-&= \
-HKsum_{i=1}^{\infty} P(X \ge i)
+E(g(X)) &= \int_{0}^{\infty} g(x) f(x) dx
 \end{aligned}
 \end{equation}
 $$
@@ -267,3 +281,34 @@ $$
 | **Covariance** | $Cov(X,Y) = E[ (X - E(X)) (Y - E(Y)) ]$ $Cov(X,Y) = E(XY) - E(X) E(Y)$ | $Cov(X, Y + Z) = Cov(X, Y) + Cov(X, Z)$  |
 | **Covariance Matrix** | $\sum = \begin{pmatrix} Var(X) & Cov(X,Y) \\ Cov(Y, X) & Var(Y) \end{pmatrix}$ | - |
 | **Correlation Coefficient** | $\rho_{X,Y} = \dfrac{Cov(X,Y)}{\sigma_X \sigma_Y}$ | $\rho(aX+b,cY+d) = sign(ac) \rho_{X,Y}$ |
+
+# Bivariant
+
+## pdf, cdf
+
+### Find pdf
+
+- For constant
+
+$$
+\begin{equation}
+\begin{aligned}
+f(x,y) &= c \\
+1 &= \iint_{(x,y) \in \Omega }^{}  c dxdy \\
+\therefore c &=  \frac{1}{Area(\Omega )} 
+\end{aligned}
+\end{equation}
+$$
+
+- Other cases
+
+$$
+\begin{equation}
+\begin{aligned}
+f(x,y) &= f(x) f(y), \text{Independent}  \\
+f(y|x) &= f(x,y) / f(x) \\
+f(y) &= \int_{}^{} f(x) f(y|x) dx \\
+f_Z(z = x +y) &= \int_{}^{}  f(x, z-x) dx
+\end{aligned}
+\end{equation}
+$$

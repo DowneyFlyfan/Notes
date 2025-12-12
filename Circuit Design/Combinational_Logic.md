@@ -293,7 +293,20 @@ A - B &= A + B' + 1
 \end{equation}
 $$
 
-## Multiple-Input Adder
+## Multiple-Input Addition
+
+![](./imgs/Combinational_Logic/Multiple-Input-Adder.png)
+
+> A typical $[3:2]$ Carry-Save Adder
+
+$$
+\begin{equation}
+\begin{aligned}
+\text{From (c)}  \\
+X + Y + Z &= S + 2C
+\end{aligned}
+\end{equation}
+$$
 
 # One/Zero Detector
 
