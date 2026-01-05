@@ -68,7 +68,7 @@ $$
 \begin{equation}
 \begin{aligned}
 \frac{d}{dt}p_t(x) &= \int \left(\frac{d}{dt}p_t(x|x_1)\right)q(x_1)dx_1 \\
-&= -\int \text{div}\left(u_t(x|x_1)p_t(x|x_1)\right)q(x_1)dx_1 \\
+&= -\int \text{div} \left(u_t(x|x_1)p_t(x|x_1)\right)q(x_1)dx_1 \\
 &= -\text{div}\left(\int u_t(x|x_1)p_t(x|x_1)q(x_1)dx_1\right) \\
 &= -\text{div}\left(u_t(x)p_t(x)\right) \\
 \therefore u_t(x) &= \frac{\int u_t(x|x_1)p_t(x|x_1)q(x_1)dx_1}{p_t(x)} 

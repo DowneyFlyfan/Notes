@@ -88,6 +88,76 @@ L(b) &= \frac{P(Y_1 =b_1 | X =0) P(Y_2=b_2 | X = 0) ... }{P(Y_1 =b_1 | X =1) P(Y
 U &\overset{\hat{X}=0}{\underset{\hat{X}=1}{\gtreqqless}}V, \alpha  = \frac{1}{2}  
 \end{aligned}
 \end{equation}
-- [ ] $$
+$$
 
 ### Evaluation (To be Continued)
+
+# Bit Error Rate (BER)
+
+## With Addition White Gaussian Noise (AWGN)
+
+$$
+\begin{equation}
+\begin{aligned}
+r &= s + w
+\end{aligned}
+\end{equation}
+$$
+
+## BPSK (Binary Phase Shift Keying)
+
+![](./imgs/Transimission/pdf-BPSK-AWGN.png)
+
+> Error Function (Complement): Gaussian Distribution in positive domain where the area is $1$
+
+$$
+\begin{equation}
+\begin{aligned}
+erf(x) &= \sqrt{\frac{2}{\pi} } \int_{0}^{x} e^{ -t^2 } dt \\
+erfc(x) &= 1 - erf(x) =\sqrt{\frac{2}{\pi} } \int_{x}^{\infty} e^{-t^2 } dt \\
+erfc(0) &= 1
+\end{aligned}
+\end{equation}
+$$
+
+> BER
+
+- AWGN, Input Signal
+
+$$
+\begin{equation}
+\begin{aligned}
+w &\sim \mathcal{N}(0, \sqrt{\frac{N_0}{2} }) \\
+s = \pm \sqrt{E_b}
+\end{aligned}
+\end{equation}
+$$
+
+- BER
+
+$$
+\begin{equation}
+\begin{aligned}
+p(r|s_1) &= \frac{1}{\sqrt{\pi N_0}}  e^{-\dfrac{(r-\sqrt{E_b})^2}{ N_0} } \\
+p(r|s_0) &= \frac{1}{\sqrt{\pi N_o}}  e^{-\dfrac{(r+\sqrt{E_b})^2}{N_0} } \\
+p(e|s_1) &= \int_{- \infty }^{0}  p(r|s_1) dr \\
+&= \frac{1}{\sqrt{\pi}} \int_{\sqrt{\dfrac{E_b}{N_0} }}^{\infty } e^{-z^2 } dz \ \ ( z^2 = \frac{(e-\sqrt{E_b})^2}{N_0} ) \\
+&= \frac{1}{2} erfc( \sqrt{\frac{E_b}{N_0} }) \\
+p(e|s_0)&= \frac{1}{2} erfc( \sqrt{\frac{E_b}{N_0} }) \\
+\therefore P_b &= p(e|s_0) p(s_0) + p(e|s_1) p(s_1) \\
+&= \frac{1}{2} erfc( \sqrt{\frac{E_b}{N_0} })
+\end{aligned}
+\end{equation}
+$$
+
+## Quadrature Phase Shift Keying (QPSK)
+
+![](./imgs/Transimission/Constellation_QPSK.png)
+
+$$
+\begin{equation}
+\begin{aligned}
+
+\end{aligned}
+\end{equation}
+$$

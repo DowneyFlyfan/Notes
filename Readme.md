@@ -34,8 +34,6 @@ tags: []
 
 - Store/Load = Memory Reference
 
-- 
-
 | Role/Area | Description |
 |---|---|
 | CAD Tooling | Develops CAD tools and integrates software. |
@@ -45,4 +43,3 @@ tags: []
 | Verification | Ensures functional correctness of hardware. |
 | Implementation | Handles physical chip realization (synthesis, layout, timing). |
 
-- Probability Model for BPSK & QPSK
