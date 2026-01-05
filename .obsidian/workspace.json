@@ -1,0 +1,260 @@
+{
+  "main": {
+    "id": "1dab07a942cba790",
+    "type": "split",
+    "children": [
+      {
+        "id": "0253cacb9ce9d714",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "b0e2761310cef414",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Signal & Systems/LTI-Systems.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "LTI-Systems"
+            }
+          },
+          {
+            "id": "89a5ee7858ed81b5",
+            "type": "leaf",
+            "state": {
+              "type": "release-notes",
+              "state": {
+                "currentVersion": "1.9.12"
+              },
+              "icon": "lucide-book-up",
+              "title": "版本说明 1.9.12"
+            }
+          },
+          {
+            "id": "ad41be88a863d04e",
+            "type": "leaf",
+            "state": {
+              "type": "image",
+              "state": {
+                "file": "AI/imgs/CANConv.png"
+              },
+              "icon": "lucide-image",
+              "title": "CANConv"
+            }
+          }
+        ],
+        "currentTab": 2
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "b7014c9ff24b25d6",
+    "type": "split",
+    "children": [
+      {
+        "id": "a80de655ea3a9022",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "5dcffe679286efe6",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "文件列表"
+            }
+          },
+          {
+            "id": "e4b9e2b3f267d36f",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "搜索"
+            }
+          },
+          {
+            "id": "3c89343662aab64e",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "书签"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "21abb46f8117d005",
+    "type": "split",
+    "children": [
+      {
+        "id": "6d6ebdb3097d18af",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "7676745b2e95e1bb",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "Others/Fragmented Knowledge.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Fragmented Knowledge 的反向链接列表"
+            }
+          },
+          {
+            "id": "6aba477cd7a2f707",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "Others/Fragmented Knowledge.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Fragmented Knowledge 的出链列表"
+            }
+          },
+          {
+            "id": "8608b5d81a4b2095",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "标签"
+            }
+          },
+          {
+            "id": "b531289aa3338634",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "Others/Fragmented Knowledge.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Fragmented Knowledge 的大纲"
+            }
+          },
+          {
+            "id": "15337ac56851e1d5",
+            "type": "leaf",
+            "state": {
+              "type": "review-queue-list-view",
+              "state": {},
+              "icon": "SpacedRepIcon",
+              "title": "笔记复习序列"
+            }
+          }
+        ],
+        "currentTab": 4
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "bases:创建新数据库": false,
+      "switcher:打开快速切换": false,
+      "graph:查看关系图谱": false,
+      "canvas:新建白板": false,
+      "daily-notes:打开/创建今天的日记": false,
+      "templates:插入模板": false,
+      "command-palette:打开命令面板": false,
+      "obsidian-spaced-repetition:复习卡片": false
+    }
+  },
+  "active": "ad41be88a863d04e",
+  "lastOpenFiles": [
+    "AI/imgs/Activation-Funciton-Comparison.png",
+    "AI/Attention-Improvements.md",
+    "未命名 1.canvas",
+    "2025-09-05.md",
+    "未命名.canvas",
+    "AI/FractalGen-MAR.md",
+    "AI/Incremental_Learning.md",
+    "Calculus & Linear Algebra/Inequalities.md~",
+    "AI/LR-Schedule.md",
+    "AI/Conv-Formulas.md",
+    "AI/INR.md",
+    "AI/Diffusion.md",
+    "AI/Diffusion.md~",
+    "AI/Normalization.md",
+    "AI/Miscs.md",
+    "AI/Mambas.md",
+    "AI/MAE.md",
+    "AI/Optimizers.md",
+    "AI/Loss_Functions.md",
+    "AI/Innovative-CNNs.md",
+    "AI/Initialization.md",
+    "AI/Flow-Based-Model.md",
+    "Programming & Algorithm/Compiler Basics.md",
+    "Calculus & Linear Algebra/imgs/paste-c2c496c06ad3f73879151d99c25c82051441818d.jpg",
+    "Calculus & Linear Algebra/imgs/paste-aecc65b305961f5bd6a78dc83f0c5151312bf8dc.jpg",
+    "Calculus & Linear Algebra/imgs/paste-9b5bad60a822c39702d80028e843aa4fa8db36f7.jpg",
+    "Calculus & Linear Algebra/imgs/paste-8858ce838b4b570c97ed84400183fdaebc12149d.jpg",
+    "Calculus & Linear Algebra/imgs/paste-86712b271f014333f3a5924e90d55c9441d51786.jpg",
+    "Calculus & Linear Algebra/imgs/paste-1146997dbea889d6658ed7c882a174c8a83b3ad7.jpg",
+    "Calculus & Linear Algebra/imgs/paste-63cfd1070404a1b18feb296068298ae1baab7a09.jpg",
+    "Calculus & Linear Algebra/imgs/paste-321a67c83747d1f568a01e923150d10b8ead968d.jpg",
+    "Calculus & Linear Algebra/imgs/paste-158028fd09924c429c498d8bbcdccaecc5a331b8.jpg",
+    "Calculus & Linear Algebra/imgs/derivative_in_area.png",
+    "Calculus & Linear Algebra/imgs",
+    "Calculus & Linear Algebra/Splines.md",
+    "Calculus & Linear Algebra/Space.md",
+    "Calculus & Linear Algebra/Kernel-Based Estimation (KBE).md",
+    "Calculus & Linear Algebra/Inequalities.md",
+    "Calculus & Linear Algebra/Continuity.md",
+    "Calculus & Linear Algebra/Continuity Equations.md",
+    "Calculus & Linear Algebra/Basics for Linear Algebra.md",
+    "Calculus & Linear Algebra",
+    "Circuit Design/imgs/Adders",
+    "Circuit Design/imgs/Sequential_Logic",
+    "Circuit Design/imgs/Combinational_Logic",
+    "Circuit Design/imgs",
+    "Circuit Design",
+    "Computer Vision"
+  ]
+}
