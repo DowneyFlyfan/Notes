@@ -10,4 +10,3 @@ tags: []
 
 - **Intuition**: Close History matters. Importance of long history decade in a geometric way
 
-
