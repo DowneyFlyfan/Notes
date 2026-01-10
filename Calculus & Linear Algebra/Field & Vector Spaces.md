@@ -11,7 +11,7 @@ tags:
 
 > A field is defined to satisfy certain properties
 
-- Operations follow commutative, exchange, distributive laws
+- Operations follow commutative, associativity, distributive laws
 
 - There exists a $1$, s.t. $x \cdot 1 = 1, \forall x \in \mathcal{F}$
 
@@ -43,7 +43,7 @@ $$
 
 - $1,0,x^{-1}, x_I$ same as in $\mathcal{F}$
 
-- It follows commutative, distributive and exchange law
+- It follows commutative, distributive and associativity law
 
 - scaler multiplication $\cdot$
 
