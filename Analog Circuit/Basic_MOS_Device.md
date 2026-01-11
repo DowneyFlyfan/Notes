@@ -46,7 +46,7 @@ $$
 
 - It sometimes is also refered as **electrical resistivity** $\rho(\Omega \cdot m)$ or **Resistance per ..** $\Omega / m$
 
-# CMOS Structure, Long-Channel Model
+# CMOS Basics
 
 ## Structure
 
@@ -60,34 +60,25 @@ $$
 
 ![](./imgs/Devices/Inverter-CrossView.png)
 
-## Silicon on Insulator (SOI) Process
+> Formation of the inversion layer: From above to bottom (Metal -> Oxide -> Inversion layer /channel -> depletion region -> substrate)
 
+## Current
 
-
-## Long-Channel Model
-
-### Current
-
-1. Inference of Current Formula
+### Inference of Current Formula
 
 $$
 \begin{equation}
 \begin{aligned}
-Q_{channel} &= C_g(V_g - V_{th}) \\
-&= k_0 \epsilon_0 \frac{WL}{t_{ox}}  (\frac{V_{gs} + V_{gd}}{2}- V_{th} ) \\
-&= \epsilon_{ox} \frac{WL}{t_{ox}} (V_{gs} - \frac{V_{ds}}{2} - V_{th} ) \\
-&= C_{ox} (V_{gs} - \frac{V_{ds}}{2} - V_{th} ) \\
-v &= \mu E = \mu \frac{V_{ds}}{L}  \\
-I_{ds} &= \frac{Q_{channel}}{t}  \\
-&= \frac{C_{ox} (V_{gs} - \dfrac{V_{ds}}{2} - V_{th})}{L/v} \\
-&= \beta  V_{ds} (V_{GT} - \frac{V_{ds}}{2} ) \\
-\beta &= \mu C_{ox} \frac{W}{L} \\
-V_{GT} &= V_{gs} - V_{th}
+Q_d (x) &= C_{ox} W (V_G - V_{th} - V(x)) \\
+v &= \mu E = - \mu \frac{dV}{dx} \\
+I_D &= Q_d(X) v \\
+\int_{0}^{L} I_D dx &= \int_{V_S}^{V_D} -C_{ox} W (V_G - V_{th} - V(x)) \mu dV \\
+\therefore I_D &= \mu C_{ox} \frac{W}{L} (V_{GS}- V_{th} - \frac{1}{2} V_{DS} ) V_{DS}
 \end{aligned}
 \end{equation}
 $$
 
-2. Current Formula
+### Current Formula
 
 $$
 \begin{equation}
@@ -103,63 +94,131 @@ V_{dsat} &= V_{gs} - V_{th}
 \end{equation}
 $$
 
-### Operation Regions
+## Operation Regions
 
 ![](./imgs/Devices/MOS-Op-Regions.png)
 
-# CMOS Capacitance Model
-
-## Gate Capacitance Model
-
-> It **significantly overestimates** the capacitance
-
-![](./imgs/Devices/MOS-Capacitance-Model.png)
+> Specifically, when $V_{DS} \ll 2(V_{GS} - V_{th})$, which we call **deep triode region**, it works as a **linear resistor**
 
 $$
 \begin{equation}
 \begin{aligned}
-C_g &= C_{gb} + C_{gd} + C_{gs} \\
-&\approx C_0 + 2 C_{gol}W
+R_{in} &= 1 / \frac{\partial I_D}{\partial V_{DS}}  \\
+&= \frac{1}{\mu C_{ox} \dfrac{W}{L} (V_{GS} - V_{th})} 
 \end{aligned}
 \end{equation}
 $$
 
-## Diffusion Capacitance Model
-
-> Diffusion Capacitance is formed by the depletion region between substrate and source/drain, which is also called parasitic capacitance, denoted as $C_{sb}, C_{db}$
-
-![](./imgs/Devices/Diffusion-Region-3d.png)
+## Transconductance
 
 $$
 \begin{equation}
 \begin{aligned}
-C_{sb} &= WD \times C_{jbs} + 2(W+D) C_{jbsw} \\
-C_{jbs} &= C_J (1 + \frac{V_{db}}{\Phi_0} )^{M_J} \\
-\Phi_0 &= v_T\frac{2 \ln (N_A N_D)}{n_i^2}  \\
-v_T &= \frac{kT}{q} 
+g_m &= \frac{\partial I_D}{\partial V_{GS}} \\
+&= \begin{cases}
+k_n V_{DS} & Triode \\
+k_n V_{OV} = \sqrt{2 k_n I_D} = \dfrac{2I_D}{V_{OV}} & Saturation
+\end{cases}
 \end{aligned}
 \end{equation}
 $$
 
-| Concept                                       | Description |
-| :-------------------------------------------- | :------------------------------------------------------------------------------------------------------------------------- |
-| Side wall & Side wall abuts gate              | Have different $C_J, M_J, \Phi$                                                                                            |
-| $C_{db}$                                      | Has the same form as $C_{sb}$ (referring to the formula above)                                                             |
-| Rough estimation for capacitances             | $C_g \approx C_{db} \approx C_{sb} = 1 \text{ fF}/\mu m$                                                                   |
+## Capacitance
 
-![](./imgs/Devices/Diffusion-Region-Geometries.png)
+### Capacitance Schematic & Structure Model
+
+![](./imgs/Devices/MOS-Capacitance.png)
+
+| Capacitor | Definition |
+| :--- | :--- |
+| $C_1$ | $C_{g-depletion}$ |
+| $C_2$ | $C_{depletion-b}$ |
+| $C_3$ | $C_{gd-overlap}$ |
+| $C_4$ | $C_{gs-overlap}$ |
+| $C_5$ | $C_{db}$ |
+| $C_6$ | $C_{sb}$ |
+| $C_j$ | $C_{junction}$ |
+| $C_{jsw}$ | $C_{\text{junction side wall} }$ |
+
+### $C_{gs}$ & $C_{gd}$
+
+![](./imgs/Devices/Cgs-Cgd-Vgs.png)
+
+> In **Saturation Region**
+
+- Current remains unchanged
 
 $$
 \begin{equation}
 \begin{aligned}
-C_d &= \frac{dQ}{dV} \\
-&\approx \tau \frac{dI}{dV} \\
-&= \tau g_d
+I_D &= \frac{Q}{t} = \frac{Q}{L} v = Q(x) \mu_n (-\frac{d[V_{ov} - V(x)]}{dx}) \\
+&= C_{ox} W [V_{ov} - V(x)] \mu_n \frac{dV(x)}{dx} \\
+&= \frac{1}{2} \mu_n C_{ox} \frac{W}{L} V_{ov}^2 \\
+\therefore dx &= \frac{2L(V_{ov} - V(x))}{V_{ov}^2} dV(x)
 \end{aligned}
 \end{equation}
 $$
 
-- Empirically, $C_{sb} \approx C_{db} \approx C_{g}$
+- Charge Calculations
+
+$$
+\begin{equation}
+\begin{aligned}
+Q_{inv} &= \int_{}^{} Q(x) dx \\
+&= \int_{0}^{V_{ov}}  C_{ox} W [V_{ov} - V] \frac{2L(V_{ov} - V)}{V_{ov}^2} dV \\
+&= \frac{2}{3} C_{ox} W L (V_{GS} - V_{th}) \\
+\therefore C_{gs-non-overlap} &= \frac{\partial Q_{inv}}{\partial V_{GS}} \\
+&= \frac{2}{3}  C_{ox} WL
+\end{aligned}
+\end{equation}
+$$
+
+## Small Signal Model
+
+![](./imgs/Devices/Small-Signal-Model.png)
+
+> Linear Resistance due to **Channel Length Modulation**
+
+$$
+\begin{equation}
+\begin{aligned}
+r_0 &= \frac{\partial V_{DS}}{\partial I_D}  \\
+&= \frac{\partial V_{DS}}{\partial (\dfrac{1}{2} \mu_n C_{ox} \dfrac{W}{L} (V_{GS} - V_{th})^2 (1 + \lambda V_{DS}) ) }  \\
+&= \frac{1}{ \partial I_D / \partial V_{DS}}  \\
+&\approx \frac{1}{\lambda I_D}
+\end{aligned}
+\end{equation}
+$$
+
+> Bulk Transconductance
+
+$$
+\begin{equation}
+\begin{aligned}
+g_{mb} &= \frac{\partial I_D}{\partial V_{BS}} \\
+&= \frac{\partial I_D}{\partial V_{th}}  \times \frac{\partial V_{th}}{\partial V_{BS}} \\
+&= (- \frac{\partial V_{th}}{\partial V_{BS}} ) g_m \\
+&= \eta g_m
+\end{aligned}
+\end{equation}
+$$
+
+# FinFET
+
+> In FinFET, $H_F, W_F, S_F$ are **fixed** for any process
+
+$$
+\begin{equation}
+\begin{aligned}
+S_F &: \text{Spacing} \\
+W &= W_F + 2 H_F \\
+\end{aligned}
+\end{equation}
+$$
+
+![](./imgs/Devices/FinFET-Structure.png)
+
+![](./imgs/Devices/Multi-Fin-FinFET.png)
 
 # Non-Ideal I-V Characteristics of CMOS
 
@@ -243,8 +302,7 @@ $$
 \begin{equation}
 \begin{aligned}
 L_{eff} &= L - L_{shorten} \\
-I_{ds} &= \frac{1}{2} \beta V_{GT}^2(1 + \frac{V_{ds}}{V_A} ) \\
-V_A &\propto L
+I_{ds} &= \frac{1}{2} \beta V_{GT}^2(1 + \lambda V_{DS} ) \\
 \end{aligned}
 \end{equation}
 $$
@@ -324,4 +382,3 @@ NM_L &= V_{OL} - V_{IL}
 \end{aligned}
 \end{equation}
 $$
-
