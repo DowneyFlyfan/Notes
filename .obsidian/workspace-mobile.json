@@ -13,12 +13,22 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Probability/Laws.md",
-                "mode": "source",
-                "source": false
+                "file": "Analog Circuit/Basic_MOS_Device.md",
+                "mode": "preview",
+                "source": false,
+                "backlinks": true,
+                "backlinkOpts": {
+                  "collapseAll": false,
+                  "extraContext": false,
+                  "sortOrder": "alphabetical",
+                  "showSearch": false,
+                  "searchQuery": "",
+                  "backlinkCollapsed": false,
+                  "unlinkedCollapsed": true
+                }
               },
               "icon": "lucide-file",
-              "title": "Laws"
+              "title": "Basic_MOS_Device"
             }
           }
         ]
@@ -167,10 +177,10 @@
   },
   "active": "0a5688712d365291",
   "lastOpenFiles": [
+    "Probability/Laws.md",
     "Probability/Random_Variables.md",
     "Probability/Transmission.md",
     "AI/Diffusion.md",
-    "Probability/Laws.md",
     "AI/Flow-Models.md",
     "Circuit Design/Electronic_Devices.md",
     "Circuit Design/Basic_Circuits.md",

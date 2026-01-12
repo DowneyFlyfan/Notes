@@ -7,7 +7,7 @@ tags:
 
 # RLC Circuits
 
-1. Capacitance
+## Capacitance
 
 $$
 \begin{equation}
@@ -19,7 +19,7 @@ X_c &= \frac{1}{\omega C}
 \end{equation}
 $$
 
-2. Inductors
+## Inductors
 
 $$
 \begin{equation}
@@ -30,21 +30,6 @@ X_L &= \omega L
 \end{aligned}
 \end{equation}
 $$
-
-3. Resistance of Transistors
-
-$$
-\begin{equation}
-\begin{aligned}
-R &= \frac{V}{I} \\
-&= \frac{\rho L}{A} \\
-&= \frac{1}{k_n (V_{GS} - V_{th})} \\
-k_n &= \mu_n C_{ox} \frac{W}{L} 
-\end{aligned}
-\end{equation}
-$$
-
-- It sometimes is also refered as **electrical resistivity** $\rho(\Omega \cdot m)$ or **Resistance per ..** $\Omega / m$
 
 # CMOS Basics
 
@@ -60,7 +45,7 @@ $$
 
 ![](./imgs/Devices/Inverter-CrossView.png)
 
-> Formation of the inversion layer: From above to bottom (Metal -> Oxide -> Inversion layer /channel -> depletion region -> substrate)
+> Formation of the inversion layer: From above to bottom (Metal -> Oxide -> Inversion layer/channel -> depletion region -> substrate)
 
 ## Current
 
@@ -69,9 +54,9 @@ $$
 $$
 \begin{equation}
 \begin{aligned}
-Q_d (x) &= C_{ox} W (V_G - V_{th} - V(x)) \\
+Q (x) &= C_{ox} W (V_G - V_{th} - V(x)), Unit: Q/m \\
 v &= \mu E = - \mu \frac{dV}{dx} \\
-I_D &= Q_d(X) v \\
+I_D &= Q(x) v \\
 \int_{0}^{L} I_D dx &= \int_{V_S}^{V_D} -C_{ox} W (V_G - V_{th} - V(x)) \mu dV \\
 \therefore I_D &= \mu C_{ox} \frac{W}{L} (V_{GS}- V_{th} - \frac{1}{2} V_{DS} ) V_{DS}
 \end{aligned}
@@ -103,22 +88,8 @@ $$
 $$
 \begin{equation}
 \begin{aligned}
-R_{in} &= 1 / \frac{\partial I_D}{\partial V_{DS}}  \\
+R_{on} &= 1 / \frac{\partial I_D}{\partial V_{DS}}  \\
 &= \frac{1}{\mu C_{ox} \dfrac{W}{L} (V_{GS} - V_{th})} 
-\end{aligned}
-\end{equation}
-$$
-
-## Transconductance
-
-$$
-\begin{equation}
-\begin{aligned}
-g_m &= \frac{\partial I_D}{\partial V_{GS}} \\
-&= \begin{cases}
-k_n V_{DS} & Triode \\
-k_n V_{OV} = \sqrt{2 k_n I_D} = \dfrac{2I_D}{V_{OV}} & Saturation
-\end{cases}
 \end{aligned}
 \end{equation}
 $$
@@ -129,15 +100,15 @@ $$
 
 ![](./imgs/Devices/MOS-Capacitance.png)
 
-| Capacitor | Definition |
-| :--- | :--- |
-| $C_1$ | $C_{g-depletion}$ |
-| $C_2$ | $C_{depletion-b}$ |
-| $C_3$ | $C_{gd-overlap}$ |
-| $C_4$ | $C_{gs-overlap}$ |
-| $C_5$ | $C_{db}$ |
-| $C_6$ | $C_{sb}$ |
-| $C_j$ | $C_{junction}$ |
+| Capacitor | Definition                       |
+| :-------- | :------------------------------- |
+| $C_1$     | $C_{g-depletion}$                |
+| $C_2$     | $C_{depletion-b}$                |
+| $C_3$     | $C_{gd-overlap}$                 |
+| $C_4$     | $C_{gs-overlap}$                 |
+| $C_5$     | $C_{db}$                         |
+| $C_6$     | $C_{sb}$                         |
+| $C_j$     | $C_{junction}$                   |
 | $C_{jsw}$ | $C_{\text{junction side wall} }$ |
 
 ### $C_{gs}$ & $C_{gd}$
@@ -173,24 +144,23 @@ Q_{inv} &= \int_{}^{} Q(x) dx \\
 \end{equation}
 $$
 
-## Small Signal Model
+## Transconductance
 
-![](./imgs/Devices/Small-Signal-Model.png)
-
-> Linear Resistance due to **Channel Length Modulation**
+### Gate-Source Transconductance
 
 $$
 \begin{equation}
 \begin{aligned}
-r_0 &= \frac{\partial V_{DS}}{\partial I_D}  \\
-&= \frac{\partial V_{DS}}{\partial (\dfrac{1}{2} \mu_n C_{ox} \dfrac{W}{L} (V_{GS} - V_{th})^2 (1 + \lambda V_{DS}) ) }  \\
-&= \frac{1}{ \partial I_D / \partial V_{DS}}  \\
-&\approx \frac{1}{\lambda I_D}
+g_m &= \frac{\partial I_D}{\partial V_{GS}} \\
+&= \begin{cases}
+k_n V_{DS} & Triode \\
+k_n V_{OV} = \sqrt{2 k_n I_D} = \dfrac{2I_D}{V_{OV}} & Saturation
+\end{cases}
 \end{aligned}
 \end{equation}
 $$
 
-> Bulk Transconductance
+### Bulk-Source Transconductance in Saturation Region
 
 $$
 \begin{equation}
@@ -199,6 +169,35 @@ g_{mb} &= \frac{\partial I_D}{\partial V_{BS}} \\
 &= \frac{\partial I_D}{\partial V_{th}}  \times \frac{\partial V_{th}}{\partial V_{BS}} \\
 &= (- \frac{\partial V_{th}}{\partial V_{BS}} ) g_m \\
 &= \eta g_m
+\end{aligned}
+\end{equation}
+$$
+
+## Small Signal Model
+
+![](./imgs/Devices/Small-Signal-Model.png)
+
+> **Small-Signal Model Derivation Procedure**
+
+1. **Biasing**: Apply DC voltages to establish the quiescent operating point.
+
+2. **Perturbation**: Introduce a small incremental voltage change to one terminal while keeping others constant.
+
+3. **Characterization**: Measure the resulting current variation to extract small-signal parameters.
+
+> Current Changes modeled by  VCCS
+
+> Linear Resistance due to **Channel Length Modulation**
+
+$$
+\begin{equation}
+\begin{aligned}
+r_O &= \frac{\partial V_{DS}}{\partial I_D}  \\
+&= \frac{\partial V_{DS}}{\partial (\dfrac{1}{2} \mu_n C_{ox} \dfrac{W}{L} (V_{GS} - V_{th})^2 (1 + \lambda V_{DS}) ) }  \\
+&= \frac{1}{ \partial I_D / \partial V_{DS}}  \\
+&= \frac{1}{\dfrac{1}{2} \mu_n C_{ox} (W/L) (V_{GS} - V_{th})^2 \lambda } \\
+&= \frac{1 + \lambda V_{DS}}{\lambda I_D}  \\
+&\approx \frac{1}{\lambda V_D} , \lambda V_{DS} \ll1
 \end{aligned}
 \end{equation}
 $$
