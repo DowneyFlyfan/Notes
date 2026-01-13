@@ -38,7 +38,7 @@ $$
 
 ## Definition
 
-> Vector Spaces $\mathcal{V}$ is defined on a field $\mathcal{F}$, which satisfies
+> Vector Spaces $\mathcal{V}$ is **a set** defined on a field $\mathcal{F}$, which satisfies
 
 | Property | Condition |
 | :--- | :--- |
@@ -47,3 +47,5 @@ $$
 | Operations | Scalar multiplication $\cdot$ and vector addition $+$ |
 | Closure under Addition | $x + y \in \mathcal{V}, \forall x, y \in \mathcal{V}$ |
 | Closure under Scalar Mult | $\alpha x \in \mathcal{V}, \forall \alpha \in \mathcal{F}, \forall x \in \mathcal{V}$ |
+
+
