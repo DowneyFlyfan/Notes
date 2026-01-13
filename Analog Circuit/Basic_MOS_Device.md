@@ -1,5 +1,5 @@
 ---
-id: CMOS
+id: Basic_MOS_Device
 aliases: []
 tags:
   - Circuit
@@ -31,7 +31,7 @@ X_L &= \omega L
 \end{equation}
 $$
 
-# CMOS Basics
+# CMOS
 
 ## Structure
 
