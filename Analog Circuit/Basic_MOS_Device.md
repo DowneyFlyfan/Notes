@@ -302,6 +302,7 @@ $$
 \begin{aligned}
 L_{eff} &= L - L_{shorten} \\
 I_{ds} &= \frac{1}{2} \beta V_{GT}^2(1 + \lambda V_{DS} ) \\
+\lambda &\propto \frac{1}{L} 
 \end{aligned}
 \end{equation}
 $$
@@ -381,3 +382,4 @@ NM_L &= V_{OL} - V_{IL}
 \end{aligned}
 \end{equation}
 $$
+
