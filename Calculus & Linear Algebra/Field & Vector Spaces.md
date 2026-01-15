@@ -141,13 +141,48 @@ $$
 
 ## Vector Subspace
 
+### Definition
+
 > $W \subseteq V$ if $W$ satisfy
 
 $$
 \begin{equation}
 \begin{aligned}
-u + v &\in W, w, v \in W \\
+u + v &\in W, u, v \in W \\
 \alpha u &\in W, u \in W, \alpha \in \mathcal{F} 
 \end{aligned}
 \end{equation}
 $$
+
+### Number of Types of subspace for $\mathcal{R}^n$
+
+$n+1$ (0 set)
+
+### Line can be only formed in a infinite set Field
+
+> Proof that finite set field can not form a line
+
+$$
+\begin{equation}
+\begin{aligned}
+\mathcal{L}_{v_0} &= \big\{ \alpha v_0 , \alpha \in \mathcal{F} \big\} \\
+\mathcal{F} &= \big\{ 0, 1 \big\} \\
+v_0 &= [1,1] \xRightarrow{}  \mathcal{L}_{v_0} = \big\{ [0,0], [1,1] \big\}
+\end{aligned}
+\end{equation}
+$$
+
+## Column/Row Space, NullSpace
+
+> For $A \subseteq \mathcal{F}^{m \times n}$
+
+$$
+\begin{equation}
+\begin{aligned}
+\mathcal{R}(A) &= \big\{ y \in \mathcal{F^m}, \text{s.t. there exists a }  y = Ax, x \in \mathcal{F^n} \big\} \\
+\mathcal{N} (A) &= \big\{  x, x\in \mathcal{F}^n \text{ s.t.} Ax = 0 \big\} = \mathcal{C}^T (A)
+\end{aligned}
+\end{equation}
+$$
+
+- $\mathcal{R(A)}$ is a subspace of $F^m$ (**proof**), called Column Space (Range)
