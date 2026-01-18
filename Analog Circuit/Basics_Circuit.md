@@ -9,8 +9,6 @@ tags:
 
 > For Transistor, only SSM are linear and can be measured using **Testing Source Method**
 
-> Resistance looking into $Source = \dfrac{1}{g_m + g_{mb}}, Drain = r_o, Gate = \infty$
-
 > To calculate resistance looking into a transistor circuit:
 
 - **GND all independent Sources**
