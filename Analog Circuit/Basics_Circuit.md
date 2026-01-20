@@ -30,22 +30,4 @@ $$
 
 $V_{the}$ and $I_{no}$ can be measured by setting $I=0(oc)$ and $V=0(sc)$
 
-# Temp
 
-## Differential Pairs
-
-### Large-Signal Model
-
-- 
-
-### Small-Signal Model
-
-- SuperPosition & Half-Circuit
-
-- $V_S$ doesn't change
-
-- Differential Mode + CM
-
-- CM makes no gain for Vx - Vy
-
-- 

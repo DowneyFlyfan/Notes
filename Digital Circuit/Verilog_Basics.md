@@ -20,7 +20,6 @@ tags:
 | SystemC                    | C++的扩展版，主要用于EDA                                                                                                                 |
 | XML                        | eXtensible Markup Language, 描述网格和列表的标签语言                                                                                   |
 | .core file                 | 用类似`yaml`的格式描述其当前核的依赖、目标、目标参数等的文件                                                                             |
-| .s file                    | 汇编文件                                                                                                                                 |
 
 ## 不同编码
 
@@ -52,6 +51,7 @@ tags:
 | 命名块层次访问     | 命名块之后，块中变量可被其他模块访问`module.block.variable` |
 | `function` 声明    | `function 位宽 function_id input(...)`, function_id就是返回值(只有一个), input可以有很多 |
 | `automatic`        | 可以对调用的`function`或者`task`进行动态分配，这样就不会出现多个调用抢一个`function`的硬件资源的情况 |
+| `specify` | Set rise/fall delay for a certain path with input and output |
 
 # 数据类型与数值处理
 

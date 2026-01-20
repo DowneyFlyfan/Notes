@@ -8,7 +8,7 @@ tags: []
 
 - This is a repo for my **Notes**.
 
-# Temporary
+# Temp
 
 - MIPS R10K: 1st Out-of-Order(OOO) Processor
 
