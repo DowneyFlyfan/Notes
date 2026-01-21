@@ -63,3 +63,15 @@ $$
 ## CMRR
 
 ## MOS Load
+
+- Current-Source Load (Low Gain)
+
+- Diode-Connected Load (Low Voltage Swing)
+
+- Parallel $R_D$ with Current-Source Load solves the above 2 problems
+
+- Cascode Stage has very high gain
+
+## Gilbert Cell
+
+
