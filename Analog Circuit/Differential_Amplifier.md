@@ -59,3 +59,7 @@ A_{v, CM-DM} &= - \frac{\Delta g_m R_D}{(g_{m1} + g_{m2}) R_{SS} + 1}
 \end{aligned}
 \end{equation}
 $$
+
+## CMRR
+
+## MOS Load
