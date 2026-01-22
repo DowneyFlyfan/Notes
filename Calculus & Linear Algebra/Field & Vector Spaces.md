@@ -154,9 +154,17 @@ u + v &\in W, u, v \in W \\
 \end{equation}
 $$
 
+### Properties
+
+- $\mathcal{U}+\mathcal{W}$ is also a subspace if $\mathcal{U}, \mathcal{W}$ are subspaces
+
+- $\mathcal{V} = \mathcal{U} \cap \mathcal{W}$ is also a subspace (All elements are in both spaces, satisfying subspace definition on both side)
+
+- $\mathcal{V} = \mathcal{U} \cup \mathcal{W}$ is not always a subspace
+
 ### Number of Types of subspace for $\mathcal{R}^n$
 
-$n+1$ (0 set)
+- $n+1$ (0 set)
 
 ### Line can be only formed in a infinite set Field
 
@@ -172,6 +180,20 @@ v_0 &= [1,1] \xRightarrow{}  \mathcal{L}_{v_0} = \big\{ [0,0], [1,1] \big\}
 \end{equation}
 $$
 
+## Span
+
+- Span is a subspace
+
+$$
+\begin{equation}
+\begin{aligned}
+span \big\{ u_1, ... u_k \big\}
+\end{aligned}
+\end{equation}
+$$
+
+- 
+
 ## Column/Row Space, NullSpace
 
 > For $A \subseteq \mathcal{F}^{m \times n}$
@@ -180,7 +202,7 @@ $$
 \begin{equation}
 \begin{aligned}
 \mathcal{R}(A) &= \big\{ y \in \mathcal{F^m}, \text{s.t. there exists a }  y = Ax, x \in \mathcal{F^n} \big\} \\
-\mathcal{N} (A) &= \big\{  x, x\in \mathcal{F}^n \text{ s.t.} Ax = 0 \big\} = \mathcal{C}^T (A)
+\mathcal{N} (A) &= \big\{  x, x\in \mathcal{F}^n \text{ s.t.} Ax = 0 \big\} = \mathcal{C} (A^T)^T
 \end{aligned}
 \end{equation}
 $$
