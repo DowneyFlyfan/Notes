@@ -13,7 +13,7 @@ tags:
 
 | Property | Condition |
 | :--- | :--- |
-| Laws | Commutative, associativity, distributive laws |
+| Laws | Commutativ e, associativity, distributive laws |
 | Multiplicative Identity | There exists a $1$, s.t. $x \cdot 1 = x, \forall x \in \mathcal{F}$ |
 | Additive Identity | There exists a $0$, s.t. $x + 0 = x, \forall x \in \mathcal{F}$ |
 | Multiplicative Inverse | There exists a $x^{-1}$, s.t. $x \cdot x^{-1} = 1, \forall x \in \mathcal{F}, x \neq 0$ |
@@ -180,19 +180,24 @@ v_0 &= [1,1] \xRightarrow{}  \mathcal{L}_{v_0} = \big\{ [0,0], [1,1] \big\}
 \end{equation}
 $$
 
-## Span
+## Span, Linear Independence
 
 - Span is a subspace
 
 $$
 \begin{equation}
 \begin{aligned}
-span \big\{ u_1, ... u_k \big\}
+span \big\{ u_1, ... u_k \big\} &= \mathcal{R} (A) \\
+A^{n \times k} &= [u_1, u_2,...u_k]
 \end{aligned}
 \end{equation}
 $$
 
-- 
+- Linear Independence
+
+> A set of vectors is linearly independent if the only coefficients that make their linear combination equal to zero are all zero.
+
+- Any vector in the span of a linearly independent set has a **unique representation**
 
 ## Column/Row Space, NullSpace
 
@@ -202,7 +207,7 @@ $$
 \begin{equation}
 \begin{aligned}
 \mathcal{R}(A) &= \big\{ y \in \mathcal{F^m}, \text{s.t. there exists a }  y = Ax, x \in \mathcal{F^n} \big\} \\
-\mathcal{N} (A) &= \big\{  x, x\in \mathcal{F}^n \text{ s.t.} Ax = 0 \big\} = \mathcal{C} (A^T)^T
+\mathcal{N}(A) &= \big\{ x, x\in \mathcal{F}^n \text{ s.t.} Ax = 0 \big\} = \mathcal{C} (A^T)^T
 \end{aligned}
 \end{equation}
 $$

@@ -44,11 +44,16 @@ $$
 
 ## Interconnect
 
+> Delay and Process: $nm \downarrow \xRightarrow{} \dfrac{\Delta T_d}{T_d} \uparrow, leakage \uparrow, Delay \downarrow$
+
+- Analog Mixed-Signal(AMS) Simulation  
+
 ### Miller Coupling Effect
 
-> Delay and Process: $nm \downarrow \xRightarrow{} \dfrac{\Delta T_d}{T_d} \uparrow$
 
 ### Elmore Delay
+
+- $RC$ circuit for SPICE Model
 
 $$
 \begin{equation}
@@ -60,4 +65,32 @@ $$
 
 # Standard Cells
 
+ ## File Names
 
+`_rvt_ff_1p1v_125c.lib`: Regular $V_{th}$, fast(PMOS)-fast(PMOS), 1.1V, 125 $^{\circ}C$
+
+- `.lef`: Library Exchange Format
+
+- `.gds2`: Graphic **Data** System
+
+## Process Variations
+
+- **Spatial Granularity**: Variations are categorized across Wafer-to-Wafer, Inter-die, and Intra-die levels.
+
+- **Scaling Impact**: Physical device parameters ($V_{th}, L, W$) exhibit significantly increased variance as manufacturing processes scale.
+
+- **Statistical Analysis**: Monte-Carlo simulations are employed to characterize the impact of these fluctuations and verify design robustness across Gaussian parameter distributions.
+
+$$
+\begin{equation}
+\begin{aligned}
+\sigma_{\Delta V_{th}} &\propto \frac{N_a^{1/4}}{\sqrt{W L}} 
+\end{aligned}
+\end{equation}
+$$
+
+- Less Doping, thin oxide -> Less variations
+
+## Process
+
+- Planar, FD-SOI, FinFET
