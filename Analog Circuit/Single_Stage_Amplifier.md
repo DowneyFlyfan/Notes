@@ -21,7 +21,6 @@ tags:
 | Cascode             | Telescopic                |
 |                     | Folded                    |
 
-
 # Common-Source Stage
 
 ## With Resistive Load
@@ -132,3 +131,60 @@ A_{v,tl} &= -g_{m1} R_{on2}
 \end{aligned}
 \end{equation}
 $$
+
+## With Source Degeneration
+
+> A 2nd and accurate way of obtaining gain
+
+$$
+\begin{equation}
+\begin{aligned}
+A_v &= G_m R_{out} \\
+G_m &= \begin{cases}
+\dfrac{\partial I_{out}}{\partial V_{GS}} \dfrac{\partial V_{GS}}{\partial V_{in}} & LSM \\
+\dfrac{i_{out}}{v_{in}} |_{v_{out} = 0} & SSM
+\end{cases} \\
+
+\end{aligned}
+\end{equation}
+$$
+
+> With Source Degeneration
+
+$$
+\begin{equation}
+\begin{aligned}
+G_m &= \frac{g_m r_o}{ R_s' } \\
+R_{s'} &= r_o + R_S + g_mr_o R_S \\
+R_{out} &= R_D || R_{s'} \\
+A_v &= \frac{g_m r_o (R_D || R_{s'})}{R_{s'}} 
+\end{aligned}
+\end{equation}
+$$
+
+# Source-Follower
+
+> Keep in mind that SSM for resistance/gain calculation are **different**!!!
+
+## Special Property of Source Follower
+
+> The transconductance $g_m(V_{in} - V_{out})$ acts as an equivalent resistance $\dfrac{1}{g_m}$ between $V_{in}$ and $V_{out}$
+
+> The body effect $g_{mb}V_{out}$ behaves as a resistance $\dfrac{1}{g_{mb}}$ connected from the output to ground.
+
+## A 3rd way to calculate Gain (only for Source-Follower)
+
+$$
+\begin{equation}
+\begin{aligned}
+
+R_{out} &= R_S || r_o || \frac{1}{g_m + g_{mb}}  \\
+G_m &= g_m \\
+A_v &= \frac{R_{eq}}{ R_{eq} + \dfrac{1}{g_m} } \\
+&= G_m R_{out} \\
+&= \frac{g_m R_S r_o}{R_S + r_o + (g_m + g_{mb}) R_S r_o} 
+\end{aligned}
+\end{equation}
+$$
+
+# Common-Gate
