@@ -1,0 +1,134 @@
+---
+id: Single_Stage_Amplifier
+aliases: []
+tags:
+  - Circuit
+---
+
+# Different Configurations
+
+| Stage Type          | Configuration             |
+| :------------------ | :------------------------ |
+| Common-Source Stage | With Resistive Load (tradeoff: $R_D \uparrow A_v \uparrow, V_{out} Swing \downarrow$)       |
+|                     | With Diode-Connected Load (tradeoff: High Gain, Large Device Dimension, Large Capacitance, Lower Output Swing) |
+|                     | With Current-Source Load  |
+|                     | With Active Load          |
+|                     | With Source Degeneration  |
+| Source Follower     | With Resistive Bias       |
+|                     | With Current-Source Bias  |
+| Common-Gate Stage   | With Resistive Load       |
+|                     | With Current-Source Load  |
+| Cascode             | Telescopic                |
+|                     | Folded                    |
+
+
+# Common-Source Stage
+
+## With Resistive Load
+
+### $V_{out} - V_{in}$
+
+![](./imgs/Single_Stage_Amplifier/CS-Resistive_Load-LSM.png)
+
+$$
+\begin{equation}
+\begin{aligned}
+V_{out} &= \begin{cases}
+0 & V_{in} \le V_{th} \\
+V_{DD} - \dfrac{1}{2} k_n (V_{in} - V_{th})^2 R_D & V_{in} \gt V_{th}, V_{out} \ge V_{in} - V_{th} \\
+V_{DD} - k_n (V_{in} - V_{th} - \dfrac{1}{2} V_{out})V_{out} R_D & V_{in} \gt V_{th}, V_{out} \lt V_{in} - V_{th} \\
+\dfrac{R_{on}}{R_{on} + R_D}  V_{DD} & V_{in} \gt V_{th}, V_{out} \ll 2(V_{in} - V_{th})
+\end{cases}
+\end{aligned}
+\end{equation}
+$$
+
+### Gain $A_v$
+
+> Usually, we consider $r_o \gg \dfrac{1}{g_m}$
+
+$$
+\begin{equation}
+\begin{aligned}
+A_v &= \frac{\partial V_{out}}{\partial V_{in}} = -g_m R_D \\
+&= -g_m (r_o || R_D), \text{CLM Considered} \\
+& \lt -g_m r_o , \text{Intrinsic Gain} 
+\end{aligned}
+\end{equation}
+$$
+
+### $I_D - V_{in}, g_m - V_{in}$
+
+![](./imgs/Single_Stage_Amplifier/CS-Resistive_Load-Current_gm_Vin.png)
+
+$$
+\begin{equation}
+\begin{aligned}
+I_D &= \begin{cases}
+0 & V_{in} \le V_{th} \\
+\dfrac{1}{2} k_n (V_{in} - V_{th})^2 & V_{in} \gt V_{th}, V_{out} \ge V_{in} - V_{th} \\
+k_n (V_{in} - V_{th} - \dfrac{1}{2} V_{out})V_{out} & V_{in} \gt V_{th}, V_{out} \lt V_{in} - V_{th}
+\end{cases}
+\end{aligned}
+\end{equation}
+$$
+
+$$
+\begin{equation}
+\begin{aligned}
+g_m &= \begin{cases}
+0 & V_{in} \le V_{th} \\
+k_n (V_{in} - V_{th}) & V_{in} \gt V_{th}, V_{out} \ge V_{in} - V_{th} \\
+k_n V_{out} & V_{in} \gt V_{th}, V_{out} \lt V_{in} - V_{th}
+\end{cases}
+\end{aligned}
+\end{equation}
+$$
+
+## Diode-Connected Load
+
+> Output Swing Limit: $V_{out-max} = V_{DD} - V_{th}$
+
+### Resistance of Diode-Connected Load / Looking into Source of CS Stage
+
+$$
+\begin{equation}
+\begin{aligned}
+R_{dcl} &= \frac{1}{g_m + g_{mb} + r_o^{-1}} \approx \frac{1}{g_m + g_{mb}}  \\
+R_{s-cs} &= \frac{1}{g_m + g_{mb}}  , \text{No CLM} 
+\end{aligned}
+\end{equation}
+$$
+
+### Small Signal Analysis
+
+$$
+\begin{equation}
+\begin{aligned}
+A_v &= -g_{m1} \frac{1}{g_{m2} + g_{m2b}} \\
+&= \begin{cases}
+ \sqrt{\dfrac{(W/L)_1}{(W/L)_2} } (1 + \eta) & \text{No CLM} \\
+\dfrac{|V_{GS2} - V_{th2} |}{V_{GS1} - V_{th1}} & \text{No CLM, Body Effect}   \\
+ -g_{m1} (g_{m2}^{-1} || r_{o2} || r_{o1}) & \text{Normal Case} 
+\end{cases}
+\end{aligned}
+\end{equation}
+$$
+
+### Large Signal Analysis
+
+![](./imgs/Single_Stage_Amplifier/CS-Diode_Connected_Load-Vout_Vin.png)
+
+## Current Source Load, Active Source Load, Triode Load
+
+CSL Swing: $[V_{in} - V_{th}, V_{DD} - V_{OV2}]$
+
+$$
+\begin{equation}
+\begin{aligned}
+A_{v,cs} &= -g_{m1} (r_{o1} || r_{o2}) \\
+A_{v,as} &= -(g_{m1} + g_{m2}) (r_{o1} || r_{o2}) \\
+A_{v,tl} &= -g_{m1} R_{on2}
+\end{aligned}
+\end{equation}
+$$
