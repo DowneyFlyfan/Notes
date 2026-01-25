@@ -188,3 +188,5 @@ A_v &= \frac{R_{eq}}{ R_{eq} + \dfrac{1}{g_m} } \\
 $$
 
 # Common-Gate
+
+
