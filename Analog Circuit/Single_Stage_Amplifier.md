@@ -134,7 +134,7 @@ $$
 
 ## With Source Degeneration
 
-> A 2nd and accurate way of obtaining gain
+> A **2nd way of obtaining Gain**
 
 $$
 \begin{equation}
@@ -142,14 +142,18 @@ $$
 A_v &= G_m R_{out} \\
 G_m &= \begin{cases}
 \dfrac{\partial I_{out}}{\partial V_{GS}} \dfrac{\partial V_{GS}}{\partial V_{in}} & LSM \\
-\dfrac{i_{out}}{v_{in}} |_{v_{out} = 0} & SSM
-\end{cases} \\
-
+\dfrac{i_{out}}{v_{in}} |_{v_{out} = 0} & SSM \\
+\dfrac{1}{R_{eq}} |_{v_{out} = 0, i_{out} = i_{in}} & SSM
+\end{cases}
 \end{aligned}
 \end{equation}
 $$
 
+- Also, $i_{out}$ can be considered as a branch of $i_{in}$ sometimes
+
 > With Source Degeneration
+
+- $R_s'$ is an **Important Property** to be remembered
 
 $$
 \begin{equation}
@@ -189,4 +193,44 @@ $$
 
 # Common-Gate
 
+## Only $R_D$ as output resistance
 
+$$
+\begin{equation}
+\begin{aligned}
+A_v &= (g_m + g_{mb} + r_o^{-1}) R_D
+\end{aligned}
+\end{equation}
+$$
+
+## With Source Degeneration
+
+$$
+\begin{equation}
+\begin{aligned}
+R_{out} &= [R_S + r_o + (g_m + g_{mb}) r_o R_S] || R_D \\
+G_m &= \frac{1}{R_S + (\dfrac{1}{g_m + g_{mb}} || r_o )}  \\
+A_v &= G_m R_{out} \\
+&= \frac{1 + (g_m + g_{mb})r_o}{r_o + R_D + R_S + (g_m + g_{mb}) r_o R_S}  R_D
+\end{aligned}
+\end{equation}
+$$
+
+# Cascode
+
+## Gain Calculation using current branch
+
+> Telescopic Cascode with Current-Source Load
+
+![](./imgs/Single_Stage_Amplifier/Cascode-Current_Source_Load.png)
+
+$$
+\begin{equation}
+\begin{aligned}
+I_{out} &= I_{in} \frac{r_{o1}}{r_{o1} + (\dfrac{1}{g_{m2} + g_{mb2} + r_{o2}^{-1}} )} \\
+G_m &= g_{m1} \frac{r_{o1}}{r_{o1} + (\dfrac{1}{g_{m2} + g_{mb2} + r_{o2}^{-1}} )} \\
+R_{out} &= r_{o1} + r_{o2} + (g_{m2} + g_{mb2})r_{o1}r_{o2} \\
+A_v &= g_{m1} r_{o1} [(g_{m2} + g_{mb2}) r_{o2} + 1]
+\end{aligned}
+\end{equation}
+$$
