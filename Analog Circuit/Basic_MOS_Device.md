@@ -7,26 +7,28 @@ tags:
 
 # RLC Circuits
 
+> Suppose $V(t) = V e^{j \omega t}$
+
 ## Capacitance
 
 $$
 \begin{equation}
 \begin{aligned}
-C &= \frac{Q}{V} = I \frac{dV}{dt} \\
-&= \frac{\epsilon A}{d} \\
-X_c &= \frac{1}{\omega C}
+C &= \frac{Q}{V} = \frac{\epsilon  A}{d} \\
+i(t) &= C \dfrac{dV(t)}{dt} \\
+&= Cj \omega V(t) \\
+Z_c &= \frac{V(t)}{i(t)}  \\
+&= \frac{1}{j \omega C} = \frac{1}{s C} 
 \end{aligned}
 \end{equation}
 $$
 
-## Inductors
+> Inductors
 
 $$
 \begin{equation}
 \begin{aligned}
-L &= \frac{N\Phi}{I} = -V \frac{dt}{dI} \\
-&= \frac{\mu N^2 A}{l} \\
-X_L &= \omega L
+Z_L &= j \omega L = sL
 \end{aligned}
 \end{equation}
 $$
@@ -115,7 +117,7 @@ $$
 
 ![](./imgs/Devices/Cgs-Cgd-Vgs.png)
 
-> In **Saturation Region**
+> In **Saturation Region**, $C_{gs} > V_{gd}$
 
 - Current remains unchanged
 

@@ -166,22 +166,31 @@ A_v &= \frac{g_m r_o (R_D || R_{s'})}{R_{s'}}
 \end{equation}
 $$
 
+## Frequency Response
+
+> Miller Approximation (& its shortcomings)
+
+> Another Approximation
+
+> Direct Analysis
+
+> Dominant Poles and 2nd Pole
+
+> Zero: $V_{out} = 0 \xRightarrow{}$ Out is **Grounded**
+
+> Input Impedance Using both Miller Effect & Direct Analysis
+
 # Source-Follower
 
-> Keep in mind that SSM for resistance/gain calculation are **different**!!!
+## Gain
 
-## Special Property of Source Follower
+> $g_m \rightarrow 1/g_m$ between $V_{in}$ and $V_{out}$, $g_{mb} \rightarrow 1/g_{mb}$ from $V_{out}$ to GND
 
-> The transconductance $g_m(V_{in} - V_{out})$ acts as an equivalent resistance $\dfrac{1}{g_m}$ between $V_{in}$ and $V_{out}$
-
-> The body effect $g_{mb}V_{out}$ behaves as a resistance $\dfrac{1}{g_{mb}}$ connected from the output to ground.
-
-## A 3rd way to calculate Gain (only for Source-Follower)
+- Therefore, Gain of Source Follower can be calculated in the following way
 
 $$
 \begin{equation}
 \begin{aligned}
-
 R_{out} &= R_S || r_o || \frac{1}{g_m + g_{mb}}  \\
 G_m &= g_m \\
 A_v &= \frac{R_{eq}}{ R_{eq} + \dfrac{1}{g_m} } \\
@@ -190,6 +199,22 @@ A_v &= \frac{R_{eq}}{ R_{eq} + \dfrac{1}{g_m} } \\
 \end{aligned}
 \end{equation}
 $$
+
+## Frequency Response
+
+> Direct Analysis
+
+$$
+\begin{equation}
+\begin{aligned}
+
+\end{aligned}
+\end{equation}
+$$
+
+> Dominant Pole
+
+> Input/Output Impedance & Special Cases
 
 # Common-Gate
 
@@ -231,6 +256,16 @@ I_{out} &= I_{in} \frac{r_{o1}}{r_{o1} + (\dfrac{1}{g_{m2} + g_{mb2} + r_{o2}^{-
 G_m &= g_{m1} \frac{r_{o1}}{r_{o1} + (\dfrac{1}{g_{m2} + g_{mb2} + r_{o2}^{-1}} )} \\
 R_{out} &= r_{o1} + r_{o2} + (g_{m2} + g_{mb2})r_{o1}r_{o2} \\
 A_v &= g_{m1} r_{o1} [(g_{m2} + g_{mb2}) r_{o2} + 1]
+\end{aligned}
+\end{equation}
+$$
+
+# Transistor Frenquency
+
+$$
+\begin{equation}
+\begin{aligned}
+\omega_T &\approx \frac{g_m}{C_{GS}} 
 \end{aligned}
 \end{equation}
 $$
