@@ -182,7 +182,7 @@ $$
 
 ## Span, Linear Independence
 
-- Span is a subspace
+> Span is a subspace
 
 $$
 \begin{equation}
@@ -193,7 +193,7 @@ A^{n \times k} &= [u_1, u_2,...u_k]
 \end{equation}
 $$
 
-- Linear Independence
+> Linear Independence
 
 > A set of vectors is linearly independent if the only coefficients that make their linear combination equal to zero are all zero.
 

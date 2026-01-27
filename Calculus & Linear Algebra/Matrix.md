@@ -1,22 +1,17 @@
 ---
-id: Basics for Linear Algebra
+id: Matrix
 aliases: []
 tags:
   - Math
 ---
-# Matrix
+# Matrix Basics
 
-## Associativity of Multiplication
+## Matrix Properties
 
-| Property | Formula |
-| :--- | :--- |
-| **Associativity** | $(AB)C = A(BC)$ |
-
-## Meaning of a Matrix
-
-| Concept | Description | Formula |
+| Property | Formula | Description |
 | :--- | :--- | :--- |
-| **Linear Transformation** | Any linear transformation $L: \mathcal{R}^n \to \mathcal{R}^m$ can be represented by an $m \times n$ matrix $A$ | $L(\vec{\pmb{x}}) = A\vec{\pmb{x}}$ |
+| **Associativity of Multiplication** | $(AB)C = A(BC)$ | Matrix multiplication is associative |
+| **Linear Transformation** | $L(\vec{\pmb{x}}) = A\vec{\pmb{x}}$ | Any linear transformation $L: \mathcal{R}^n \to \mathcal{R}^m$ can be represented by an $m \times n$ matrix $A$ |
 
 ## Vector Op & Linear Transformation
 
@@ -57,17 +52,13 @@ tags:
 | **Properties** | $n$ eigenvalues; Geom mult $\le$ Alg mult; Diagonalizable iff $n$ independent eigenvectors. |
 | **Interpretation** | Invariant directions where the transformation only scales the vector. |
 
-# Determinants \& Trace
+# Determinant, Trace
 
-## Determinants
+## Determinant
 
-### Definition
-
-- Scalar for square matrix $A$, denoted $\det(A)$ or $|A|$.
+> Scalar for square matrix $A$, denoted $\det(A)$ or $|A|$.
 
 $$ \det(A) = \sum_{\sigma \in S_n} \text{sgn}(\sigma) \prod_{i=1}^n a_{i, \sigma(i)} $$
-
-### Properties
 
 | Property | Formula / Condition |
 | :--- | :--- |
@@ -79,26 +70,11 @@ $$ \det(A) = \sum_{\sigma \in S_n} \text{sgn}(\sigma) \prod_{i=1}^n a_{i, \sigma
 
 ## Trace
 
-### Definition
-
-$$
-\begin{equation}
-\begin{aligned}
-Tr(A) &= \sum_{i=1}^{n} A_{ii}
-\end{aligned}
-\end{equation}
-$$
-
-### Properties
-
-$$
-\begin{equation}
-\begin{aligned}
-Tr(AB) &= Tr(BA) \\
-\sum_{i}^{}  \sum_{j}^{}  a_{ij} b_{ji} &= \sum_{i}^{}  \sum_{j}^{}  a_{ji} b_{ij}
-\end{aligned}
-\end{equation}
-$$
+| Property | Formula |
+| :--- | :--- |
+| **Definition** | $Tr(A) = \sum_{i=1}^{n} A_{ii}$ |
+| **Cyclic Property** | $Tr(AB) = Tr(BA)$ |
+| **Summation Form** | $\sum_{i}^{} \sum_{j}^{} a_{ij} b_{ji} = \sum_{i}^{} \sum_{j}^{} a_{ji} b_{ij}$ |
 
 ## Cramer's Rule
 
@@ -122,8 +98,8 @@ where $A_i$ is the matrix $A$ with its $i$-th column replaced by $\vec{\pmb{b}}$
 | **Transpose Matrix** ($A^T$) | The transpose $A^T$ of a matrix $A$ is obtained by swapping its rows and columns. | - $(A^T)^T = A$<br>- $(A+B)^T = A^T + B^T$<br>- $(kA)^T = kA^T$<br>- $(AB)^T = B^TA^T$<br>- $AA^T$ and $A^TA$ are always symmetric matrices. |
 | **Symmetric Matrix** | A square matrix $A$ is symmetric if $A = A^T$.                             | - $A = A^T$                                                                            |
 | **Orthogonal Matrix** | A square matrix $A$ is orthogonal if its columns (and rows) are orthonormal vectors. | - $A^T A = A A^T = I$- $A^{-1} = A^T$, 正交矩阵表示rotation或者reflection|
-| **Diagonal Matrix**  | 非对角元素都为0的方阵 | $A_{ij} = 0$ for $i \neq j$.                                                     |
-|**Augmented Matrix**| $Ax = B \xRightarrow{}, [A|B]$ 就是增广矩阵| $rank(A) < rank(A|B)$, 方程无解; $rank(A) = rank(A|B) = n$, 方程有1个解; $rank(A) = rank(A|B) > n$, 方程有无穷解  |
+| **Diagonal Matrix**  | A square matrix where all off-diagonal elements are zero | $A_{ij} = 0$ for $i \neq j$.                                                     |
+|**Augmented Matrix**| $Ax = B \xRightarrow{}, [A\|B]$ is the augmented matrix| $rank(A) < rank(A\|B)$, the system has no solution; $rank(A) = rank(A\|B) = n$, the system has a unique solution; $rank(A) = rank(A\|B) > n$, the system has infinitely many solutions  |
 
 ## Similar Matrices
 
@@ -151,7 +127,7 @@ $$
 
 ## Spectral Decomposition (Eigen Decomposition)
 
-- 对于**diagonalizable**($rank = n$)的方阵$A \in \mathcal{R}^{n \times n}$:
+> For **diagonalizable** $A \in \mathcal{R}^{n \times n}$:
 
 $$
 \begin{equation}
@@ -160,18 +136,21 @@ A x_i &= \lambda_i x_i \\
 P &= [x_1, ... x_n] \\
 D &= [ \lambda_1, ... \lambda_n] \\
 AP &= [ \lambda_0 x_0, \lambda_1 x_1, ... \lambda_n x_n ] \\
-&= PD \\
-A &= PDP^{-1}
+&= PD
 \end{aligned}
 \end{equation}
 $$
 
-- 当$A$是实对称矩阵的时候
+> Decomposition & Diagonal Matrix
 
 $$
 \begin{equation}
 \begin{aligned}
-A &= PDP^T
+A &= \begin{cases}
+PDP^{-1} & Normal  \\
+PDP^T & \text{A is real symmetric matrix}
+\end{cases} \\
+D &= PAP^{-1} = P^{-1} A P
 \end{aligned}
 \end{equation}
 $$
@@ -182,21 +161,22 @@ Any matrix $A \in \mathcal{R}^{m \times n}$ can be decomposed as:
 $$
 \begin{equation}
 \begin{aligned}
-A = U \Sigma V^T
+A &= U \Sigma V^T \\
+\sigma_i &= \sqrt{\lambda_i}
 \end{aligned}
 \end{equation}
 $$
-where:
-*   $U \in \mathcal{R}^{m \times m}$ is an orthogonal matrix whose columns are the left singular vectors (eigenvectors of $AA^T$).
-*   $\Sigma \in \mathcal{R}^{m \times n}$ is a diagonal matrix with non-negative real numbers called singular values on its diagonal.
-*   $V \in \mathcal{R}^{n \times n}$ is an orthogonal matrix whose columns are the right singular vectors (eigenvectors of $A^TA$).
-The singular values $\sigma_i$ (diagonal entries of $\Sigma$) are the square roots of the non-zero eigenvalues of $A^TA$ (or $AA^T$).
+| Symbol | Dimensions | Description |
+| :--- | :--- | :--- |
+| $U$ | $\mathcal{R}^{m \times m}$ | Orthogonal matrix whose columns are the left singular vectors (eigenvectors of $AA^T$) |
+| $\Sigma$ | $\mathcal{R}^{m \times n}$ | Diagonal matrix with non-negative real numbers called singular values on its diagonal |
+| $V$ | $\mathcal{R}^{n \times n}$ | Orthogonal matrix whose columns are the right singular vectors (eigenvectors of $A^TA$) |
 
 # Matrix Derivatives
 
 ## Basic Formulas
 
-1. $\frac{\partial (\mathbf{a}^T \mathbf{x})}{\partial \mathbf{x}} = \mathbf{a}$
+1. $\dfrac{\partial (\mathbf{a}^T \mathbf{x})}{\partial \mathbf{x}} = \mathbf{a}$
 
 $$
 \begin{equation}
@@ -212,7 +192,7 @@ $$
 \end{equation}
 $$
 
-2. $\frac{\partial (\mathbf{x}^T \mathbf{A}\mathbf{x})}{\partial \mathbf{x}} = (\mathbf{A} + \mathbf{A}^T)\mathbf{x}$
+2. $\dfrac{\partial (\mathbf{x}^T \mathbf{A}\mathbf{x})}{\partial \mathbf{x}} = (\mathbf{A} + \mathbf{A}^T)\mathbf{x}$
 
 考虑一个标量函数 $f(\mathbf{x}) = \mathbf{x}^T \mathbf{A}\mathbf{x}$。我们想找到它对 $\mathbf{x}$ 的梯度。
 
@@ -237,7 +217,7 @@ f(\mathbf{x} + d\mathbf{x}) &= (\mathbf{x}^T + d\mathbf{x}^T) \mathbf{A}(\mathbf
 \end{equation}
 $$
 
-比较以上公式可得
+- Therefore
 
 $$
 \begin{equation}
