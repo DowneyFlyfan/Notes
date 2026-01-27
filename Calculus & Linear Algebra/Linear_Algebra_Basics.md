@@ -8,118 +8,36 @@ tags:
 
 ## Associativity of Multiplication
 
-$$
-\begin{equation}
-\begin{aligned}
-(AB)C = A(BC)
-\end{aligned}
-\end{equation}
-$$
+| Property | Formula |
+| :--- | :--- |
+| **Associativity** | $(AB)C = A(BC)$ |
 
-# Basic Vector Operations
+## Meaning of a Matrix
 
-Let $\vec{\pmb{v}}, \vec{\pmb{w}} \in \mathcal{R}^n$.
+| Concept | Description | Formula |
+| :--- | :--- | :--- |
+| **Linear Transformation** | Any linear transformation $L: \mathcal{R}^n \to \mathcal{R}^m$ can be represented by an $m \times n$ matrix $A$ | $L(\vec{\pmb{x}}) = A\vec{\pmb{x}}$ |
 
-## Dot Product
-The dot product (or inner product) of two vectors is a scalar.
+## Vector Op & Linear Transformation
 
-1.  **Formula**:
-    $$
-    \begin{equation}
-    \begin{aligned}
-    \vec{\pmb{v}} \cdot \vec{\pmb{w}} &= \sum_{i=1}^n v_i w_i = \vec{\pmb{v}}^T \vec{\pmb{w}} \
-    &= |\vec{\pmb{v}}| |\vec{\pmb{w}}| \cos \theta
-    \end{aligned}
-    \end{equation}
-    $$
-    where $\theta$ is the angle between $\vec{\pmb{v}}$ and $\vec{\pmb{w}}$.
+> Linear transformations map lines to lines (or points) and keep grid lines parallel and evenly spaced.
 
-2.  **Geometric Interpretation**:
-    - 表示两个向量有多靠近
-    *   Related to projection: the projection of $\vec{\pmb{v}}$ onto $\vec{\pmb{w}}$ is $\left( \dfrac{\vec{\pmb{v}} \cdot \vec{\pmb{w}}}{|\vec{\pmb{w}}|^2} \right) \vec{\pmb{w}}$.
-
-## Cross Product
-The cross product is defined for vectors in $\mathcal{R}^3$ (and can be adapted for $\mathcal{R}^2$).
-
-1.  **Formula**:
-    For $\vec{\pmb{v}} = (v_1, v_2, v_3)$ and $\vec{\pmb{w}} = (w_1, w_2, w_3)$ in $\mathcal{R}^3$:
-    $$
-    \begin{equation}
-    \begin{aligned}
-    \vec{\pmb{v}} \times \vec{\pmb{w}} &= \det \begin{bmatrix} \vec{\pmb{i}} & \vec{\pmb{j}} & \vec{\pmb{k}} \\ v_1 & v_2 & v_3 \\ w_1 & w_2 & w_3 \end{bmatrix} \\
-    &= (v_2 w_3 - v_3 w_2)\vec{\pmb{i}} - (v_1 w_3 - v_3 w_1)\vec{\pmb{j}} + (v_1 w_2 - v_2 w_1)\vec{\pmb{k}}
-    \end{aligned}
-    \end{equation}
-    $$
-    For $\vec{\pmb{v}} = (v_1, v_2)$ and $\vec{\pmb{w}} = (w_1, w_2)$ in $\mathcal{R}^2$, often embedded in $\mathcal{R}^3$ as $\vec{\pmb{v}}' = (v_1, v_2, 0)$ and $\vec{\pmb{w}}' = (w_1, w_2, 0)$:
-    $$
-    \begin{equation}
-    \begin{aligned}
-    \vec{\pmb{v}}' \times \vec{\pmb{w}}' &= (v_1 w_2 - v_2 w_1) \vec{\pmb{k}}
-    \end{aligned}
-    \end{equation}
-    $$
-    The magnitude is:
-    $$
-    \begin{equation}
-    \begin{aligned}
-    |\vec{\pmb{v}} \times \vec{\pmb{w}}| &= |\vec{\pmb{v}}| |\vec{\pmb{w}}| \sin \theta
-    \end{aligned}
-    \end{equation}
-    $$
-
-2.  **Geometric Interpretation**:
-
-- 叉乘的模长为$v$和$w$围成的平行四边形的面积, 方向垂直于$v$和$w$所在的平面
-
-# Linear Transformations
-
-A transformation $L: \mathcal{R}^n \to \mathcal{R}^m$ is linear if for any vectors $\vec{\pmb{u}}, \vec{\pmb{v}} \in \mathcal{R}^n$ and any scalar $c$:
-$$
-\begin{equation}
-\begin{aligned}
-L(\vec{\pmb{u}} + \vec{\pmb{v}}) &= L(\vec{\pmb{u}}) + L(\vec{\pmb{v}}) \\
-L(c\vec{\pmb{u}}) &= cL(\vec{\pmb{u}})
-\end{aligned}
-\end{equation}
-$$
-
-## Matrix Representation
-Any linear transformation $L: \mathcal{R}^n \to \mathcal{R}^m$ can be represented by an $m \times n$ matrix $A$ such that $L(\vec{\pmb{x}}) = A\vec{\pmb{x}}$.
-
-## Geometric Insights
-
-*   Linear transformations map lines to lines (or points) and keep grid lines parallel and evenly spaced.
-*   The transformed vector $A\vec{\pmb{x}}$ is a linear combination of the columns of $A$, with weights from the components of $\vec{\pmb{x}}$.
-*   A linear transformation maps vectors from the input space to the column space of $A$. The columns of $A$ can be viewed as the basis vectors of the transformed space image.
+| Operation | Formula | Geometric Interpretation |
+| :--- | :--- | :--- |
+| **Dot Product** ($\cdot$) | $\vec{\pmb{v}} \cdot \vec{\pmb{w}} = \sum v_i w_i = \vec{\pmb{v}}^T \vec{\pmb{w}} = \|\vec{\pmb{v}}\| \|\vec{\pmb{w}}\| \cos \theta$ | Projection of $\vec{\pmb{v}}$ onto $\vec{\pmb{w}}$ is $\frac{\vec{\pmb{v}} \cdot \vec{\pmb{w}}}{\|\vec{\pmb{w}}\|^2} \vec{\pmb{w}}$. |
+| **Cross Product** ($\times$) | $\|\vec{\pmb{v}} \times \vec{\pmb{w}}\| = \|\vec{\pmb{v}}\| \|\vec{\pmb{w}}\| \sin \theta$ | Area of parallelogram. Direction is $\perp$ to the plane. |
+| **Linear Transformation** ($L$) | $L(\vec{\pmb{u}} + \vec{\pmb{v}}) = L(\vec{\pmb{u}}) + L(\vec{\pmb{v}})$ <br> $L(c\vec{\pmb{u}}) = cL(\vec{\pmb{u}})$ | $L: \mathcal{R}^n \to \mathcal{R}^m$ maps lines to lines and keeps grid lines parallel and evenly spaced. |
 
 ## Examples of Linear Operators
 
-1. **Polynomial Differentiation**:
-    Consider polynomials of degree at most 2, $P(x) = a_0 + a_1 x + a_2 x^2$, represented by $\vec{\pmb{a}} = [a_0, a_1, a_2]^T$. The differentiation operator $D = \frac{d}{dx}$ is linear.
-    $D(P(x)) = a_1 + 2a_2 x$, represented by $[a_1, 2a_2, 0]^T$.
-    The matrix for $D$ with respect to the basis $\{1, x, x^2\}$ is:
-    $$
-    \begin{equation}
-    \begin{aligned}
-    D \begin{bmatrix} a_0 \ a_1 \ a_2 \end{bmatrix} = \begin{bmatrix} 0 & 1 & 0 \\ 0 & 0 & 2 \\ 0 & 0 & 0 \end{bmatrix} \begin{bmatrix} a_0 \ a_1 \ a_2 \end{bmatrix}
-    \end{aligned}
-    \end{equation}
-    $$
+| Operator | Formula | Description |
+| :--- | :--- | :--- |
+| **Derivative** | $D \begin{bmatrix} a_0 \ a_1 \ a_2 \end{bmatrix} = \begin{bmatrix} 0 & 1 & 0 \\ 0 & 0 & 2 \\ 0 & 0 & 0 \end{bmatrix} \begin{bmatrix} a_0 \ a_1 \ a_2 \end{bmatrix}$ | Differentiation of polynomials. |
+| **Orthogonal Transformation** | $T(\vec{\pmb{v}}) \cdot T(\vec{\pmb{w}}) = \vec{\pmb{v}} \cdot \vec{\pmb{w}}$ | Preserves dot products (e.g., Reflection, Rotation). |
 
-2.  **Orthogonal Transformation**: A linear transformation $T$ is orthogonal if it preserves the dot product:
-    $$
-    \begin{equation}
-    \begin{aligned}
-    T(\vec{\pmb{v}}) \cdot T(\vec{\pmb{w}}) &= \vec{\pmb{v}} \cdot \vec{\pmb{w}}
-    \end{aligned}
-    \end{equation}
-    $$
-    Orthogonal transformations are rigid transformations (preserve lengths and angles), such as rotations and reflections.
+## Subspace & Rank
 
-# Fundamental Subspaces and Rank of a Matrix
-
-For a matrix $A \in \mathcal{R}^{m \times n}$:
+> For a matrix $A \in \mathcal{R}^{m \times n}$:
 
 | Subspace / Property | Description | Definition / Formula |
 | :--- | :--- | :--- |
@@ -128,40 +46,16 @@ For a matrix $A \in \mathcal{R}^{m \times n}$:
 | **Null Space** ($Null(A)$) | The null space (or kernel) of $A$ is the set of all vectors $\vec{\pmb{x}} \in \mathcal{R}^n$ such that $A\vec{\pmb{x}} = \vec{\pmb{0}}$. It's a subspace of $\mathcal{R}^n$. | The dimension of the null space is called the nullity of $A$, denoted $nullity(A)$. |
 | **Rank**             | The rank of a matrix $A$, denoted $rank(A)$, is the dimension of its column space (which equals the dimension of its row space). It is the maximum number of linearly independent columns (or rows) of $A$. | $rank(A) \le \min(m, n)$ <br> $rank(A) = rank(A^T)$ <br> **Rank-Nullity Theorem**: $rank(A) + nullity(A) = n$ (where $n$ is the number of columns of $A$). |
 
-# Eigenvalues and Eigenvectors
+## Eigenvalues and Eigenvectors
 
-For a square matrix $A \in \mathcal{R}^{n \times n}$:
+> For a square matrix $A \in \mathcal{R}^{n \times n}$:
 
-## Definition
-A non-zero vector $\vec{\pmb{x}}$ is an eigenvector of $A$ if it satisfies:
-$$
-\begin{equation}
-\begin{aligned}
-A\vec{\pmb{x}} = \lambda \vec{\pmb{x}}
-\end{aligned}
-\end{equation}
-$$
-where $\lambda$ is a scalar called the eigenvalue corresponding to $\vec{\pmb{x}}$.
-
-## Characteristic Equation
-Eigenvalues are found by solving the characteristic equation:
-$$
-\begin{equation}
-\begin{aligned}
-\det(A - \lambda I) = 0
-\end{aligned}
-\end{equation}
-$$
-where $I$ is the identity matrix.
-
-## Properties
-*   An $n \times n$ matrix has $n$ eigenvalues, counted with algebraic multiplicity.
-*   The number of linearly independent eigenvectors corresponding to an eigenvalue $\lambda$ is its geometric multiplicity. Geometric multiplicity $\le$ Algebraic multiplicity.
-*   A matrix is diagonalizable if and only if it has $n$ linearly independent eigenvectors (i.e., for every eigenvalue, geometric multiplicity equals algebraic multiplicity).
-*   Eigenvectors are independent of the chosen coordinate system (up to a change of basis for the eigenvector itself).
-
-## Geometric Interpretation
-Eigenvectors are vectors whose direction is unchanged (or scaled) by the linear transformation $A$. They represent the principal axes or invariant directions of the transformation.
+| Concept | Description / Formula |
+| :--- | :--- |
+| **Definition** | $A\vec{\pmb{x}} = \lambda \vec{\pmb{x}}$ ($\vec{\pmb{x}} \neq \vec{\pmb{0}}$) |
+| **Characteristic Eq** | $\det(A - \lambda I) = 0$ |
+| **Properties** | $n$ eigenvalues; Geom mult $\le$ Alg mult; Diagonalizable iff $n$ independent eigenvectors. |
+| **Interpretation** | Invariant directions where the transformation only scales the vector. |
 
 # Determinants \& Trace
 
@@ -169,26 +63,19 @@ Eigenvectors are vectors whose direction is unchanged (or scaled) by the linear 
 
 ### Definition
 
-- The determinant is a scalar value associated with a square matrix $A \in \mathcal{R}^{n \times n}$, denoted $\det(A)$ or $|A|$.
+- Scalar for square matrix $A$, denoted $\det(A)$ or $|A|$.
 
-$$
-\begin{equation}
-\begin{aligned}
-\det(A) = \sum_{\sigma \in S_n} \text{sgn}(\sigma) \prod_{i=1}^n a_{i, \sigma(i)}
-\end{aligned}
-\end{equation}
-$$
+$$ \det(A) = \sum_{\sigma \in S_n} \text{sgn}(\sigma) \prod_{i=1}^n a_{i, \sigma(i)} $$
 
 ### Properties
 
-*   $\det(AB) = \det(A)\det(B)$.
-*   $\det(A^T) = \det(A)$.
-*   $\det(A^{-1}) = 1/\det(A)$ (if $A$ is invertible).
-*   A matrix $A$ is invertible if and only if $\det(A) \neq 0$.
-*   If $\det(A) = 0$, the columns (and rows) of $A$ are linearly dependent.
-*   The determinant is independent of the chosen coordinate system.
-
-where $S_n$ is the set of all permutations of $\{1, ..., n\}$, and $\text{sgn}(\sigma)$ is the sign of permutation $\sigma$.
+| Property | Formula / Condition |
+| :--- | :--- |
+| **Multiplication** | $\det(AB) = \det(A)\det(B)$ |
+| **Transpose** | $\det(A^T) = \det(A)$ |
+| **Inverse** | $\det(A^{-1}) = 1/\det(A)$ (if $A$ is invertible) |
+| **Invertibility** | $A$ is invertible if and only if $\det(A) \neq 0$ |
+| **Rank** | If $\det(A) = 0$, not full rank |
 
 ## Trace
 
