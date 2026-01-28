@@ -1,5 +1,5 @@
 ---
-id: Power_Interconnect
+id: Power&Interconnect&Timing
 aliases: []
 tags:
   - Circuit
@@ -94,3 +94,32 @@ $$
 ## Process
 
 - Planar, FD-SOI, FinFET
+
+# Timing
+
+> Bipolar Interpolation to calculate Delay using capcitance & transition time
+
+> PVT has extreme impact on Delay
+
+$$
+\begin{equation}
+\begin{aligned}
+D &= D_N \times K_{PVT} \\
+K_{PVT} &= K_P \times K_P \times K_T
+\end{aligned}
+\end{equation}
+$$
+
+> GBA to find worst case (WC) delay, PBA(huge calculation, more accurate) to specify WC path
+
+> So many timing paths (exponential with path length) to calculate
+
+![](./imgs/Others/Arrival_Time.png)
+
+![](./imgs/Others/Required_Arrival_Timing.png)
+
+> Timing Slack
+
+![](./imgs/Others/Timing_Slack.png)
+
+
