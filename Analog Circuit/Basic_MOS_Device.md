@@ -14,11 +14,11 @@ tags:
 $$
 \begin{equation}
 \begin{aligned}
-C &= \frac{Q}{V} = \frac{\epsilon  A}{d} \\
-i(t) &= C \dfrac{dV(t)}{dt} \\
-&= Cj \omega V(t) \\
-Z_c &= \frac{V(t)}{i(t)}  \\
-&= \frac{1}{j \omega C} = \frac{1}{s C} 
+C &= \frac{Q}{v} = \frac{\epsilon  A}{d} \\
+i(t) &= C \dfrac{dv(t)}{dt} \\
+&= Cj \omega v(t) \\
+Z_c &= \frac{v(t)}{i(t)}  \\
+&= \frac{1}{j \omega C} 
 \end{aligned}
 \end{equation}
 $$
@@ -28,7 +28,10 @@ $$
 $$
 \begin{equation}
 \begin{aligned}
-Z_L &= j \omega L = sL
+v(t) &= L \frac{di(t)}{dt}  \\
+&= L i(t) j \omega \\
+Z_L &= \frac{v(t)}{i(t)} \\
+&= j \omega  L 
 \end{aligned}
 \end{equation}
 $$

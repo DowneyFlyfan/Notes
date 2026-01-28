@@ -21,7 +21,6 @@ tags:
 | Cascode             | Telescopic                |
 |                     | Folded                    |
 
-
 # Common-Source Stage
 
 ## With Resistive Load
@@ -208,26 +207,45 @@ $$
 $$
 \begin{equation}
 \begin{aligned}
-
+\frac{V_{out}}{V_{in}}(s) &= \frac{g_m + C_{GS}s}{R_S(C_{GS}C_L + C_{GS}C_{GD} + C_{GD}C_L)s^2 + (g_m R_S C_{GD} + C_L + C_{GS})s + g_m} \\
+\omega_{p1} &\approx \frac{g_m}{g_mR_S C_{GD} + C_L + C_{GS}} , \text{Dominant Pole if it exists} 
 \end{aligned}
 \end{equation}
 $$
 
-> Dominant Pole
 
-> Input/Output Impedance & Special Cases
+### Input/Output Impedance Impedance
 
-# Common-Gate
-
-## Only $R_D$ as output resistance
+> $Z_{in} = Z_{in}' || C_{GD}$
 
 $$
 \begin{equation}
 \begin{aligned}
-A_v &= (g_m + g_{mb} + r_o^{-1}) R_D
+Z_{in} &= \begin{cases}
+\dfrac{1}{sC_{GS }} + (1 + \dfrac{g_m}{sC_{GS}} )(\dfrac{1}{g_{mb} + sC_L} ) & Normal \\
+\infty & g_{mb}, C_L = 0 \\
+\dfrac{1}{sC_{GS}}  (1 + \dfrac{g_m}{g_{mb}}  ) + \dfrac{1}{g_{mb}}  & Low-Frequency \\
+\dfrac{1}{sC_{GS}} + \dfrac{1}{C_L} + \dfrac{g_m}{s^2C_L C_{GS}}  & High-Frequency (Oscillator)
+\end{cases}
 \end{aligned}
 \end{equation}
 $$
+
+> $R_S' = R_S || \dfrac{1}{sC_{GD}}, Z_{out} = Z_{out}' || \dfrac{1}{g_{mb} + sC_{SB}}$
+
+$$
+\begin{equation}
+\begin{aligned}
+Z_{out}' &= \begin{cases}
+\dfrac{1+ sR_S'C_{GS}}{g_m + sC_{GS}} \\
+\dfrac{1}{g_m}  & Low-Frequency \\
+R_S' & High-Frequency
+\end{cases}
+\end{aligned}
+\end{equation}
+$$
+
+# Common-Gate
 
 ## With Source Degeneration
 
@@ -242,11 +260,15 @@ A_v &= G_m R_{out} \\
 \end{equation}
 $$
 
+## Frequency Response
+
+
+
 # Cascode
 
-## Gain Calculation using current branch
+## Telescopic Cascode with Current-Source Load
 
-> Telescopic Cascode with Current-Source Load
+> Gain Calculation using current branch
 
 ![](./imgs/Single_Stage_Amplifier/Cascode-Current_Source_Load.png)
 
