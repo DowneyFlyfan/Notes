@@ -21,6 +21,7 @@ tags:
 | Cascode             | Telescopic                |
 |                     | Folded                    |
 
+
 # Common-Source Stage
 
 ## With Resistive Load
