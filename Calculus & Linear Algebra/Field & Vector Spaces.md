@@ -13,14 +13,15 @@ tags:
 
 | Property | Condition |
 | :--- | :--- |
-| Laws | Commutativ e, associativity, distributive laws |
-| Multiplicative Identity | There exists a $1$, s.t. $x \cdot 1 = x, \forall x \in \mathcal{F}$ |
-| Additive Identity | There exists a $0$, s.t. $x + 0 = x, \forall x \in \mathcal{F}$ |
-| Multiplicative Inverse | There exists a $x^{-1}$, s.t. $x \cdot x^{-1} = 1, \forall x \in \mathcal{F}, x \neq 0$ |
-| Additive Inverse | There exists a $x_I$, s.t. $x + x_{I} = 0, \forall x \in \mathcal{F}$ |
-| Closure | $x + y \in \mathcal{F}, x \cdot y \in \mathcal{F}, \forall x,y \in \mathcal{F}$ |
+| Laws | Commutative, associative, distributive laws |
+| Multiplicative Identity | There exists $1$ such that $x \cdot 1 = x$ for all $x \in \mathcal{F}$ |
+| Additive Identity | There exists $0$ such that $x + 0 = x$ for all $x \in \mathcal{F}$ |
+| Multiplicative Inverse | For each $x \in \mathcal{F}$ with $x \neq 0$, there exists $x^{-1}$ such that $x \cdot x^{-1} = 1$ |
+| Additive Inverse | For each $x \in \mathcal{F}$, there exists $-x$ such that $x + (-x) = 0$ |
+| Closure under Addition | $x + y \in \mathcal{F}$ for all $x, y \in \mathcal{F}$ |
+| Closure under Multiplication | $x \cdot y \in \mathcal{F}$ for all $x, y \in \mathcal{F}$ |
 
-- **!!! Prove** the uniqueness of $1,0x^{-1},x_I$
+- **!!! Prove** the uniqueness of $1,0, x^{-1},x_I$
 
 ## Special Fields
 
