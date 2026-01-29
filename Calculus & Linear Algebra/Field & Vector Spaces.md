@@ -161,11 +161,9 @@ $$
 
 - $\mathcal{V} = \mathcal{U} \cap \mathcal{W}$ is also a subspace (All elements are in both spaces, satisfying subspace definition on both side)
 
-- $\mathcal{V} = \mathcal{U} \cup \mathcal{W}$ is not always a subspace
+- $\mathcal{V} = \mathcal{U} \cup \mathcal{W}$ is not always a subspace unless $\mathcal{V} \in \mathcal{W}$ or $\mathcal{W} \in \mathcal{V}$
 
-### Number of Types of subspace for $\mathcal{R}^n$
 
-- $n+1$ (0 set)
 
 ### Line can be only formed in a infinite set Field
 
@@ -181,9 +179,11 @@ v_0 &= [1,1] \xRightarrow{}  \mathcal{L}_{v_0} = \big\{ [0,0], [1,1] \big\}
 \end{equation}
 $$
 
-## Span, Linear Independence
+> Number of Types of subspace for $\mathcal{R}^n$ is $n+1$
 
-> Span is a subspace
+## Span, Basis
+
+### Span is a subspace
 
 $$
 \begin{equation}
@@ -194,11 +194,19 @@ A^{n \times k} &= [u_1, u_2,...u_k]
 \end{equation}
 $$
 
-> Linear Independence
-
 > A set of vectors is linearly independent if the only coefficients that make their linear combination equal to zero are all zero.
 
 - Any vector in the span of a linearly independent set has a **unique representation**
+
+### Basis
+
+> A basis for a vector space $\mathcal{V}$ is a set of vectors $\{v_1, v_2, ..., v_n\}$ that satisfies two conditions:
+
+1. **Spanning**: $\text{span}\{v_1, v_2, ..., v_n\} = \mathcal{V}$
+
+2. **Linear Independence**: The vectors $v_1, v_2, ..., v_n$ are linearly independent
+
+- Note that $dim(\mathcal{V}) = n$
 
 ## Column/Row Space, NullSpace
 
@@ -214,3 +222,7 @@ $$
 $$
 
 - $\mathcal{R(A)}$ is a subspace of $F^m$ (**proof**), called Column Space (Range)
+
+## Inner Product
+
+- Add, mult, commutative, >=0

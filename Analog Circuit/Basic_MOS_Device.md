@@ -23,7 +23,7 @@ Z_c &= \frac{v(t)}{i(t)}  \\
 \end{equation}
 $$
 
-> Inductors
+## Inductors
 
 $$
 \begin{equation}
@@ -87,6 +87,16 @@ $$
 ## Operation Regions
 
 ![](./imgs/Devices/MOS-Op-Regions.png)
+
+> Intrinsic Frequency
+
+$$
+\begin{equation}
+\begin{aligned}
+\omega_T &= \frac{g_m}{C_{GS}} , \text{Sat} 
+\end{aligned}
+\end{equation}
+$$
 
 > Specifically, when $V_{DS} \ll 2(V_{GS} - V_{th})$, which we call **deep triode region**, it works as a **linear resistor**
 

@@ -4,18 +4,14 @@ aliases: []
 tags: []
 ---
 
-# Black Impedance Rules
-
-$$
-\begin{equation}
-\begin{aligned}
-
-\end{aligned}
-\end{equation}
-$$
+# Black Impedance Rules (BIR)
 
 # ZVTC
 
 # Mason's Gain Formula
 
 # Block Diagram
+
+# Asymptotic Gain Relations (AGR)
+
+# Log Diagram

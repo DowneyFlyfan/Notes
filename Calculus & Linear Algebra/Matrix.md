@@ -8,12 +8,20 @@ tags:
 
 ## Matrix Properties
 
-| Property | Formula | Description |
-| :--- | :--- | :--- |
-| **Associativity of Multiplication** | $(AB)C = A(BC)$ | Matrix multiplication is associative |
-| **Linear Transformation** | $L(\vec{\pmb{x}}) = A\vec{\pmb{x}}$ | Any linear transformation $L: \mathcal{R}^n \to \mathcal{R}^m$ can be represented by an $m \times n$ matrix $A$ |
+- **Associativity of Multiplication**: $(AB)C = A(BC)$
 
-## Vector Op & Linear Transformation
+$$
+\begin{equation}
+\begin{aligned}
+T : \mathcal{U} \xrightarrow{} \mathcal{V}, det(U) &\lt \infty \\
+dim(\mathcal{R} (T)) + dim(\mathcal{N} (T)) &= dim(\mathcal{\mathcal{U} } )
+\end{aligned}
+\end{equation}
+$$
+
+- $if \mathcal{N} (T) = \mathcal{U}$: ???
+
+## Vector Op & Linear map
 
 > Linear transformations map lines to lines (or points) and keep grid lines parallel and evenly spaced.
 
@@ -21,7 +29,7 @@ tags:
 | :--- | :--- | :--- |
 | **Dot Product** ($\cdot$) | $\vec{\pmb{v}} \cdot \vec{\pmb{w}} = \sum v_i w_i = \vec{\pmb{v}}^T \vec{\pmb{w}} = \|\vec{\pmb{v}}\| \|\vec{\pmb{w}}\| \cos \theta$ | Projection of $\vec{\pmb{v}}$ onto $\vec{\pmb{w}}$ is $\frac{\vec{\pmb{v}} \cdot \vec{\pmb{w}}}{\|\vec{\pmb{w}}\|^2} \vec{\pmb{w}}$. |
 | **Cross Product** ($\times$) | $\|\vec{\pmb{v}} \times \vec{\pmb{w}}\| = \|\vec{\pmb{v}}\| \|\vec{\pmb{w}}\| \sin \theta$ | Area of parallelogram. Direction is $\perp$ to the plane. |
-| **Linear Transformation** ($L$) | $L(\vec{\pmb{u}} + \vec{\pmb{v}}) = L(\vec{\pmb{u}}) + L(\vec{\pmb{v}})$ <br> $L(c\vec{\pmb{u}}) = cL(\vec{\pmb{u}})$ | $L: \mathcal{R}^n \to \mathcal{R}^m$ maps lines to lines and keeps grid lines parallel and evenly spaced. |
+| **Linear Map** | $f(x) = A \pmb{x}$ | $f: \mathcal{F}^n \to \mathcal{F}^m$ maps lines to lines and keeps grid lines parallel and evenly spaced. |
 
 ## Examples of Linear Operators
 
@@ -36,7 +44,7 @@ tags:
 
 | Subspace / Property | Description | Definition / Formula |
 | :--- | :--- | :--- |
-| **Column Space** ($Col(A)$) | The column space of $A$ is the span of its column vectors. It's a subspace of $\mathcal{R}^m$. | $Col(A) = \{ A\vec{\pmb{x}} \mid \vec{\pmb{x}} \in \mathcal{R}^n \}$ |
+| **Column Space**, $Col(A), R(A)$ | The column space of $A$ is the span of its column vectors. It's a subspace of $\mathcal{R}^m$. | $Col(A) = \{ A\vec{\pmb{x}} \mid \vec{\pmb{x}} \in \mathcal{R}^n \}$ |
 | **Row Space** ($Row(A)$)   | The row space of $A$ is the span of its row vectors. It's a subspace of $\mathcal{R}^n$.    | $Row(A) = \{ \vec{\pmb{x}}^T A \mid \vec{\pmb{x}} \in \mathcal{R}^m \}$ |
 | **Null Space** ($Null(A)$) | The null space (or kernel) of $A$ is the set of all vectors $\vec{\pmb{x}} \in \mathcal{R}^n$ such that $A\vec{\pmb{x}} = \vec{\pmb{0}}$. It's a subspace of $\mathcal{R}^n$. | The dimension of the null space is called the nullity of $A$, denoted $nullity(A)$. |
 | **Rank**             | The rank of a matrix $A$, denoted $rank(A)$, is the dimension of its column space (which equals the dimension of its row space). It is the maximum number of linearly independent columns (or rows) of $A$. | $rank(A) \le \min(m, n)$ <br> $rank(A) = rank(A^T)$ <br> **Rank-Nullity Theorem**: $rank(A) + nullity(A) = n$ (where $n$ is the number of columns of $A$). |

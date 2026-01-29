@@ -9,7 +9,20 @@ tags:
 
 ## Large-Signal Model
 
-- 
+$$
+\begin{equation}
+\begin{aligned}
+V_{in1} - V_{in2} &= V_{GS1} - V_{GS2} \\
+&= \sqrt{\frac{2I_{D1}}{k_{n1}} } - \sqrt{\frac{2I_{D2}}{k_{n2}} }\\
+\frac{1}{2} k_n ( V_{in1} - V_{in2} )^2 &=  (I_{SS} - 2 \sqrt{I_{D1} I_{D2}}) \\
+4I_{D1}I_{D2} &= I_{SS}^2 - (I_{D1} - I_{D2}) \\
+I_{D1} - I_{D2} &= \frac{1}{2}\mu_{n}C_{ox}\frac{W}{L}(V_{in1} - V_{in2})\sqrt{\frac{4I_{SS}}{\mu_{n}C_{ox}\frac{W}{L}} - (V_{in1} - V_{in2})^2} \\
+&= \sqrt{\mu_{n}C_{ox}\frac{W}{L}I_{SS}}(V_{in1} - V_{in2})\sqrt{1 - \frac{\mu_{n}C_{ox}(W/L)}{4I_{SS}}(V_{in1} - V_{in2})^2} \\
+G_m &= \frac{\partial (I_{D1} - I_{D2})}{\partial (V_{in1} - V_{in2})} \\
+&= \sqrt{\mu_{n}C_{ox}\frac{W}{L}I_{SS}}\sqrt{1 - \frac{\mu_{n}C_{ox}(W/L)}{4I_{SS}}(V_{in1} - V_{in2})^2}
+\end{aligned}
+\end{equation}
+$$
 
 ## Small-Signal Model
 
@@ -73,5 +86,3 @@ $$
 - Cascode Stage has very high gain
 
 ## Gilbert Cell
-
-

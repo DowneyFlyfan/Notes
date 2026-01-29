@@ -122,4 +122,18 @@ $$
 
 ![](./imgs/Others/Timing_Slack.png)
 
+# Synthesis
 
+> sdc(Synopsys Design Constraints) file
+
+- `tcl` is Tool Command Language
+
+```tcl
+create_block VBLK -period 5
+create_generated_clock -name my_clk -source $out_clk -divide_by 4 [get_pins CLK_slow_regp/q]
+set_input_delay -max 1.5 -clock CLK [get_ports input]
+set_output_delay -max 1.5 -clock CLK [get_ports output]
+set_clock_uncertainty T_uncertain [get_clocks <CLK>]
+```
+
+> 

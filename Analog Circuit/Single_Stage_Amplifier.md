@@ -262,8 +262,6 @@ $$
 
 ## Frequency Response
 
-
-
 # Cascode
 
 ## Telescopic Cascode with Current-Source Load
