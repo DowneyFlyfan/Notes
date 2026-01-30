@@ -66,62 +66,45 @@ $$
 \end{equation}
 $$
 
-- $V_S$ doesn't change
-
-- Differential Mode + CM
-
-- CM makes 0 gain for $V_X - V_Y$
-
 > DP with Degeneration
 
 - Trade Gain for Linearity
 
+- Less Voltage Headroom
+
 - Split $I_{SS}$ in 2 to fix the problem (induce more noise)
 
-## CM + DM
+## Common-Mode Response
+
+> While ideal differential pairs exhibit zero common-mode gain, practical constraints such as the finite resistance $R_{SS}$ of the current source and manufacturing mismatches in $R_D$ introduce a non-zero common-mode response.
 
 $$
 \begin{equation}
 \begin{aligned}
-\frac{V_X-V_Y}{V_{in,cm}} 
+A_{v,cm} &= \begin{cases}
+\dfrac{R_D / 2}{ \dfrac{1}{2g_m} + R_{SS}} & Normal \\
+= A_{CM-DM} = -\dfrac{\Delta g_m R_D}{1 + (g_{m1} + g_{m2}) R_{SS}} & g_m \ Mismatch \\
+-\dfrac{g_m}{1 + 2g_m R_{SS}} \Delta R_D & R_D \ Mismatch
+\end{cases}
 \end{aligned}
 \end{equation}
 $$
 
-# CM
-
-## Gain
+> CMRR
 
 $$
 \begin{equation}
 \begin{aligned}
-A_{v,dm} &= -g_m R_D \\
-A_{v,cm} &= \frac{R_D}{\dfrac{1}{g_m} + R_S} 
+A_{v,dm} &= \frac{R_D}{2} \frac{g_{m1} + g_{m2} + 4g_{m1} g_{m2} R_{SS}}{1 + (g_{m1} + g_{m2}) R_{SS}}  \\
+\therefore CMRR &= \frac{|A_{DM}|}{|A_{CM-DM}|}  \\
+&= \frac{g_{m1} + g_{m2} + 4g_{m1} g_{m2} R_{SS}}{2 \Delta  g_m} \\
+& \approx \frac{g_m}{ \Delta g_m} (1 + 2g_m R_{SS}) \\
+& \approx \frac{2g_m^2 R_{SS}}{ \Delta g_m} 
 \end{aligned}
 \end{equation}
 $$
 
-## Real Condition
-
-> Real Current Source has a finite resistance $R_{SS}$
-
-> Real Manufacturing makes $R_D$ different
-
-- CM Variation has **significant impact** on Differential Output
-
-> CM-DM Conversion induced by Mismatches between 2 transistors
-
-$$
-\begin{equation}
-\begin{aligned}
-A_{v, CM-DM} &= - \frac{\Delta g_m R_D}{(g_{m1} + g_{m2}) R_{SS} + 1} 
-\end{aligned}
-\end{equation}
-$$
-
-## CMRR
-
-## MOS Load
+# MOS Load
 
 - Current-Source Load (Low Gain)
 

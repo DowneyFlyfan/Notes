@@ -143,7 +143,7 @@ A_v &= G_m R_{out} \\
 G_m &= \begin{cases}
 \dfrac{\partial I_{out}}{\partial V_{GS}} \dfrac{\partial V_{GS}}{\partial V_{in}} & LSM \\
 \dfrac{i_{out}}{v_{in}} |_{v_{out} = 0} & SSM \\
-\dfrac{1}{R_{eq}} |_{v_{out} = 0, i_{out} = i_{in}} & SSM
+\dfrac{1}{R_{eq}} |_{v_{out} = 0, i_{out} = i_{in}} & CG
 \end{cases}
 \end{aligned}
 \end{equation}
