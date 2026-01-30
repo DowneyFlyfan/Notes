@@ -7,6 +7,8 @@ tags:
 
 # Basic Differential Pairs
 
+![](./imgs/Differential_Amplifier/Differential_Pair.png)
+
 ## Large-Signal Model
 
 $$
@@ -26,9 +28,43 @@ $$
 
 ## Small-Signal Model
 
-> Two methods for analysis
+### SuperPosition (Neglecting CLM and body effect)
 
-- SuperPosition & Half-Circuit
+> $V_{out} = V_X$, the circuit acts as a common-source stage with source degeneration $R_S = 1/g_{m2}$. 
+
+> $V_{out} = V_Y$, it acts as a source follower driving $M_2$, which after Thévenin equivalence becomes a common-gate stage.
+
+![](./imgs/Differential_Amplifier/Differential_Pair_VY=Vout.png)
+
+$$
+\begin{equation}
+\begin{aligned}
+V_X|_{by \ V_{in1}} &= \frac{-R_D}{g_{m1} + g_{m2}}  \\
+V_Y|_{by \ V_{in1}} &= \frac{R_D}{g_{m1} + g_{m2}}  \\
+( V_X-V_Y )_{by \ V_{in1}} &= \frac{-2R_D}{g_{m1} + g_{m2}} \\
+( V_X-V_Y )_{by \ V_{in2}} &= \frac{2R_D}{g_{m1} + g_{m2}} \\
+\therefore A_{dm} &= \frac{-R_D}{g_{m1} + g_{m2}} 
+\end{aligned}
+\end{equation}
+$$
+
+- Not a very high gain
+
+### Half-Circuit
+
+> Lemma: $V_P$ stays the same given any differential input
+
+![](./imgs/Differential_Amplifier/Half-Circuit.png)
+
+$$
+\begin{equation}
+\begin{aligned}
+\frac{V_X}{V_{in1}} &= -g_m R_D \\
+\frac{-V_Y}{V_{in1}} &= -g_m R_D \\
+\therefore A_{dm} &= -g_m R_D
+\end{aligned}
+\end{equation}
+$$
 
 - $V_S$ doesn't change
 
@@ -41,6 +77,16 @@ $$
 - Trade Gain for Linearity
 
 - Split $I_{SS}$ in 2 to fix the problem (induce more noise)
+
+## CM + DM
+
+$$
+\begin{equation}
+\begin{aligned}
+\frac{V_X-V_Y}{V_{in,cm}} 
+\end{aligned}
+\end{equation}
+$$
 
 # CM
 
@@ -85,4 +131,4 @@ $$
 
 - Cascode Stage has very high gain
 
-## Gilbert Cell
+- [ ] ## Gilbert Cell
