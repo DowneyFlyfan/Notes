@@ -114,4 +114,39 @@ $$
 
 - Cascode Stage has very high gain
 
-# 
+# Current Mirrors
+
+## Basic Current Mirrors
+
+> Start with a **known and stable** $I_{REF}$
+
+- There must be s.t. a strong correlation to copy currents to avoid influence from PVT
+
+$$
+\begin{equation}
+\begin{aligned}
+I_{REF} &= f(V_{GS}) \\
+\therefore V_{GS} &= f^{-1}(I_{REF}) \\
+I_{copy} &= f(V_{GS}) = I_{REF}
+\end{aligned}
+\end{equation}
+$$
+
+> $L_{eff} = L_{drawn} - 2L_{D}$, $W$ is in a wierd shape
+
+- Therefore, scaling $W,L$ on a single transistor is no reliable to bring multiple of $I_{REF}$
+
+- Scaling $W$ is better than $L$ if necessary
+
+![](./imgs/Current_Mirrors/Transistor_WL_view.png)
+
+
+- We use Parallel/series unit transistor to achieve that
+
+![](./imgs/Current_Mirrors/Current_Mirror_for_Iref_multiples.png)
+
+- For right circuit, bottom device works in **triode region** to achieve $I_{REF}/2$ and reduce the number of transistors
+
+## Cascode Current Mirror
+
+
