@@ -104,11 +104,10 @@ $$
 $$
 \begin{equation}
 \begin{aligned}
-A_v &= -g_{m1} \frac{1}{g_{m2} + g_{m2b}} \\
-&= \begin{cases}
- \sqrt{\dfrac{(W/L)_1}{(W/L)_2} } (1 + \eta) & \text{No CLM} \\
-\dfrac{|V_{GS2} - V_{th2} |}{V_{GS1} - V_{th1}} & \text{No CLM, Body Effect}   \\
- -g_{m1} (g_{m2}^{-1} || r_{o2} || r_{o1}) & \text{Normal Case} 
+A_v &= \begin{cases}
+-g_{m1} ( \dfrac{1}{g_{m2} + g_{mb2}}  || r_{o2} || r_{o1}) \approx -\sqrt{\dfrac{(W/L)_1}{(W/L)_2} } (1 + \eta) & \text{NMOS Load} \\
+-g_{mN} (g_{mP}^{-1} || r_{oN} || r_{oP}) \approx -\sqrt{\dfrac{\mu_n (W/L)_n}{\mu_p (W/L)_p} } & \text{PMOS Load}  \\
+\dfrac{V_{OVp}}{V_{OVn}} & \text{No CLM, PMOS Load}
 \end{cases}
 \end{aligned}
 \end{equation}
