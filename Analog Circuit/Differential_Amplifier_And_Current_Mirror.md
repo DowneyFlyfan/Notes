@@ -114,7 +114,7 @@ $$
 
 - Cascode Stage has very high gain
 
-# Current Mirrors
+# Current Mirror
 
 ## Basic Current Mirrors
 
@@ -147,6 +147,8 @@ $$
 
 - For right circuit, bottom device works in **triode region** to achieve $I_{REF}/2$ and reduce the number of transistors
 
-## Cascode Current Mirror
+## Cascode Current Mirror (...)
+
+## Active Current Mirror
 
 
