@@ -150,5 +150,3 @@ $$
 ## Cascode Current Mirror (...)
 
 ## Active Current Mirror
-
-
