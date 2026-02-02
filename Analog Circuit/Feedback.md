@@ -16,4 +16,5 @@ tags:
 | Current-Voltage | $R_{if} = \dfrac{R_i}{1+R_m\beta_g}$ | $R_{of} = \dfrac{R_o}{1+R_m\beta_g}$ |
 | Current-Current | $R_{if} = \dfrac{R_i}{1+A_i\beta_i}$ | $R_{of} = R_o(1+A_i\beta_i)$ |
 
-# 
+# Bode's Analysis of Feedback Circuit
+

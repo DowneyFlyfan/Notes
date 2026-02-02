@@ -62,31 +62,20 @@ $$
 
 ### Properties
 
-- $\mathcal{U}+\mathcal{W}$ is also a subspace if $\mathcal{U}, \mathcal{W}$ are subspaces
+| Property | Description |
+| :--- | :--- |
+| Sum | $\mathcal{U}+\mathcal{W}$ is also a subspace if $\mathcal{U}, \mathcal{W}$ are subspaces |
+| Intersection | $\mathcal{V} = \mathcal{U} \cap \mathcal{W}$ is also a subspace (All elements are in both spaces, satisfying subspace definition on both side) |
+| Union | $\mathcal{V} = \mathcal{U} \cup \mathcal{W}$ is a subspace **iff** $\mathcal{U} \subseteq \mathcal{W}$ or $\mathcal{W} \subseteq \mathcal{U}$ |
 
-- $\mathcal{V} = \mathcal{U} \cap \mathcal{W}$ is also a subspace (All elements are in both spaces, satisfying subspace definition on both side)
-
-- $\mathcal{V} = \mathcal{U} \cup \mathcal{W}$ is a subspace **iff** $\mathcal{V} \in \mathcal{W}$ or $\mathcal{W} \in \mathcal{V}$
-
-## Column(Range) Space, NullSpace
+## Column(Range)Space, NullSpace, Linear Independence
 
 > For $A \subseteq \mathcal{F}^{m \times n}$
 
-$$
-\begin{equation}
-\begin{aligned}
-\mathcal{R}(A) &= \big\{ y \in \mathcal{F^m}, \text{s.t. there exists a }  y = Ax, x \in \mathcal{F^n} \big\} \\
-\mathcal{N}(A) &= \big\{ x, x\in \mathcal{F}^n \text{ s.t.} Ax = 0 \big\} = \mathcal{C} (A^T)^T
-\end{aligned}
-\end{equation}
-$$
-
-- $\mathcal{R(A)}$ is a subspace of $F^m$ (**proof**), called Column Space (Range)
-
-
-## Span, Basis
-
-### Span is a subspace
+| Space | Definition | Description |
+| :--- | :--- | :--- |
+| **Column Space (Range)** | $\mathcal{Col}(A) = \mathcal{R}(A) = \{ y \in \mathcal{F}^m \mid \exists x \in \mathcal{F}^n, y = Ax \}$ | Subspace of $\mathcal{F}^m$ (**proof**) |
+| **Null Space** | $\mathcal{N}(A) = \{ x \in \mathcal{F}^n \mid Ax = 0 \}$ | Subspace of $\mathcal{F}^n$ |
 
 $$
 \begin{equation}
@@ -101,7 +90,7 @@ $$
 
 - Any vector in the span of a linearly independent set has a **unique representation**
 
-### Basis
+## Basis
 
 > A basis for a vector space $\mathcal{V}$ is a set of vectors $\{v_1, v_2, ..., v_n\}$ that satisfies two conditions:
 
@@ -110,9 +99,3 @@ $$
 2. **Linear Independence**: The vectors $v_1, v_2, ..., v_n$ are linearly independent
 
 - Note that $dim(\mathcal{V}) = n$
-
-
-
-## Inner Product
-
-- Add, mult, commutative, >=0
