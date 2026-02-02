@@ -21,19 +21,15 @@ tags:
 | Closure under Addition | $x + y \in \mathcal{F}$ for all $x, y \in \mathcal{F}$ |
 | Closure under Multiplication | $x \cdot y \in \mathcal{F}$ for all $x, y \in \mathcal{F}$ |
 
-- **!!! Prove** the uniqueness of $1,0, x^{-1},x_I$
 
-## Special Fields
+## Axioms and Special Fields
 
-$$
-\begin{equation}
-\begin{aligned}
-\mathcal{F} &: \big\{ 0,1 \big\}, \text{Binary}, GF_2  \\
-\mathcal{F} &: (x,y) + (p,q) = (x+p, y + q) \\
-& (x,y) \cdot (p,q) =(xp - yq, xq + yp), \text{Complex Field} 
-\end{aligned}
-\end{equation}
-$$
+| Property | Description |
+| :--- | :--- |
+| Uniqueness | $1,0, x^{-1},x_I$ are unique |
+| Zero and Identity Multiplication | $0 \cdot a = 0, 1_I \cdot a = a_I$ |
+| Binary Field (GF₂) | $\mathcal{F} = \{0,1\}$ |
+| Complex Field | $(x,y) + (p,q) = (x+p, y + q)$ <br> $(x,y) \cdot (p,q) = (xp - yq, xq + yp)$ |
 
 # Vector Spaces
 
@@ -43,102 +39,11 @@ $$
 
 | Property | Condition |
 | :--- | :--- |
-| Identities & Inverses | $1,0,x^{-1}, x_I$ same as in $\mathcal{F}$ |
+| Identities & Inverses | $1,0,x_I$ same as in $\mathcal{F}$ |
 | Laws | Commutative, distributive and associativity laws |
 | Operations | Scalar multiplication $\cdot$ and vector addition $+$ |
 | Closure under Addition | $x + y \in \mathcal{V}, \forall x, y \in \mathcal{V}$ |
 | Closure under Scalar Mult | $\alpha x \in \mathcal{V}, \forall \alpha \in \mathcal{F}, \forall x \in \mathcal{V}$ |
-
-## Canonical Examples of Defining a Vector Space
-
-### Standard
-
-> Give a Field $\mathcal{F}$, $n$ is an postive integar , A vector space can be defined as
-
-$$
-\begin{equation}
-\begin{aligned}
-\mathbf{F} ^n &= \big\{ \begin{bmatrix}
-x_1 \\
-x_2 \\
-... \\
-x_n 
-\end{bmatrix}, x_i \in \mathcal{F} \big\}
-\end{aligned}
-\end{equation}
-$$
-
-> Addition
-
-$$
-\begin{equation}
-\begin{aligned}
-\begin{bmatrix}
-x_1 \\
-x_2 \\
-... \\
-x_n
-\end{bmatrix} + \begin{bmatrix}
-y_1 \\
-y_2 \\
-... \\
-y_n
-\end{bmatrix} &\triangleq  \begin{bmatrix}
-x_1 + y_1 \\
-x_2 + y_2 \\
-... \\
-x_n + y_n 
-\end{bmatrix}, x_i, y_i \in \mathcal{F} 
-\end{aligned}
-\end{equation}
-$$
-
-> Multiplication
-
-$$
-\begin{equation}
-\begin{aligned}
-\alpha  \begin{bmatrix}
-x_1 \\
-x_2 \\
-... \\
-x_n
-\end{bmatrix} &=
-\begin{bmatrix}
-\alpha x_1 \\
-\alpha x_2 \\
-... \\
-\alpha x_n
-\end{bmatrix}, \alpha, x_i \in \mathcal{F} 
-\end{aligned}
-\end{equation}
-$$
-
-### Function Space
-
-$$
-\begin{equation}
-\begin{aligned}
-\mathcal{V}&: \big\{ f: \mathcal{R} \xrightarrow{} \mathcal{R} \big\} \\
-(f_1 + f_2)(x) &= f_1(x) + f_2(x), +: \textbf{Real Addition} \\
-(\alpha f)(x) &= \alpha f(x), \alpha \in \mathcal{F} 
-\end{aligned}
-\end{equation}
-$$
-
-### Table Definition (Define its add & mult !!!)
-
-$$
-\begin{equation}
-\begin{aligned}
-\mathbb{F}^{m \times n} &= \begin{bmatrix}
-x_{11} & ... & x_{1n} \\
-.. & .. & .. \\
-x_{m1} & .. & x_{mn}
-\end{bmatrix}, x_{ij} \in \mathcal{F} 
-\end{aligned}
-\end{equation}
-$$
 
 ## Vector Subspace
 
@@ -161,25 +66,23 @@ $$
 
 - $\mathcal{V} = \mathcal{U} \cap \mathcal{W}$ is also a subspace (All elements are in both spaces, satisfying subspace definition on both side)
 
-- $\mathcal{V} = \mathcal{U} \cup \mathcal{W}$ is not always a subspace unless $\mathcal{V} \in \mathcal{W}$ or $\mathcal{W} \in \mathcal{V}$
+- $\mathcal{V} = \mathcal{U} \cup \mathcal{W}$ is a subspace **iff** $\mathcal{V} \in \mathcal{W}$ or $\mathcal{W} \in \mathcal{V}$
 
+## Column(Range) Space, NullSpace
 
-
-### Line can be only formed in a infinite set Field
-
-> Proof that finite set field can not form a line
+> For $A \subseteq \mathcal{F}^{m \times n}$
 
 $$
 \begin{equation}
 \begin{aligned}
-\mathcal{L}_{v_0} &= \big\{ \alpha v_0 , \alpha \in \mathcal{F} \big\} \\
-\mathcal{F} &= \big\{ 0, 1 \big\} \\
-v_0 &= [1,1] \xRightarrow{}  \mathcal{L}_{v_0} = \big\{ [0,0], [1,1] \big\}
+\mathcal{R}(A) &= \big\{ y \in \mathcal{F^m}, \text{s.t. there exists a }  y = Ax, x \in \mathcal{F^n} \big\} \\
+\mathcal{N}(A) &= \big\{ x, x\in \mathcal{F}^n \text{ s.t.} Ax = 0 \big\} = \mathcal{C} (A^T)^T
 \end{aligned}
 \end{equation}
 $$
 
-> Number of Types of subspace for $\mathcal{R}^n$ is $n+1$
+- $\mathcal{R(A)}$ is a subspace of $F^m$ (**proof**), called Column Space (Range)
+
 
 ## Span, Basis
 
@@ -208,20 +111,7 @@ $$
 
 - Note that $dim(\mathcal{V}) = n$
 
-## Column/Row Space, NullSpace
 
-> For $A \subseteq \mathcal{F}^{m \times n}$
-
-$$
-\begin{equation}
-\begin{aligned}
-\mathcal{R}(A) &= \big\{ y \in \mathcal{F^m}, \text{s.t. there exists a }  y = Ax, x \in \mathcal{F^n} \big\} \\
-\mathcal{N}(A) &= \big\{ x, x\in \mathcal{F}^n \text{ s.t.} Ax = 0 \big\} = \mathcal{C} (A^T)^T
-\end{aligned}
-\end{equation}
-$$
-
-- $\mathcal{R(A)}$ is a subspace of $F^m$ (**proof**), called Column Space (Range)
 
 ## Inner Product
 
