@@ -86,16 +86,11 @@ $$ \det(A) = \sum_{\sigma \in S_n} \text{sgn}(\sigma) \prod_{i=1}^n a_{i, \sigma
 
 ## Cramer's Rule
 
-For a system of linear equations $A\vec{\pmb{x}} = \vec{\pmb{b}}$ where $A$ is an invertible $n \times n$ matrix, the $i$-th component of the solution $\vec{\pmb{x}}$ is given by:
+For $A\vec{\pmb{x}} = \vec{\pmb{b}}$ (invertible $A$):
 
-$$
-\begin{equation}
-\begin{aligned}
-x_i = \frac{\det(A_i)}{\det(A)}
-\end{aligned}
-\end{equation}
-$$
-where $A_i$ is the matrix $A$ with its $i$-th column replaced by $\vec{\pmb{b}}$.
+$$ x_i = \frac{\det(A_i)}{\det(A)} $$
+
+where $A_i$ is $A$ with its $i$-th column replaced by $\vec{\pmb{b}}$.
 
 # Special Types of Matrices
 
