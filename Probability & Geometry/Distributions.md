@@ -1,12 +1,6 @@
 ---
 id: Distributions
 aliases: []
-tags: []
----
-
-- --
-id: Distributions
-aliases: []
 tags:
   - Math
 ---

@@ -208,6 +208,8 @@ $$
 | **Trick** | $E(X) = \int_{0}^{\infty } 1 - F_X(x) dx, x \ge 0$ |
 | **Existence** | It can be infinite, it may not exist |
 
+- Conditional Probability: $E(X|Y) =$
+
 > Ex. 3 cards are randomly inserted in a circle made of a deck. The expected number of cards between them are ?
 
 $$
@@ -235,27 +237,19 @@ $$
 
 ## Independence & Correlation
 
-1. Independence
+> Independence
 
 $$
 \begin{equation}
 \begin{aligned}
-P(X \cap Y) &= P(X) P(Y)
-\end{aligned}
-\end{equation}
-$$
-
-
-$$
-\begin{equation}
-\begin{aligned}
+P(X \cap Y) &= P(X) P(Y) \\
 E(XY) &= E(X) E(Y) \\
 V(X+Y) &= V(X) + V(Y)
 \end{aligned}
 \end{equation}
 $$
 
-2. Independence and Correlation
+> Independence and Correlation
 
 - $X \perp \! \! \! \perp Y \implies Cov(X,Y) = 0$, but $Cov(X,Y) = 0 \not\implies X \perp \! \! \! \perp Y$
 
