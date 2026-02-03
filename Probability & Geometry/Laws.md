@@ -13,7 +13,7 @@ tags:
 
 - For $X \ge 0$
 
-> Proof1
+> Proof
 
 $$
 \begin{equation}

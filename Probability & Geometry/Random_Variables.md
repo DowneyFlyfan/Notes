@@ -199,35 +199,22 @@ E(g(X)) &= \int_{0}^{\infty} g(x) f(x) dx
 \end{equation}
 $$
 
-### Linearity
+### Properties
 
-$$
-\begin{equation}
-\begin{aligned}
-E(\sum_{i}^{} a_i X_i + b ) &= \sum_{i}^{} a_i E(X_i) + b
-\end{aligned}
-\end{equation}
-$$
+| Property | Formula |
+|---|---|
+| **Linearity** | $E(\sum_{i} a_i X_i + b) = \sum_{i} a_i E(X_i) + b$ |
+| **Independence** | $X \perp \! \! \! \perp Y \iff E(XY) = E(X)E(Y)$ |
+| **Trick** | $E(X) = \int_{0}^{\infty } 1 - F_X(x) dx, x \ge 0$ |
+| **Existence** | It can be infinite, it may not exist |
 
-1. 3 cards are randomly inserted in a circle made of a deck
-
-- The expected number of cards between them are ?
+> Ex. 3 cards are randomly inserted in a circle made of a deck. The expected number of cards between them are ?
 
 $$
 \begin{equation}
 \begin{aligned}
 E(L_1 + L_2 + L_3) &= 52 \\
 E(L_1) &= E(L_2) = E(L_3) = \frac{52}{3}
-\end{aligned}
-\end{equation}
-$$
-
-### Independence
-
-$$
-\begin{equation}
-\begin{aligned}
-X \perp \! \! \! \perp Y \xLeftrightarrow{} E(X)E(Y) = E(XY)
 \end{aligned}
 \end{equation}
 $$
