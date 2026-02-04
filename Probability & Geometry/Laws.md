@@ -135,6 +135,8 @@ MSE(\Theta ) &= E(\widehat{\Theta } - \theta )^2 \\
 \end{equation}
 $$
 
+- Unbiased Definition: An estimator $\widehat{\Theta}$ is unbiased if $E(\widehat{\Theta}) = \theta$
+
 - Bias is classified into **positive, negative and unbiased** based on this value
 
 ## Variance Estimation, Bessel Correction

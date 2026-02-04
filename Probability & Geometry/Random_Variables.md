@@ -244,7 +244,8 @@ $$
 \begin{aligned}
 P(X \cap Y) &= P(X) P(Y) \\
 E(XY) &= E(X) E(Y) \\
-V(X+Y) &= V(X) + V(Y)
+V(X+Y) &= V(X) + V(Y) \\
+Var(XY) &= \sigma_x^2 \sigma_y^2 + \sigma_x^2 \mu_y^2 + \sigma_y^2 \mu_x^2
 \end{aligned}
 \end{equation}
 $$
