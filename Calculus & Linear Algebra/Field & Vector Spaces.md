@@ -92,7 +92,7 @@ $$
 
 - Any vector in the span of a linearly independent set has a **unique representation**
 
-## Basis, Rank
+## Basis, Rank, Dimension
 
 > A basis for a vector space $\mathcal{V}$ is a set of vectors $\{v_1, v_2, ..., v_n\}$ that satisfies two conditions:
 
@@ -129,3 +129,10 @@ $$
 \end{equation}
 $$
 
+$$
+\begin{equation}
+\begin{aligned}
+dim(S_1 + S_2) &= dim(S_1) + dim(S_2) - dim(S_1 \cap S_2)
+\end{aligned}
+\end{equation}
+$$
