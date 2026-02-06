@@ -92,7 +92,7 @@ $$
 
 - Any vector in the span of a linearly independent set has a **unique representation**
 
-## Basis
+## Basis, Rank
 
 > A basis for a vector space $\mathcal{V}$ is a set of vectors $\{v_1, v_2, ..., v_n\}$ that satisfies two conditions:
 
@@ -101,3 +101,31 @@ $$
 2. **Linear Independence**: The vectors $v_1, v_2, ..., v_n$ are linearly independent
 
 - Note that $dim(\mathcal{V}) = n$
+
+$$
+\begin{equation}
+\begin{aligned}
+rank(A) &= dim[R(A)]
+\end{aligned}
+\end{equation}
+$$
+
+> Definition of Linearity: A function $f: \mathcal{V} \to \mathcal{W}$ between vector spaces over the same field $\mathcal{F}$ is linear if for all $u, v \in \mathcal{V}$ and all $\alpha \in \mathcal{F}$:
+
+- $f(u + v) = f(u) + f(v)$ (additivity)
+
+- $f(\alpha u) = \alpha f(u)$ (homogeneity)
+
+:wa
+:e
+:wa
+> Rank-Nullity Theorem: For a linear transformation $T: \mathcal{V} \to \mathcal{W}$ or a matrix $A \in \mathcal{F}^{m \times n}$, we have:
+
+$$
+\begin{equation}
+\begin{aligned}
+\dim(\mathcal{V}) = \dim(\mathcal{N}(A)) + \dim(\mathcal{R}(A)) = \text{nullity}(A) + \text{rank}(A) = n
+\end{aligned}
+\end{equation}
+$$
+
