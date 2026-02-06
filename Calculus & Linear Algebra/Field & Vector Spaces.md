@@ -21,7 +21,6 @@ tags:
 | Closure under Addition | $x + y \in \mathcal{F}$ for all $x, y \in \mathcal{F}$ |
 | Closure under Multiplication | $x \cdot y \in \mathcal{F}$ for all $x, y \in \mathcal{F}$ |
 
-
 ## Axioms and Special Fields
 
 | Property | Description |
@@ -68,7 +67,9 @@ $$
 | Intersection | $\mathcal{V} = \mathcal{U} \cap \mathcal{W}$ is also a subspace (All elements are in both spaces, satisfying subspace definition on both side) |
 | Union | $\mathcal{V} = \mathcal{U} \cup \mathcal{W}$ is a subspace **iff** $\mathcal{U} \subseteq \mathcal{W}$ or $\mathcal{W} \subseteq \mathcal{U}$ |
 
-## Column(Range)Space, NullSpace, Linear Independence
+# Column Space, Null Space, Linear Independence, Basis
+
+## Space, Span Linear Independence
 
 > For $A \subseteq \mathcal{F}^{m \times n}$
 
@@ -76,6 +77,7 @@ $$
 | :--- | :--- | :--- |
 | **Column Space (Range)** | $\mathcal{Col}(A) = \mathcal{R}(A) = \{ y \in \mathcal{F}^m \mid \exists x \in \mathcal{F}^n, y = Ax \}$ | Subspace of $\mathcal{F}^m$ (**proof**) |
 | **Null Space** | $\mathcal{N}(A) = \{ x \in \mathcal{F}^n \mid Ax = 0 \}$ | Subspace of $\mathcal{F}^n$ |
+| **Span** | $\text{span}\{v_1, v_2, ..., v_k\} = \{\alpha_1 v_1 + \alpha_2 v_2 + ... + \alpha_k v_k \mid \alpha_i \in \mathcal{F}\}$ | The set of all linear combinations of the vectors |
 
 $$
 \begin{equation}
