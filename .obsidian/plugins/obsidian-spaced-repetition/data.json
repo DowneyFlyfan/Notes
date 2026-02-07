@@ -9,10 +9,11 @@
     "flashcardCardOrder": "DueFirstRandom",
     "flashcardDeckOrder": "PrevDeckComplete_Sequential",
     "convertHighlightsToClozes": true,
-    "convertBoldTextToClozes": false,
+    "convertBoldTextToClozes": true,
     "convertCurlyBracketsToClozes": false,
     "clozePatterns": [
-      "==[123;;]answer[;;hint]=="
+      "==[123;;]answer[;;hint]==",
+      "**[123;;]answer[;;hint]**"
     ],
     "singleLineCardSeparator": "::",
     "singleLineReversedCardSeparator": ":::",
@@ -37,7 +38,7 @@
     "maxNDaysNotesReviewQueue": 365,
     "showRibbonIcon": true,
     "showStatusBar": true,
-    "initiallyExpandAllSubdecksInTree": false,
+    "initiallyExpandAllSubdecksInTree": true,
     "showContextInCards": true,
     "showIntervalInReviewButtons": true,
     "flashcardHeightPercentage": 80,

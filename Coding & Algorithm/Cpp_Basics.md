@@ -3,18 +3,22 @@ id: Cpp_Basics
 aliases: []
 tags:
   - Coding
+sr-due: 2026-02-10
+sr-interval: 4
+sr-ease: 270
 ---
 
 # Library
 
 ## Basics
 
-| Concept | Description |
-| :--- | :--- |
-| Pointer Array vs. Array Pointer | `const char *pointer[]` is an array of pointers; `const char (*pointer)[]` is a pointer to an array. |
-| Templates (`template <typename T>`) | A generic data type for **classes**, **functions**, or **type aliases**. |
-| Prefix `(char) malloc(sizeof(uint8_t))` | Prefix is a mandatory cast operator. |
-| `.o` File | Intermediate object file to be linked to generate the final binary executable. |
+| Concept                                 | Description                                                                                          |
+| :-------------------------------------- | :--------------------------------------------------------------------------------------------------- |
+| Pointer Array vs. Array Pointer         | `const char *pointer[]` is an array of pointers; `const char (*pointer)[]` is a pointer to an array. |
+| Templates (`template <typename T>`)     | A generic data type for **classes**, **functions**, or **type aliases**.                             |
+| Prefix `(char) malloc(sizeof(uint8_t))` | Prefix is a mandatory cast operator.                                                                 |
+| `.o` File                               | Intermediate object file to be linked to generate the final binary executable.                       |
+|                                         |                                                                                                      |
 
 ## std
 

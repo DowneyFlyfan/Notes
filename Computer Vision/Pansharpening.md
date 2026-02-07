@@ -3,11 +3,14 @@ id: Pansharpening
 aliases: []
 tags:
   - CV
+  - flashcards
 ---
 
 # Traditional Methods
 
 ## MRA (Multi-Resolution Analysis)  
+
+ MRA 方法的全称是什么？ :: Multi-Resolution Analysis
 
 1. 加法
 
