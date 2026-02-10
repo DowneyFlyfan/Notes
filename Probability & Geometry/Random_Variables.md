@@ -205,10 +205,10 @@ $$
 |---|---|
 | **Linearity** | $E(\sum_{i} a_i X_i + b) = \sum_{i} a_i E(X_i) + b$ |
 | **Independence** | $X \perp \! \! \! \perp Y \iff E(XY) = E(X)E(Y)$ |
-| **Trick** | $E(X) = \int_{0}^{\infty } 1 - F_X(x) dx, x \ge 0$ |
+| **Survival Function** | $E(X) = \int_{0}^{\infty } 1 - F_X(x) dx, x \ge 0$ |
 | **Existence** | It can be infinite, it may not exist |
 
-- Conditional Probability: $E(X|Y) =$
+- Law of Iterated Expectation: $E(E(X|Y)) = E(X)$
 
 > Ex. 3 cards are randomly inserted in a circle made of a deck. The expected number of cards between them are ?
 
