@@ -260,7 +260,7 @@ $$
 |---|---|---|
 | **Variance** | $V(X) = \sum_{i}^{} \big[ x_i - E(x_i) \big]^2$ $V(X) = E(X^2) - E^2(X)$ | $V(aX +b) = a^2 V(X)$, $V(X + Y) = V(X) + V(Y) + 2Cov(X,Y)$ |
 | **Standard Deviation** | $\sigma_x = \sqrt{V(X)}$ | $\sigma(aX+b) = \|a\| \sigma_x$ |
-| **Covariance** | $Cov(X,Y) = E[ (X - E(X)) (Y - E(Y)) ]$ $Cov(X,Y) = E(XY) - E(X) E(Y)$ | $Cov(X, Y + Z) = Cov(X, Y) + Cov(X, Z)$  |
+| **Covariance** | $Cov(X,Y) = E[ (X - E(X)) (Y - E(Y)) ] = E(XY) - E(X) E(Y)$ | $Cov(X, Y + Z) = Cov(X, Y) + Cov(X, Z)$  |
 | **Covariance Matrix** | $\sum = \begin{pmatrix} Var(X) & Cov(X,Y) \\ Cov(Y, X) & Var(Y) \end{pmatrix}$ | - |
 | **Correlation Coefficient** | $\rho_{X,Y} = \dfrac{Cov(X,Y)}{\sigma_X \sigma_Y}$ | $\rho(aX+b,cY+d) = sign(ac) \rho_{X,Y}$ |
 
