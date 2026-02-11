@@ -108,12 +108,28 @@ $$
 
 ## Probability, PMF, PDF, CDF, Right CDF
 
-### CDF to PMF
+### CDF Properties
 
 $$
 \begin{equation}
 \begin{aligned}
-F(a \lt X \le b) &= F(b) - F(a)
+P(a \lt X \le b) &= F(b) - F(a) \\
+0 \le F_X(x) \le 1 \\
+\underset{x \xrightarrow{} - \infty}{lim} F_X(x) = 0 \\
+\underset{x \xrightarrow{} \infty}{lim} F_X(x) = 1
+\end{aligned}
+\end{equation}
+$$
+
+> Rectangular Inequality
+For any $x_1 < x_2$ and $y_1 < y_2$, the probability that the random variables $(X, Y)$ fall within the rectangle $(x_1, x_2] \times (y_1, y_2]$ is given by:
+
+$$
+\begin{equation}
+\begin{aligned}
+\Delta &= P(x_1 < X \le x_2, y_1 < Y \le y_2) \\
+&= F_{X,Y}(x_2, y_2) - F_{X,Y}(x_1, y_2) - F_{X,Y}(x_2, y_1) + F_{X,Y}(x_1, y_1) \\
+&\ge 0
 \end{aligned}
 \end{equation}
 $$

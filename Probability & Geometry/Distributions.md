@@ -346,3 +346,4 @@ n! &\approx \int_{0}^{\infty} e^{n \ln n - n - \dfrac{(t-n)^2}{2n} } dt \\
 \end{aligned}
 \end{equation}
 $$
+
