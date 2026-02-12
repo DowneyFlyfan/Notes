@@ -88,7 +88,7 @@ A^{n \times k} &= [u_1, u_2,...u_k]
 \end{equation}
 $$
 
-> A set of vectors is linearly independent if the only coefficients that make their linear combination equal to zero are all zero.
+> A set of vectors $\{v_1, v_2, ..., v_k\}$ is linearly independent if $\sum_{i=1}^{k} \alpha_i v_i = 0$ implies $\alpha_i = 0, i \in [1,k]$.
 
 - Any vector in the span of a linearly independent set has a **unique representation**
 

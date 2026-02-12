@@ -36,6 +36,8 @@ Z_L &= \frac{v(t)}{i(t)} \\
 \end{equation}
 $$
 
+> Time Domain Solution of RLC Circuit (RC, RL, RLC)
+
 # CMOS
 
 ## Structure
