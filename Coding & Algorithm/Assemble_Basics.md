@@ -29,6 +29,13 @@ tags:
 
 - `%%` to make sure that the label is `unique` globally
 
+- register structure
+
+|----------------------- RCX (64 bits) -----------------------|
+|                       |---------- ECX (32 bits) ------------|
+|                       |           |----- CX (16 bits) ------|
+|                       |           |-- CH (8) --|-- CL (8) --|
+
 # x86-64
 
 - L1 Cache Line: 64 bytes
