@@ -7,7 +7,7 @@ tags:
 
 # Basics
 
-- Different Jmp
+## Different Jmp
 
 | Instruction | Name | Note | Speed | Instruction Length (bytes) |
 | :--- | :--- | :--- | :--- | :--- |
@@ -15,21 +15,7 @@ tags:
 | `jmp rbx` | Register Direct Jump | | fast | 2 + 1(REX Prefix) |
 | `jmp target` | Direct Jump | | fastest | 5 |
 
-- `rax` is the content of `rax`, 
-
-- `[rax]` is an equivalence of `*rax` in C, which means take the value of the address stored in `rax` (in this case, the value in `rax` is considered as an address)
-
-- `align` is for memory padding
-
-- `%+` for concatenation
-
-- `eax (32-bits)` means **extended** part (last 32-bits) of `rax (64-bits)`
-
-- `SECTION`: Indicate its mode(rwx), seperated in memory
-
-- `%%` to make sure that the label is `unique` globally
-
-- register structures
+## register structures
 
 |----------------------- RCX (64 bits) -----------------------|
 |                       |---------- ECX (32 bits) ------------|
@@ -43,6 +29,35 @@ tags:
 |                       |           |----- R8W (16 bits) -----|
 |                       |           |-- R8B (8) --|
 
+## Memory Address
+
+$$
+\begin{equation}
+\begin{aligned}
+\text{Effective Address} &= \text{Base} + \text{Index} \times 2^{\text{Scale}} + \text{Displacement} 
+\end{aligned}
+\end{equation}
+$$
+
+## Others
+
+- `rax` is the content of `rax`
+
+- `[rax]` is an equivalence of `*rax` in C, which means take the value of the address stored in `rax` (in this case, the value in `rax` is considered as an address)
+
+- `%+` for concatenation
+
+- `SECTION`: Indicate its mode(rwx), seperated in memory
+
+- `%%` to make sure that the label is `unique` globally
+
 # x86-64
 
+
+## IA-32 Modes
+
+Operating Mode: Real Mode, protected mode, virtual 8086 mode(run dos program)
+Compatability Mode: Run 32-bit program
+
 - L1 Cache Line: 64 bytes
+
