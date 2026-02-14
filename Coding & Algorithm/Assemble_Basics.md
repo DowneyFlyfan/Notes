@@ -53,11 +53,9 @@ $$
 
 # x86-64
 
-
 ## IA-32 Modes
 
 Operating Mode: Real Mode, protected mode, virtual 8086 mode(run dos program)
 Compatability Mode: Run 32-bit program
 
 - L1 Cache Line: 64 bytes
-
