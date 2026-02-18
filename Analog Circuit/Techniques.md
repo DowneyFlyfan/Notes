@@ -36,3 +36,19 @@ G_{\infty}(s) &= \underset{\alpha  \xrightarrow{} \infty }{lim} G(s)
 $$
 
 # Log Diagram
+
+# Stability
+
+$$
+\begin{equation}
+\begin{aligned}
+A(s) &= \frac{a(s)}{ 1 + a(s) f(s)} = \frac{a(s)}{1 + T(s)} 
+\end{aligned}
+\end{equation}
+$$
+
+> To be stable
+
+- Poles are all in LHP
+
+- For Nyquist Plot, net number of encirclement across (-1,0) equals to number of RHP poles of $T(S)$
