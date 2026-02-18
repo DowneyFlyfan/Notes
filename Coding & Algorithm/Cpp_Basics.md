@@ -3,9 +3,9 @@ id: Cpp_Basics
 aliases: []
 tags:
   - Coding
-sr-due: 2026-02-10
-sr-interval: 4
+sr-due: "2026-02-10"
 sr-ease: 270
+sr-interval: 4
 ---
 
 # Library

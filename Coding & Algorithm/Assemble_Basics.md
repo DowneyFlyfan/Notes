@@ -59,3 +59,7 @@ Operating Mode: Real Mode, protected mode, virtual 8086 mode(run dos program)
 Compatability Mode: Run 32-bit program
 
 - L1 Cache Line: 64 bytes
+
+# Inline-Assemble
+
+- Just indicate name of the register (don't have to indicate which bits)
