@@ -52,3 +52,10 @@ $$
 - Poles are all in LHP
 
 - For Nyquist Plot, net number of encirclement across (-1,0) equals to number of RHP poles of $T(S)$
+
+> Ringing: Defined as oscillation that dies overtime
+
+- System that rings are called marginally unstable
+
+- Number of zeros - Number of poles = Number of clockwise encirclement
+
