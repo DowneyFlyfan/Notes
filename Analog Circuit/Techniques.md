@@ -58,4 +58,3 @@ $$
 - System that rings are called marginally unstable
 
 - Number of zeros - Number of poles = Number of clockwise encirclement
-
