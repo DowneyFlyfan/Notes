@@ -9,3 +9,10 @@ tags: []
 > Geometric History Length of Partial Tables
 
 - **Intuition**: Close History matters. Importance of long history decade in a geometric way
+
+| Hash Function | Description |
+|---------------|-------------|
+| GF($2^8$) Multiplication | |
+| Folded XOR | |
+| Mod | |
+| Bit Permutation | |
