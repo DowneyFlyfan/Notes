@@ -9,4 +9,3 @@ tags: []
 > Geometric History Length of Partial Tables
 
 - **Intuition**: Close History matters. Importance of long history decade in a geometric way
-
