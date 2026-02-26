@@ -11,8 +11,8 @@ tags:
 
 | Instruction | Name | Note | Speed | Instruction Length (bytes) |
 | :--- | :--- | :--- | :--- | :--- |
-| `jmp [rbx]` | Register indirect jump | through memory | slowest | 2 |
-| `jmp rbx` | Register Direct Jump | | fast | 2 + 1(REX Prefix) |
+| `jmp [rbx]` | Slow indirect jump | through memory | slowest | 2 |
+| `jmp rbx` | Fast Indirect Jump | | fast | 2 + 1(REX Prefix) |
 | `jmp target` | Direct Jump | | fastest | 5 |
 
 ## register structures
@@ -41,15 +41,19 @@ $$
 
 ## Others
 
-- `rax` is the content of `rax`
-
-- `[rax]` is an equivalence of `*rax` in C, which means take the value of the address stored in `rax` (in this case, the value in `rax` is considered as an address)
-
 - `%+` for concatenation
 
 - `SECTION`: Indicate its mode(rwx), seperated in memory
 
 - `%%` to make sure that the label is `unique` globally
+
+> Technique for calculating Distance:
+
+```asm
+; Take test1 and test2 as your start and end addresses
+%assign distance test1-test2
+%warning Distance between 2 Addresses is distance bytes
+```
 
 # x86-64
 
