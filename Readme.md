@@ -32,14 +32,8 @@ tags: []
 
 - Very Long Instruction Words (VLIW): Scheduling is done by compiler (Fixed number of instructions issued per cycle)
 
-- Store/Load = Memory Reference
-
 | Role/Area | Description |
 |---|---|
 | CAD Tooling | Develops CAD tools and integrates software. |
-| RTL Hardware Acceleration | Accelerates hardware design and simulation at RTL. |
 | Design for Test (DFT) | Designs testability features for manufacturing. |
-| Hardware Design | Defines architecture and designs digital circuits. |
-| Verification | Ensures functional correctness of hardware. |
-| Implementation | Handles physical chip realization (synthesis, layout, timing). |
 
