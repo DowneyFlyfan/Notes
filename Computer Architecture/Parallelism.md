@@ -59,6 +59,31 @@ $$
 | Normalization | Since 1.x * 1.x -> 01.x or 1x.x, So it will be left shift by 1 bit and decrement 1 bit in exponent bit when MSB is 1 |
 | Rounding | (Upper) Round by adding 1 to guarding bit (LSB of Mantissa) |
 
+# Out-of-Order(OOO) Execution
+
+## $\mu$op & Register Renaming
+
+> 1 instruction can be decomposed into microoperations, namely $\mu op$ to increase parallelism between operations
+
+```asm
+push eax
+; Can be decomposed into
+sub esp, 4 
+mov [esp], eax
+```
+
+> Register Renaming 
+
+- **Every change** to a logical register will lead to a **new assignment of temporary register** to that register if available
+
+- Done by Hardware or compiler
+
+## Hazards, 
+
+- Data Dependencies can be eliminated by hardward or compiler by reodring program. Or it stays there to cause stall dealt by interclock
+
+- 
+
 # Instruction Level Parallelism
 
 ## A Classic RISC-V Arch
