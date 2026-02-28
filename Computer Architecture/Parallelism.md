@@ -43,15 +43,31 @@ $$
 | $S$ | Setup time overhead per stage |
 | $k_{opt}$ | Optimal number of pipeline stages that minimizes cost per performance |
 
+## A Pipelined FP Multiplexer
+
+> 1 sign bit + 8 exponent bits + 57 Mantissa bits
+
+![](./imgs/Parallelism/Pipelined-FP-Multiplexer.png)
+
+| Step | Description |
+|------|-------------|
+| Sign Generation | $s_3 = s_1 \oplus s_2$ |
+| Exponent Generation | $e_3 = e_1 + e_2 - 128$ |
+| Partial Product Generation |  |
+| Partial Product Reduction | |
+| Final Reduction | Last stage of Sum Done by a fast CSA |
+| Normalization | Since 1.x * 1.x -> 01.x or 1x.x, So it will be left shift by 1 bit and decrement 1 bit in exponent bit when MSB is 1 |
+| Rounding | (Upper) Round by adding 1 to guarding bit (LSB of Mantissa) |
+
 # Instruction Level Parallelism
 
-> A Classic RISC-V Arch
+## A Classic RISC-V Arch
 
 ![](./imgs/Parallelism/RISC-V_Basic_Pipeline.png)
 
-## Classic 5-Level Pipeline
+> Classic 5-Level Pipeline
 
-> IF(Instruction Fetch) -> ID(Instruction Decode) -> ***OF(Operand Fetch)*** -> EX(Execution) -> ***MEM(Memory Access)*** -> WB(Write Back)
+> IF(Instruction Fetch) -> ID(Instruction Decode) -> ***OF(Operand Fetch)*** -> EX(Execution) -> ***MEM(Memory Access)*** -> WB(Write Back) / OS(Operand Store)
 
 - OF can be done in parallel with ID; MEM can be done in EX Stage
 
@@ -75,6 +91,8 @@ Load-Store: Only Load and Store can access memory (ARM, RISC-V)
 
 Register-Memory: Can use both register value and memory in same instruction
 
+orthogonal field: Fields in one instruction that are independent
+
 # Key Formulas
 
 $$
@@ -83,4 +101,4 @@ $$
 \text{Throughput}  &= \text{Number of Tasks processed per Unit Time}  \\
 \end{aligned}
 \end{equation}
-- [ ] $$
+$$
