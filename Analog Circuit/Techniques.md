@@ -14,11 +14,43 @@ tags: []
 | **Dep. Sources** | $R_{th} = V_{oc} / I_{sc}$ or use a test source | $R_N = V_{oc} / I_{sc}$ or use a test source |
 | **Relationship** | $V_{th} = I_N R_{th}$ | $I_N = V_{th} / R_{th}$ |
 
-# Black Impedance Rules (BIR)
+# Blackman's Impedance Rule
+
+$$
+\begin{equation}
+\begin{aligned}
+
+\end{aligned}
+\end{equation}
+$$
 
 # ZVTC
 
 # Mason's Gain Formula
+
+> Feedback $F$ is defined that if it is a negative feedback, it must be $-F$
+
+| Symbol | Description |
+| :--- | :--- |
+| $r$ | Input |
+| $x_i$ | Node Voltage $i$ |
+| $g_i$ | Coefficient for circuit equation |
+| $\Delta_i$ | $\Delta$ when other feedback paths which connect to it are deleted |
+| $G_i$ | Forward Gain of path $i$ |
+| $\Delta$ | $1 - \sum L_a + \sum L_a L_b - \ldots$ |
+| $L_a$ | Every **loop gain** |
+| $L_a L_b$ | Every 2 **unconnected** loop gains |
+
+$$
+\begin{equation}
+\begin{aligned}
+x_j &= \sum_{i=1}^{n} g_i x_i + r \\
+(I - G) X &= R \\
+x_{out} &= \frac{\det(A_k)}{\det(I-T)}  \\
+&= \frac{ \sum_{i=1}^{n} G_i \Delta_i }{\Delta }
+\end{aligned}
+\end{equation}
+$$
 
 # Block Diagram
 

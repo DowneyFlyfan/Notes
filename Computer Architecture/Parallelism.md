@@ -78,11 +78,27 @@ mov [esp], eax
 
 - Done by Hardware or compiler
 
-## Hazards, 
+## Dependencies
+
+- Data dependency is about data flow (Different instruction using the same data)
+
+- Name dependency is about optimizing the same memory location
+
+- Control dependency is about preserving the order of instructions thatare controlled by branches
 
 - Data Dependencies can be eliminated by hardward or compiler by reodring program. Or it stays there to cause stall dealt by interclock
 
-- 
+## Basic Compiler Techniques 
+
+- Loop Unrolling: $m \mod k$  times looped code + $m/k$ unrolled loop, $k$ is smaller tha $m$ so that control dependency is eliminated. But also increase instructions for icache and require large number of reisters(for $k$)
+
+- Scheduling: Reorder instructions to reduce stalls
+
+## Dynamic Scheduling
+
+### Tomasulo's Algorithm
+
+
 
 # Instruction Level Parallelism
 
