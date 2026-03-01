@@ -22,6 +22,44 @@ tags: []
 
 ![](./imgs/Techniques/Loop_Gain_Compute.png)
 
+## LTI Circuit With a at least reference source and a independent source input
+
+![](./imgs/Techniques/BIR_Circuit.png)
+
+> Replace dependent source with an independent source $x_x$
+
+$$
+\begin{equation}
+\begin{aligned}
+V_{in} &= A I_{in} + Bx_x \\
+x_c &= CI_{in} + Dx_x \\
+\end{aligned}
+\end{equation}
+$$
+
+> $T_{oc}, T_{sc}$ are defined as
+
+$$
+\begin{equation}
+\begin{aligned}
+T_{oc} &= \frac{- \alpha x_c}{x_x} |_{I_{in} = 0} = \frac{\alpha (BC-AD)}{A}  \\
+T_{sc} &= \frac{- \alpha x_c}{x_x} |_{V_{in} = 0} = -\alpha D
+\end{aligned}
+\end{equation}
+$$
+
+> Blackman's Impedance Rule
+
+$$
+\begin{equation}
+\begin{aligned}
+Z_0 &= \frac{V_{in}}{I_{in}} |_{x_x = 0} = A \\
+Z &= \frac{V_{in}}{I_{in}} = A + \frac{\alpha BD}{1 - \alpha D}  \\
+&= Z_0 \frac{1 + T_{sc}}{1 + T_{oc}} 
+\end{aligned}
+\end{equation}
+$$
+
 # ZVTC
 
 # Mason's Gain Formula
