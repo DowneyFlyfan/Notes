@@ -16,13 +16,11 @@ tags: []
 
 # Blackman's Impedance Rule
 
-$$
-\begin{equation}
-\begin{aligned}
+## Loop Gain Calculation
 
-\end{aligned}
-\end{equation}
-$$
+> Insert a Test source at a break point of the loop, $-\dfrac{V_F}{V_{i}}$ thus is the loop gain $AF$ since feedback is default to be negative
+
+![](./imgs/Techniques/Loop_Gain_Compute.png)
 
 # ZVTC
 
