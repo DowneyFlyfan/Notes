@@ -98,7 +98,13 @@ mov [esp], eax
 
 ### Tomasulo's Algorithm
 
+- Issue(Dispatch): Issue a bunch of instructions to reservation stations if they are available, also operands if they are availale (Or stall)
 
+- Execute: ALU Executes instructions from reservation stations (If multiple are available, then randomly pick one); Addresses are computed and stored in Store/Load Buffer and are maintained in program order, then do store/load.
+
+- Write Result to CDB
+
+### 
 
 # Instruction Level Parallelism
 
