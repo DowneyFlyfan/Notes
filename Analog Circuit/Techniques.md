@@ -24,6 +24,8 @@ tags: []
 
 ## LTI Circuit With a at least reference source and a independent source input
 
+> $i_{ab}$ is the **test current source** applied to the network
+
 ![](./imgs/Techniques/BIR_Circuit.png)
 
 > Replace dependent source with an independent source $x_x$
@@ -126,3 +128,9 @@ $$
 - System that rings are called marginally unstable
 
 - Number of zeros - Number of poles = Number of clockwise encirclement
+
+# Important things
+
+- Sometimes,  $g_m r_{ds} \gg 1$
+
+- 
