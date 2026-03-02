@@ -90,8 +90,6 @@ x_{out} &= \frac{\det(A_k)}{\det(I-T)}  \\
 \end{equation}
 $$
 
-# Block Diagram
-
 # Asymptotic Gain Relations (AGR)
 
 $$
