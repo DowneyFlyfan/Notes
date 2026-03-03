@@ -105,7 +105,7 @@ $$
 
 # Phase & Magnitude Margin
 
-## Magnitude - Frequency Log Diagram
+## Asymptotic Approximation
 
 ### Poles
 
@@ -141,12 +141,23 @@ $$
 
 > Phase has maximum derivative ($-45^o$) when crossing poles, one pole leads to $-90^o$ decrease of phase; zeros are the opposite
 
-## Phase Margin
+| Symbol | Name | Description |
+| :--- | :--- | :--- |
+| $\omega_{gc}$ | Gain crossover Frequency | Frequency when Gain = 1 |
+| $\omega_{pc}$ | Phase crossover Frequency | When Phase = $-180^\circ$ |
+| $\omega_c$ | Cutoff Frequency | When $H=\dfrac{1}{\sqrt{2}}$, so power is $H^2 = half$ |
+
+## Gain & Phase Margin
 
 $$
 \begin{equation}
 \begin{aligned}
-PM &= \angle
+H(j \omega) &= \frac{\prod_{i=0}^{m} (1 + j \omega/\omega_{zi})}{\prod_{j=0}^{n} (1 + j \omega/\omega _{pj}) } \\
+GM &= -20 \log |H(j \omega_{pc})| \\
+PM &= \angle H(j \omega_{gc}) - (-180^\circ) \\
+&= \angle H(j \omega_{gc}) + 180^\circ \\
+&= \sum_{i=0}^{m} \angle z_i  - \sum_{j=0}^{n} \angle p_j + 180^\circ \\
+&= \sum_{i=0}^{m} \tan^{-1}\frac{\omega}{\omega_{zi}} - \sum_{j=0}^{n} \tan^{-1}\frac{\omega}{\omega_{pi}}  + 180^\circ
 \end{aligned}
 \end{equation}
 $$
@@ -173,8 +184,12 @@ $$
 
 - Number of zeros - Number of poles = Number of clockwise encirclement
 
+> Compensation: Adding or Adjusting components in a feedback system to improve stability margin
+
+Decrease $T_0$ can also decrease $\omega_c$
+
 # Important things
 
-- Sometimes,  $g_m r_{ds} \gg 1$
+- Intrinsic Gain $g_m r_{ds} \gg 1$ **usually**
 
 - 
