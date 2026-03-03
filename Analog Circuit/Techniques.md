@@ -103,7 +103,53 @@ G_{\infty}(s) &= \underset{\alpha  \xrightarrow{} \infty }{lim} G(s)
 \end{equation}
 $$
 
-# Log Diagram
+# Phase & Magnitude Margin
+
+## Magnitude - Frequency Log Diagram
+
+### Poles
+
+$$
+\begin{equation}
+\begin{aligned}
+H(s) &= \frac{1}{1 + s/\omega_p} \\
+|H(s)| &= \frac{1}{\sqrt{1 + (\dfrac{\omega }{\omega_p})^2 }}  \\
+20 \lg |H(s)| &= -10 \lg \big\{ 1 + (\frac{\omega }{\omega_p})^2  \big\} \\
+&\approx  -10 \lg (\frac{\omega }{\omega_p} )^2 \\
+&= -20 \lg (\frac{\omega }{\omega_p} ) \\
+\therefore 20 \log |H(10s)| - 20 \log |H(s)|  &= -20 dB
+\end{aligned}
+\end{equation}
+$$
+
+### Zeros
+
+$$
+\begin{equation}
+\begin{aligned}
+H(s) &= 1 + s/\omega_z \\
+|H(s)| &= \sqrt{1 + (\dfrac{\omega }{\omega_z})^2 }  \\
+20 \lg |H(s)| &= 10 \lg \big\{ 1 + (\frac{\omega }{\omega_z})^2  \big\} \\
+&\approx  10 \lg (\frac{\omega }{\omega_z} )^2 \\
+&= 20 \lg (\frac{\omega }{\omega_z} ) \\
+\therefore 20 \log |H(10s)| - 20 \log |H(s)|  &= 20 dB
+\end{aligned}
+\end{equation}
+$$
+
+## Phase - Frequency Log Diagram
+
+> Phase has maximum derivative ($-45^o$) when crossing poles, one pole leads to $-90^o$ decrease of phase; zeros are the opposite
+
+## Phase Margin
+
+$$
+\begin{equation}
+\begin{aligned}
+PM &= \angle
+\end{aligned}
+\end{equation}
+$$
 
 # Stability
 
