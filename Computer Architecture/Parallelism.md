@@ -110,15 +110,11 @@ mov [esp], eax
 
 ## A Classic RISC-V Arch
 
-![](./imgs/Parallelism/RISC-V_Basic_Pipeline.png)
-
-> Classic 5-Level Pipeline
-
 > IF(Instruction Fetch) -> ID(Instruction Decode) -> ***OF(Operand Fetch)*** -> EX(Execution) -> ***MEM(Memory Access)*** -> WB(Write Back) / OS(Operand Store)
 
 - OF can be done in parallel with ID; MEM can be done in EX Stage
 
-### Problems
+## Problems
 
 > Data Hazard (RAW,WAR,WAW) caused by data dependency
 
@@ -131,6 +127,38 @@ mov [esp], eax
 ![](./imgs/Parallelism/Pipeline-Interclock.png)
 
 > Branch Hazard
+
+## Tomasulo's Algorithm
+
+### Overall
+
+> Multiple Reservation Stations (RS) share same functional units, serving as physical registers and (implement renaming)
+
+> Register file stores logical register
+
+### Fields of each unit
+
+> RS has 7 fields:
+
+| Field | Description |
+| :--- | :--- |
+| **Op** | Operation |
+| **Qj, Qk** | The Reservation Station that stores the source operands (0 means it's now in **Vj, Vk**) |
+| **Vj, Vk** | Contents of source register, Vk is used to store offset for Load/Store |
+| **A** | Computed Address for Load/Store |
+| **Busy** | Whether this reservation and its accompanying register files are occupied |
+
+> Register File has **1 field**
+
+| Field | Description |
+| :--- | :--- |
+| **Qi** | The number of reservation station that contains what this register file needs |
+
+> Load/Store Buffer has 1 field
+
+| Field | Description |
+| :--- | :--- |
+| **A** | Same as previous |
 
 # Others
 
