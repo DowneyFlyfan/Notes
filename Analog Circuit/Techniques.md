@@ -22,7 +22,7 @@ tags: []
 
 ![](./imgs/Techniques/Loop_Gain_Compute.png)
 
-## LTI Circuit With a at least reference source and a independent source input
+## LTI Circuit With a at least reference source and a independent source input ***
 
 > $i_{ab}$ is the **test current source** applied to the network
 
@@ -92,13 +92,28 @@ $$
 
 # Asymptotic Gain Relations (AGR)
 
+> Construct an LTI circuit with at least one dependent source. Designate $\alpha x_c$ as the reference source and replace it with an independent source $x_x$, with no other independent sources present.
+
+- We can come up with a equation group for this circuitt
+
 $$
 \begin{equation}
 \begin{aligned}
-G(s) &= G_{\infty }(s) \frac{T(s)}{1 + T(s)} + G_0(s) \frac{1}{1 + T(s)}  \\
-T(s) &= -\frac{\alpha x_c(s)}{x_x(s)} \\
-G_0(s) &= \underset{\alpha  \xrightarrow{} 0}{lim} G(s) \\
-G_{\infty}(s) &= \underset{\alpha  \xrightarrow{} \infty }{lim} G(s)
+\begin{bmatrix} x_{out} \\ x_c \end{bmatrix} &= \begin{bmatrix} A & B \\ C & D \end{bmatrix} \begin{bmatrix} x_{in} \\ x_x \end{bmatrix}
+\end{aligned}
+\end{equation}
+$$
+
+- Get the gain and Loop Gain, which is formed by a **open loop** of $x_x \rightarrow{} Circuit \rightarrow{} x_c \xrightarrow{Not \ Connected} \alpha x_c$
+
+$$
+\begin{equation}
+\begin{aligned}
+G &= \frac{x_{out}}{x_{in}}  = A + \frac{\alpha BC}{1 - \alpha D} \\
+G_0 &= \underset{\alpha \xrightarrow{} 0}{lim}  G = A \\
+G_\infty &= \underset{\alpha \xrightarrow{} \infty}{lim}  G = A - \frac{BC}{D} \\
+T &= \frac{-\alpha x_c}{x_x} |_{x_{in} = 0} = - \alpha D \\
+\therefore G &= \frac{G_0 + G_{\infty} T}{1  +T} 
 \end{aligned}
 \end{equation}
 $$
