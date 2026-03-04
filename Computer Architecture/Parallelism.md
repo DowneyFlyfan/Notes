@@ -80,13 +80,11 @@ mov [esp], eax
 
 ## Dependencies
 
-- Data dependency is about data flow (Different instruction using the same data)
-
-- Name dependency is about optimizing the same memory location
-
-- Control dependency is about preserving the order of instructions thatare controlled by branches
-
-- Data Dependencies can be eliminated by hardward or compiler by reodring program. Or it stays there to cause stall dealt by interclock
+| Dependency Type | Core Essence | Common Cases | Hardware/Compiler Solution |
+|-----------------|--------------|--------------|----------------------------|
+| Data Dependency | Data Flow: A "Producer-Consumer" relationship where instruction B requires the value produced by instruction A. | RAW (Read-After-Write) | Data Forwarding (Bypassing) or Pipeline Stalls. |
+| Name Dependency | Storage Conflict: Two instructions use the same register/memory name but have no logical data flow between them. | WAR (Write-After-Read), WAW (Write-After-Write) | Register Renaming (mapping architectural to physical registers). |
+| Control Dependency | Execution Path: Determines whether an instruction should be executed based on the outcome of a previous branch. | Conditional Branches, Jumps, Exceptions. | Branch Prediction and Speculative Execution. |
 
 ## Basic Compiler Techniques 
 
@@ -106,7 +104,7 @@ mov [esp], eax
 
 ### 
 
-# Instruction Level Parallelism
+- [ ] # Instruction Level Parallelism
 
 ## A Classic RISC-V Arch
 
