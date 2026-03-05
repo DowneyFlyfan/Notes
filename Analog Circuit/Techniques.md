@@ -16,11 +16,6 @@ tags: []
 
 # Blackman's Impedance Rule
 
-## Loop Gain Calculation
-
-> Insert a Test source at a break point of the loop, $-\dfrac{V_F}{V_{i}}$ thus is the loop gain $AF$ since feedback is default to be negative
-
-![](./imgs/Techniques/Loop_Gain_Compute.png)
 
 ## LTI Circuit With a at least reference source and a independent source input ***
 
@@ -92,9 +87,11 @@ $$
 
 # Asymptotic Gain Relations (AGR)
 
-> Construct an LTI circuit with at least one dependent source. Designate $\alpha x_c$ as the reference source and replace it with an independent source $x_x$, with no other independent sources present.
+> Construct an LTI circuit with at least one dependent source. Designate $\alpha x_c$ as the reference source and replace it with an independent source $x_x$, with no other independent sources present. 
 
-- We can come up with a equation group for this circuitt
+>> $x_{out}$ and $x_{in}$ are the input and output signal for the circuit
+
+- We can come up with a matrix equation for this circuitt
 
 $$
 \begin{equation}
@@ -104,7 +101,7 @@ $$
 \end{equation}
 $$
 
-- Get the gain and Loop Gain, which is formed by a **open loop** of $x_x \rightarrow{} Circuit \rightarrow{} x_c \xrightarrow{Not \ Connected} \alpha x_c$
+- The loop gain can be determined using the **break point measurement method**: $x_x \rightarrow{} \text{Circuit} \rightarrow{} x_c \xrightarrow{} \alpha x_c$.
 
 $$
 \begin{equation}
@@ -156,26 +153,42 @@ $$
 
 > Phase has maximum derivative ($-45^o$) when crossing poles, one pole leads to $-90^o$ decrease of phase; zeros are the opposite
 
+>> This is an **approximate way** of drawing Diagram. Therefore it's **NOT RELIABLE** in engineering
+
 | Symbol | Name | Description |
 | :--- | :--- | :--- |
-| $\omega_{gc}$ | Gain crossover Frequency | Frequency when Gain = 1 |
+| $\omega_{gc}$ | Gain crossover / Unity Gain Frequency | Frequency when Gain = 1 |
 | $\omega_{pc}$ | Phase crossover Frequency | When Phase = $-180^\circ$ |
 | $\omega_c$ | Cutoff Frequency | When $H=\dfrac{1}{\sqrt{2}}$, so power is $H^2 = half$ |
 
 ## Gain & Phase Margin
 
+> Transfer Function and Gain Margin
+
 $$
 \begin{equation}
 \begin{aligned}
-H(j \omega) &= \frac{\prod_{i=0}^{m} (1 + j \omega/\omega_{zi})}{\prod_{j=0}^{n} (1 + j \omega/\omega _{pj}) } \\
-GM &= -20 \log |H(j \omega_{pc})| \\
-PM &= \angle H(j \omega_{gc}) - (-180^\circ) \\
-&= \angle H(j \omega_{gc}) + 180^\circ \\
-&= \sum_{i=0}^{m} \angle z_i  - \sum_{j=0}^{n} \angle p_j + 180^\circ \\
-&= \sum_{i=0}^{m} \tan^{-1}\frac{\omega}{\omega_{zi}} - \sum_{j=0}^{n} \tan^{-1}\frac{\omega}{\omega_{pi}}  + 180^\circ
+H(j \omega) &= \frac{\prod_{i=0}^{m} (1 \pm j \omega/\omega_{zi})}{\prod_{j=0}^{n} (1 \pm j \omega/\omega _{pj}) } \\
+GM &= -20 \log |H(j \omega_{pc})|
 \end{aligned}
 \end{equation}
 $$
+
+> Phase Margin
+
+- Note that the $\pm$ signs here correspond to the **same sequence** as those in the **Transfer Function**
+
+$$
+\begin{equation}
+\begin{aligned}
+PM &= \angle H(j \omega_{gc}) - (-180^\circ) \\
+&= \angle H(j \omega_{gc}) + 180^\circ \\
+&= \sum_{i=0}^{m} \angle z_i  - \sum_{j=0}^{n} \angle p_j + 180^\circ \\
+&= \sum_{i=0}^{m} \tan^{-1} \pm \frac{\omega_u}{\omega_{zi}} - \sum_{j=0}^{n} \tan^{-1} \pm \frac{\omega_u}{\omega_{pi}}  + 180^\circ
+\end{aligned}
+\end{equation}
+$$
+
 
 # Stability
 
@@ -203,8 +216,27 @@ $$
 
 Decrease $T_0$ can also decrease $\omega_c$
 
-# Important things
+# Others
 
 - Intrinsic Gain $g_m r_{ds} \gg 1$ **usually**
 
-- 
+- Diode-Connected Circuit should be equivalent to a resistance since $v_{gs} = v_{ds} \xRightarrow{} r = \dfrac{v_{ds}}{g_m v_{gs}} = g_m^{-1}$
+
+- Loop Gain Calculation
+
+> Insert a Test source at a break point of the loop, $-\dfrac{V_F}{V_{i}}$ thus is the loop gain $AF$ since feedback is default to be negative
+
+![](./imgs/Techniques/Loop_Gain_Compute.png)
+
+## Node Decoupling
+
+> In a unilateral system where there are only ground capacitors, with no transconducting capacitors between nodes. Poles of each node $i$ can be simply calculated as $\dfrac{1}{R_iC_i}$, where $R_i,C_i$ are the resistances and capacitances of node $i$
+
+## Judging whether it is a inverted op-amp
+
+| Stage | Polarity | Explanation |
+| :--- | :--- | :--- |
+| CS | (-) | Direction of $i_{ds}$ is opposite of $i_{out}$ |
+| CG | (+) | $i_{in} = g_m v_{gs} = -g_m v_{in} \xrightarrow{} i_{in}$ direction is inverted |
+| CD | (+) | Direction of $i_{ds}$ is the same as $i_{out}$ |
+| Multi-stage | Superposition | Polarity is superposition of all stages |
