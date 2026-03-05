@@ -120,7 +120,7 @@ $$
 
 > Start with a **known and stable** $I_{REF}$
 
-- There must be s.t. a strong correlation to copy currents to avoid influence from PVT
+- There must be **s.t. a strong correlation** to copy currents to avoid influence from PVT
 
 $$
 \begin{equation}
